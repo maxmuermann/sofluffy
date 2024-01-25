@@ -1,0 +1,3126 @@
+[gd_scene load_steps=267 format=3 uid="uid://bde66yr2t8dsw"]
+
+[ext_resource type="Script" path="res://Fur/Scripts/Fuzzy.gd" id="2_11adj"]
+[ext_resource type="Shader" path="res://Fur/Shaders/fuzzy.gdshader" id="2_eh76l"]
+[ext_resource type="Script" path="res://bounce.gd" id="2_tx36r"]
+[ext_resource type="Material" uid="uid://d23fcf8nvkobb" path="res://Fur/Materials/fuzzy_shell_material.tres" id="3_sj0v8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iivyr"]
+
+[sub_resource type="Gradient" id="Gradient_aljgf"]
+offsets = PackedFloat32Array(0, 0.563851)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_brnce"]
+noise_type = 5
+frequency = 0.535
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_57xym"]
+color_ramp = SubResource("Gradient_aljgf")
+noise = SubResource("FastNoiseLite_brnce")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t66o3"]
+render_priority = 0
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 1.0
+shader_parameter/density = 0.25
+shader_parameter/thickness = 1.0
+shader_parameter/physics_pos_offset = Vector3(2.06542e-12, -0.992203, 2.06542e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fl2fp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_t66o3")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.996078
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.999975
+shader_parameter/physics_pos_offset = Vector3(2.04925e-12, -0.984436, 2.04925e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hardr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_fl2fp")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.992157
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.999902
+shader_parameter/physics_pos_offset = Vector3(2.03315e-12, -0.9767, 2.03315e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lx6s"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_hardr")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.988235
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.99978
+shader_parameter/physics_pos_offset = Vector3(2.01711e-12, -0.968994, 2.01711e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e6yg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8lx6s")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.984314
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.999609
+shader_parameter/physics_pos_offset = Vector3(2.00113e-12, -0.961319, 2.00113e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ffeg6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_0e6yg")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.980392
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.999389
+shader_parameter/physics_pos_offset = Vector3(1.98522e-12, -0.953674, 1.98522e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqt63"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ffeg6")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.976471
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.999122
+shader_parameter/physics_pos_offset = Vector3(1.96937e-12, -0.94606, 1.96937e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_520y6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rqt63")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.972549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.998807
+shader_parameter/physics_pos_offset = Vector3(1.95358e-12, -0.938477, 1.95358e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kxja"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_520y6")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.968627
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.998444
+shader_parameter/physics_pos_offset = Vector3(1.93786e-12, -0.930923, 1.93786e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ilrlk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3kxja")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.964706
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.998033
+shader_parameter/physics_pos_offset = Vector3(1.9222e-12, -0.923401, 1.9222e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpumw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ilrlk")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.960784
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.997576
+shader_parameter/physics_pos_offset = Vector3(1.9066e-12, -0.915909, 1.9066e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xs2e"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_bpumw")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.956863
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.997071
+shader_parameter/physics_pos_offset = Vector3(1.89107e-12, -0.908447, 1.89107e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5ofm"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_0xs2e")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.952941
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.996519
+shader_parameter/physics_pos_offset = Vector3(1.8756e-12, -0.901016, 1.8756e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_64tmb"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_b5ofm")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.94902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.995921
+shader_parameter/physics_pos_offset = Vector3(1.8602e-12, -0.893616, 1.8602e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xx3kr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_64tmb")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.945098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.995277
+shader_parameter/physics_pos_offset = Vector3(1.84485e-12, -0.886246, 1.84485e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlmit"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xx3kr")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.941176
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.994586
+shader_parameter/physics_pos_offset = Vector3(1.82958e-12, -0.878906, 1.82958e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rf61s"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wlmit")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.937255
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.993849
+shader_parameter/physics_pos_offset = Vector3(1.81436e-12, -0.871597, 1.81436e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvcp4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rf61s")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.933333
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.993067
+shader_parameter/physics_pos_offset = Vector3(1.79921e-12, -0.864319, 1.79921e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0hwx4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_nvcp4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.929412
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.992239
+shader_parameter/physics_pos_offset = Vector3(1.78412e-12, -0.857071, 1.78412e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jif7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_0hwx4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.92549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.991365
+shader_parameter/physics_pos_offset = Vector3(1.7691e-12, -0.849854, 1.7691e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aj68y"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5jif7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.921569
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.990447
+shader_parameter/physics_pos_offset = Vector3(1.75414e-12, -0.842667, 1.75414e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sslky"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_aj68y")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.917647
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.989484
+shader_parameter/physics_pos_offset = Vector3(1.73924e-12, -0.83551, 1.73924e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5x1yp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_sslky")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.913725
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.988476
+shader_parameter/physics_pos_offset = Vector3(1.72441e-12, -0.828384, 1.72441e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33rq3"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5x1yp")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.909804
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.987424
+shader_parameter/physics_pos_offset = Vector3(1.70964e-12, -0.821289, 1.70964e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fetsb"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_33rq3")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.905882
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.986327
+shader_parameter/physics_pos_offset = Vector3(1.69493e-12, -0.814224, 1.69493e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_64et8"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_fetsb")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.901961
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.985187
+shader_parameter/physics_pos_offset = Vector3(1.68029e-12, -0.80719, 1.68029e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xr0wm"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_64et8")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.898039
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.984002
+shader_parameter/physics_pos_offset = Vector3(1.66571e-12, -0.800186, 1.66571e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8oqky"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xr0wm")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.894118
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.982775
+shader_parameter/physics_pos_offset = Vector3(1.65119e-12, -0.793213, 1.65119e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cuko4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8oqky")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.890196
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.981503
+shader_parameter/physics_pos_offset = Vector3(1.63674e-12, -0.78627, 1.63674e-12)
+shader_parameter/color = Color(0.359437, 0.634167, 0.186181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e81gu"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_cuko4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.886275
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.980189
+shader_parameter/physics_pos_offset = Vector3(1.62235e-12, -0.779358, 1.62235e-12)
+shader_parameter/color = Color(0.358918, 0.633228, 0.186038, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42pyc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_e81gu")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.882353
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.978832
+shader_parameter/physics_pos_offset = Vector3(1.60803e-12, -0.772476, 1.60803e-12)
+shader_parameter/color = Color(0.357838, 0.631273, 0.18574, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kpwh"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_42pyc")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.878431
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.977432
+shader_parameter/physics_pos_offset = Vector3(1.59376e-12, -0.765625, 1.59376e-12)
+shader_parameter/color = Color(0.356757, 0.629318, 0.185442, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awfeh"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4kpwh")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.87451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.975989
+shader_parameter/physics_pos_offset = Vector3(1.57956e-12, -0.758804, 1.57956e-12)
+shader_parameter/color = Color(0.355677, 0.627363, 0.185143, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_82kgl"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_awfeh")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.870588
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.974505
+shader_parameter/physics_pos_offset = Vector3(1.56543e-12, -0.752014, 1.56543e-12)
+shader_parameter/color = Color(0.354597, 0.625408, 0.184845, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfkfk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_82kgl")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.866667
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.972978
+shader_parameter/physics_pos_offset = Vector3(1.55136e-12, -0.745255, 1.55136e-12)
+shader_parameter/color = Color(0.353516, 0.623453, 0.184547, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rc60e"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jfkfk")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.862745
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.971409
+shader_parameter/physics_pos_offset = Vector3(1.53735e-12, -0.738525, 1.53735e-12)
+shader_parameter/color = Color(0.352436, 0.621498, 0.184249, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6h8t1"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rc60e")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.858824
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.969799
+shader_parameter/physics_pos_offset = Vector3(1.52341e-12, -0.731827, 1.52341e-12)
+shader_parameter/color = Color(0.351356, 0.619543, 0.183951, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykk6n"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6h8t1")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.854902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.968147
+shader_parameter/physics_pos_offset = Vector3(1.50953e-12, -0.725159, 1.50953e-12)
+shader_parameter/color = Color(0.350275, 0.617588, 0.183653, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20hej"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ykk6n")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.85098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.966455
+shader_parameter/physics_pos_offset = Vector3(1.49571e-12, -0.718521, 1.49571e-12)
+shader_parameter/color = Color(0.349195, 0.615633, 0.183355, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_an5gj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_20hej")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.847059
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.964721
+shader_parameter/physics_pos_offset = Vector3(1.48196e-12, -0.711914, 1.48196e-12)
+shader_parameter/color = Color(0.348115, 0.613678, 0.183057, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbdxj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_an5gj")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.843137
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.962946
+shader_parameter/physics_pos_offset = Vector3(1.46827e-12, -0.705338, 1.46827e-12)
+shader_parameter/color = Color(0.347035, 0.611723, 0.182758, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vqw03"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qbdxj")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.839216
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.961131
+shader_parameter/physics_pos_offset = Vector3(1.45464e-12, -0.698792, 1.45464e-12)
+shader_parameter/color = Color(0.345954, 0.609768, 0.18246, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1hpic"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vqw03")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.835294
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.959276
+shader_parameter/physics_pos_offset = Vector3(1.44108e-12, -0.692276, 1.44108e-12)
+shader_parameter/color = Color(0.344874, 0.607813, 0.182162, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1haqg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1hpic")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.831373
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.957381
+shader_parameter/physics_pos_offset = Vector3(1.42758e-12, -0.685791, 1.42758e-12)
+shader_parameter/color = Color(0.343794, 0.605858, 0.181864, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ys6p"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1haqg")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.827451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.955445
+shader_parameter/physics_pos_offset = Vector3(1.41414e-12, -0.679337, 1.41414e-12)
+shader_parameter/color = Color(0.342713, 0.603903, 0.181566, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_egb3o"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8ys6p")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.823529
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.95347
+shader_parameter/physics_pos_offset = Vector3(1.40077e-12, -0.672913, 1.40077e-12)
+shader_parameter/color = Color(0.341633, 0.601948, 0.181268, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h020k"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_egb3o")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.819608
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.951456
+shader_parameter/physics_pos_offset = Vector3(1.38746e-12, -0.666519, 1.38746e-12)
+shader_parameter/color = Color(0.340553, 0.599993, 0.18097, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stifa"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_h020k")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.815686
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.949402
+shader_parameter/physics_pos_offset = Vector3(1.37421e-12, -0.660156, 1.37421e-12)
+shader_parameter/color = Color(0.339472, 0.598038, 0.180671, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dekt4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_stifa")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.811765
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.94731
+shader_parameter/physics_pos_offset = Vector3(1.36103e-12, -0.653824, 1.36103e-12)
+shader_parameter/color = Color(0.338392, 0.596083, 0.180373, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8nh0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_dekt4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.807843
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.945178
+shader_parameter/physics_pos_offset = Vector3(1.34791e-12, -0.647522, 1.34791e-12)
+shader_parameter/color = Color(0.337312, 0.594128, 0.180075, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56avd"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_w8nh0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.803922
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.943008
+shader_parameter/physics_pos_offset = Vector3(1.33486e-12, -0.641251, 1.33486e-12)
+shader_parameter/color = Color(0.336231, 0.592174, 0.179777, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7yyse"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_56avd")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.8
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.9408
+shader_parameter/physics_pos_offset = Vector3(1.32187e-12, -0.63501, 1.32187e-12)
+shader_parameter/color = Color(0.335151, 0.590219, 0.179479, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1ra4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7yyse")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.796078
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.938554
+shader_parameter/physics_pos_offset = Vector3(1.30894e-12, -0.628799, 1.30894e-12)
+shader_parameter/color = Color(0.334071, 0.588264, 0.179181, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjnao"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_i1ra4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.792157
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.936269
+shader_parameter/physics_pos_offset = Vector3(1.29608e-12, -0.62262, 1.29608e-12)
+shader_parameter/color = Color(0.332991, 0.586309, 0.178883, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_my162"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_sjnao")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.788235
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.933947
+shader_parameter/physics_pos_offset = Vector3(1.28328e-12, -0.61647, 1.28328e-12)
+shader_parameter/color = Color(0.33191, 0.584354, 0.178585, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3aed2"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_my162")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.784314
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.931587
+shader_parameter/physics_pos_offset = Vector3(1.27054e-12, -0.610352, 1.27054e-12)
+shader_parameter/color = Color(0.33083, 0.582399, 0.178286, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_banl6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3aed2")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.780392
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.929191
+shader_parameter/physics_pos_offset = Vector3(1.25786e-12, -0.604263, 1.25786e-12)
+shader_parameter/color = Color(0.32975, 0.580444, 0.177988, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imm1l"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_banl6")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.776471
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.926757
+shader_parameter/physics_pos_offset = Vector3(1.24525e-12, -0.598206, 1.24525e-12)
+shader_parameter/color = Color(0.328669, 0.578489, 0.17769, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xamae"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_imm1l")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.772549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.924286
+shader_parameter/physics_pos_offset = Vector3(1.23271e-12, -0.592178, 1.23271e-12)
+shader_parameter/color = Color(0.327589, 0.576534, 0.177392, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lvmx"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xamae")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.768627
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.921779
+shader_parameter/physics_pos_offset = Vector3(1.22022e-12, -0.586182, 1.22022e-12)
+shader_parameter/color = Color(0.326509, 0.574579, 0.177094, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dexlj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_0lvmx")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.764706
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.919235
+shader_parameter/physics_pos_offset = Vector3(1.20781e-12, -0.580215, 1.20781e-12)
+shader_parameter/color = Color(0.325428, 0.572624, 0.176796, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lobqf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_dexlj")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.760784
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.916655
+shader_parameter/physics_pos_offset = Vector3(1.19545e-12, -0.57428, 1.19545e-12)
+shader_parameter/color = Color(0.324348, 0.570669, 0.176498, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5n6qp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lobqf")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.756863
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.914039
+shader_parameter/physics_pos_offset = Vector3(1.18316e-12, -0.568375, 1.18316e-12)
+shader_parameter/color = Color(0.323268, 0.568714, 0.1762, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6sxdf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5n6qp")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.752941
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.911387
+shader_parameter/physics_pos_offset = Vector3(1.17093e-12, -0.5625, 1.17093e-12)
+shader_parameter/color = Color(0.322188, 0.566759, 0.175901, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6jm65"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6sxdf")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.74902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.9087
+shader_parameter/physics_pos_offset = Vector3(1.15876e-12, -0.556656, 1.15876e-12)
+shader_parameter/color = Color(0.321107, 0.564804, 0.175603, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iaopp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6jm65")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.745098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.905977
+shader_parameter/physics_pos_offset = Vector3(1.14666e-12, -0.550842, 1.14666e-12)
+shader_parameter/color = Color(0.320027, 0.562849, 0.175305, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rvsm"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_iaopp")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.741176
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.90322
+shader_parameter/physics_pos_offset = Vector3(1.13462e-12, -0.545059, 1.13462e-12)
+shader_parameter/color = Color(0.318947, 0.560894, 0.175007, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mk3j1"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1rvsm")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.737255
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.900427
+shader_parameter/physics_pos_offset = Vector3(1.12265e-12, -0.539307, 1.12265e-12)
+shader_parameter/color = Color(0.317866, 0.558939, 0.174709, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwehr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_mk3j1")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.733333
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.8976
+shader_parameter/physics_pos_offset = Vector3(1.11074e-12, -0.533585, 1.11074e-12)
+shader_parameter/color = Color(0.316786, 0.556984, 0.174411, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujv22"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lwehr")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.729412
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.894738
+shader_parameter/physics_pos_offset = Vector3(1.09889e-12, -0.527893, 1.09889e-12)
+shader_parameter/color = Color(0.315706, 0.555029, 0.174113, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgus1"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ujv22")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.72549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.891843
+shader_parameter/physics_pos_offset = Vector3(1.0871e-12, -0.522232, 1.0871e-12)
+shader_parameter/color = Color(0.314625, 0.553074, 0.173815, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaoe1"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qgus1")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.721569
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.888913
+shader_parameter/physics_pos_offset = Vector3(1.07538e-12, -0.516602, 1.07538e-12)
+shader_parameter/color = Color(0.313545, 0.551119, 0.173516, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6l7o"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_kaoe1")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.717647
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.885949
+shader_parameter/physics_pos_offset = Vector3(1.06373e-12, -0.511002, 1.06373e-12)
+shader_parameter/color = Color(0.312465, 0.549164, 0.173218, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0v5id"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_c6l7o")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.713725
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.882952
+shader_parameter/physics_pos_offset = Vector3(1.05213e-12, -0.505432, 1.05213e-12)
+shader_parameter/color = Color(0.311384, 0.547209, 0.17292, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmale"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_0v5id")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.709804
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.879921
+shader_parameter/physics_pos_offset = Vector3(1.0406e-12, -0.499893, 1.0406e-12)
+shader_parameter/color = Color(0.310304, 0.545254, 0.172622, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4r0l"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lmale")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.705882
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.876857
+shader_parameter/physics_pos_offset = Vector3(1.02914e-12, -0.494385, 1.02914e-12)
+shader_parameter/color = Color(0.309224, 0.543299, 0.172324, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m81yl"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_g4r0l")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.701961
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.873761
+shader_parameter/physics_pos_offset = Vector3(1.01773e-12, -0.488907, 1.01773e-12)
+shader_parameter/color = Color(0.308144, 0.541345, 0.172026, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scalw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_m81yl")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.698039
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.870631
+shader_parameter/physics_pos_offset = Vector3(1.00639e-12, -0.483459, 1.00639e-12)
+shader_parameter/color = Color(0.307063, 0.53939, 0.171728, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_us7xf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_scalw")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.694118
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.867469
+shader_parameter/physics_pos_offset = Vector3(9.95117e-13, -0.478043, 9.95117e-13)
+shader_parameter/color = Color(0.305983, 0.537435, 0.171429, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1ohs"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_us7xf")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.690196
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.864275
+shader_parameter/physics_pos_offset = Vector3(9.83905e-13, -0.472656, 9.83905e-13)
+shader_parameter/color = Color(0.304903, 0.53548, 0.171131, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwnfn"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_r1ohs")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.686275
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.861049
+shader_parameter/physics_pos_offset = Vector3(9.72756e-13, -0.4673, 9.72756e-13)
+shader_parameter/color = Color(0.303822, 0.533525, 0.170833, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psdx7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_kwnfn")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.682353
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.857791
+shader_parameter/physics_pos_offset = Vector3(9.6167e-13, -0.461975, 9.6167e-13)
+shader_parameter/color = Color(0.302742, 0.53157, 0.170535, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lq1hf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_psdx7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.678431
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.854501
+shader_parameter/physics_pos_offset = Vector3(9.50649e-13, -0.45668, 9.50649e-13)
+shader_parameter/color = Color(0.301662, 0.529615, 0.170237, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qacs"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lq1hf")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.67451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.85118
+shader_parameter/physics_pos_offset = Vector3(9.3969e-13, -0.451416, 9.3969e-13)
+shader_parameter/color = Color(0.300581, 0.52766, 0.169939, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8m01"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4qacs")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.670588
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.847828
+shader_parameter/physics_pos_offset = Vector3(9.28795e-13, -0.446182, 9.28795e-13)
+shader_parameter/color = Color(0.299501, 0.525705, 0.169641, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gsal"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_m8m01")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.666667
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.844445
+shader_parameter/physics_pos_offset = Vector3(9.17964e-13, -0.440979, 9.17964e-13)
+shader_parameter/color = Color(0.298421, 0.52375, 0.169343, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w43nw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7gsal")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.662745
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.84103
+shader_parameter/physics_pos_offset = Vector3(9.07196e-13, -0.435806, 9.07196e-13)
+shader_parameter/color = Color(0.297341, 0.521795, 0.169044, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fb0ht"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_w43nw")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.658824
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.837586
+shader_parameter/physics_pos_offset = Vector3(8.96492e-13, -0.430664, 8.96492e-13)
+shader_parameter/color = Color(0.29626, 0.51984, 0.168746, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8awxv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_fb0ht")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.654902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.834111
+shader_parameter/physics_pos_offset = Vector3(8.85851e-13, -0.425552, 8.85851e-13)
+shader_parameter/color = Color(0.29518, 0.517885, 0.168448, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7v3q"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8awxv")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.65098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.830606
+shader_parameter/physics_pos_offset = Vector3(8.75274e-13, -0.420471, 8.75274e-13)
+shader_parameter/color = Color(0.2941, 0.51593, 0.16815, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwkjm"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_g7v3q")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.647059
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.827071
+shader_parameter/physics_pos_offset = Vector3(8.6476e-13, -0.415421, 8.6476e-13)
+shader_parameter/color = Color(0.293019, 0.513975, 0.167852, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckgvn"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wwkjm")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.643137
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.823507
+shader_parameter/physics_pos_offset = Vector3(8.5431e-13, -0.4104, 8.5431e-13)
+shader_parameter/color = Color(0.291939, 0.51202, 0.167554, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bqbf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckgvn")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.639216
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.819912
+shader_parameter/physics_pos_offset = Vector3(8.43923e-13, -0.405411, 8.43923e-13)
+shader_parameter/color = Color(0.290859, 0.510065, 0.167256, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhcyk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3bqbf")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.635294
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.816289
+shader_parameter/physics_pos_offset = Vector3(8.336e-13, -0.400452, 8.336e-13)
+shader_parameter/color = Color(0.289778, 0.50811, 0.166958, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1apt"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vhcyk")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.631373
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.812637
+shader_parameter/physics_pos_offset = Vector3(8.23341e-13, -0.395523, 8.23341e-13)
+shader_parameter/color = Color(0.288698, 0.506155, 0.166659, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1dgb4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_u1apt")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.627451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.808956
+shader_parameter/physics_pos_offset = Vector3(8.13145e-13, -0.390625, 8.13145e-13)
+shader_parameter/color = Color(0.287618, 0.5042, 0.166361, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sv071"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1dgb4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.623529
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.805246
+shader_parameter/physics_pos_offset = Vector3(8.03012e-13, -0.385757, 8.03012e-13)
+shader_parameter/color = Color(0.286537, 0.502245, 0.166063, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsyf0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_sv071")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.619608
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.801508
+shader_parameter/physics_pos_offset = Vector3(7.92943e-13, -0.38092, 7.92943e-13)
+shader_parameter/color = Color(0.285457, 0.50029, 0.165765, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3dpd"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qsyf0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.615686
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.797742
+shader_parameter/physics_pos_offset = Vector3(7.82937e-13, -0.376114, 7.82937e-13)
+shader_parameter/color = Color(0.284377, 0.498335, 0.165467, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2fk5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_n3dpd")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.611765
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.793948
+shader_parameter/physics_pos_offset = Vector3(7.72995e-13, -0.371338, 7.72995e-13)
+shader_parameter/color = Color(0.283297, 0.49638, 0.165169, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c56c4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_a2fk5")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.607843
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.790126
+shader_parameter/physics_pos_offset = Vector3(7.63117e-13, -0.366592, 7.63117e-13)
+shader_parameter/color = Color(0.282216, 0.494425, 0.164871, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6v5k8"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_c56c4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.603922
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.786277
+shader_parameter/physics_pos_offset = Vector3(7.53302e-13, -0.361877, 7.53302e-13)
+shader_parameter/color = Color(0.281136, 0.49247, 0.164573, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8oe7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6v5k8")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.6
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.7824
+shader_parameter/physics_pos_offset = Vector3(7.43551e-13, -0.357193, 7.43551e-13)
+shader_parameter/color = Color(0.280056, 0.490516, 0.164274, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_key8s"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_h8oe7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.596078
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.778496
+shader_parameter/physics_pos_offset = Vector3(7.33863e-13, -0.352539, 7.33863e-13)
+shader_parameter/color = Color(0.278975, 0.488561, 0.163976, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ji5q0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_key8s")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.592157
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.774566
+shader_parameter/physics_pos_offset = Vector3(7.24239e-13, -0.347916, 7.24239e-13)
+shader_parameter/color = Color(0.277895, 0.486606, 0.163678, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_govxd"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ji5q0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.588235
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.770609
+shader_parameter/physics_pos_offset = Vector3(7.14678e-13, -0.343323, 7.14678e-13)
+shader_parameter/color = Color(0.276815, 0.484651, 0.16338, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34kfd"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_govxd")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.584314
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.766625
+shader_parameter/physics_pos_offset = Vector3(7.05181e-13, -0.33876, 7.05181e-13)
+shader_parameter/color = Color(0.275734, 0.482696, 0.163082, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bmga"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_34kfd")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.580392
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.762615
+shader_parameter/physics_pos_offset = Vector3(6.95747e-13, -0.334229, 6.95747e-13)
+shader_parameter/color = Color(0.274654, 0.480741, 0.162784, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itens"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6bmga")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.576471
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.758579
+shader_parameter/physics_pos_offset = Vector3(6.86377e-13, -0.329727, 6.86377e-13)
+shader_parameter/color = Color(0.273574, 0.478786, 0.162486, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3m33"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_itens")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.572549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.754518
+shader_parameter/physics_pos_offset = Vector3(6.7707e-13, -0.325256, 6.7707e-13)
+shader_parameter/color = Color(0.272494, 0.476831, 0.162188, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqo8p"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_v3m33")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.568627
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.750431
+shader_parameter/physics_pos_offset = Vector3(6.67827e-13, -0.320816, 6.67827e-13)
+shader_parameter/color = Color(0.271413, 0.474876, 0.161889, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5i0t"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xqo8p")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.564706
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.746318
+shader_parameter/physics_pos_offset = Vector3(6.58647e-13, -0.316406, 6.58647e-13)
+shader_parameter/color = Color(0.270333, 0.472921, 0.161591, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40atm"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_c5i0t")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.560784
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.742181
+shader_parameter/physics_pos_offset = Vector3(6.49531e-13, -0.312027, 6.49531e-13)
+shader_parameter/color = Color(0.269253, 0.470966, 0.161293, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6cwn"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_40atm")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.556863
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.738019
+shader_parameter/physics_pos_offset = Vector3(6.40478e-13, -0.307678, 6.40478e-13)
+shader_parameter/color = Color(0.268172, 0.469011, 0.160995, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_467tk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_k6cwn")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.552941
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.733831
+shader_parameter/physics_pos_offset = Vector3(6.31489e-13, -0.30336, 6.31489e-13)
+shader_parameter/color = Color(0.267092, 0.467056, 0.160697, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wfwj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_467tk")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.54902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.72962
+shader_parameter/physics_pos_offset = Vector3(6.22564e-13, -0.299072, 6.22564e-13)
+shader_parameter/color = Color(0.266012, 0.465101, 0.160399, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1imtt"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4wfwj")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.545098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.725384
+shader_parameter/physics_pos_offset = Vector3(6.13702e-13, -0.294815, 6.13702e-13)
+shader_parameter/color = Color(0.264931, 0.463146, 0.160101, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wk88t"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1imtt")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.541176
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.721124
+shader_parameter/physics_pos_offset = Vector3(6.04903e-13, -0.290588, 6.04903e-13)
+shader_parameter/color = Color(0.263851, 0.461191, 0.159802, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3civ4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wk88t")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.537255
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.716841
+shader_parameter/physics_pos_offset = Vector3(5.96168e-13, -0.286392, 5.96168e-13)
+shader_parameter/color = Color(0.262771, 0.459236, 0.159504, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_waeh8"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3civ4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.533333
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.712533
+shader_parameter/physics_pos_offset = Vector3(5.87497e-13, -0.282227, 5.87497e-13)
+shader_parameter/color = Color(0.26169, 0.457281, 0.159206, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rigjn"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_waeh8")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.529412
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.708203
+shader_parameter/physics_pos_offset = Vector3(5.78889e-13, -0.278091, 5.78889e-13)
+shader_parameter/color = Color(0.26061, 0.455326, 0.158908, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asssx"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rigjn")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.52549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.703849
+shader_parameter/physics_pos_offset = Vector3(5.70345e-13, -0.273987, 5.70345e-13)
+shader_parameter/color = Color(0.25953, 0.453371, 0.15861, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rpkh4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_asssx")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.521569
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.699472
+shader_parameter/physics_pos_offset = Vector3(5.61864e-13, -0.269913, 5.61864e-13)
+shader_parameter/color = Color(0.25845, 0.451416, 0.158312, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1u4u"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rpkh4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.517647
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.695073
+shader_parameter/physics_pos_offset = Vector3(5.53447e-13, -0.265869, 5.53447e-13)
+shader_parameter/color = Color(0.257369, 0.449461, 0.158014, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46ex0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_j1u4u")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.513725
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.690651
+shader_parameter/physics_pos_offset = Vector3(5.45093e-13, -0.261856, 5.45093e-13)
+shader_parameter/color = Color(0.256289, 0.447506, 0.157716, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_es7xs"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_46ex0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.509804
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.686207
+shader_parameter/physics_pos_offset = Vector3(5.36802e-13, -0.257874, 5.36802e-13)
+shader_parameter/color = Color(0.255209, 0.445551, 0.157417, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21lyg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_es7xs")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.505882
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.68174
+shader_parameter/physics_pos_offset = Vector3(5.28576e-13, -0.253922, 5.28576e-13)
+shader_parameter/color = Color(0.254128, 0.443596, 0.157119, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6j54n"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_21lyg")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.501961
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.677252
+shader_parameter/physics_pos_offset = Vector3(5.20412e-13, -0.25, 5.20412e-13)
+shader_parameter/color = Color(0.253048, 0.441641, 0.156821, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13xfn"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6j54n")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.498039
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.672742
+shader_parameter/physics_pos_offset = Vector3(5.12313e-13, -0.246109, 5.12313e-13)
+shader_parameter/color = Color(0.251968, 0.439686, 0.156523, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ep5hk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_13xfn")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.494118
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.668211
+shader_parameter/physics_pos_offset = Vector3(5.04277e-13, -0.242249, 5.04277e-13)
+shader_parameter/color = Color(0.250887, 0.437732, 0.156225, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hguw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ep5hk")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.490196
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.663659
+shader_parameter/physics_pos_offset = Vector3(4.96304e-13, -0.238419, 4.96304e-13)
+shader_parameter/color = Color(0.249807, 0.435777, 0.155927, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_egtt2"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4hguw")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.486275
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.659085
+shader_parameter/physics_pos_offset = Vector3(4.88395e-13, -0.234619, 4.88395e-13)
+shader_parameter/color = Color(0.248727, 0.433822, 0.155629, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnr2v"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_egtt2")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.482353
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.654491
+shader_parameter/physics_pos_offset = Vector3(4.80549e-13, -0.23085, 4.80549e-13)
+shader_parameter/color = Color(0.247646, 0.431867, 0.155331, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_doqod"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xnr2v")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.478431
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.649877
+shader_parameter/physics_pos_offset = Vector3(4.72767e-13, -0.227112, 4.72767e-13)
+shader_parameter/color = Color(0.246566, 0.429912, 0.155032, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8me5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_doqod")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.47451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.645241
+shader_parameter/physics_pos_offset = Vector3(4.65049e-13, -0.223404, 4.65049e-13)
+shader_parameter/color = Color(0.245486, 0.427957, 0.154734, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydbmv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_x8me5")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.470588
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.640586
+shader_parameter/physics_pos_offset = Vector3(4.57394e-13, -0.219727, 4.57394e-13)
+shader_parameter/color = Color(0.244406, 0.426002, 0.154436, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jipun"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ydbmv")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.466667
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.635911
+shader_parameter/physics_pos_offset = Vector3(4.49802e-13, -0.21608, 4.49802e-13)
+shader_parameter/color = Color(0.243325, 0.424047, 0.154138, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6nop"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jipun")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.462745
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.631216
+shader_parameter/physics_pos_offset = Vector3(4.42274e-13, -0.212463, 4.42274e-13)
+shader_parameter/color = Color(0.242245, 0.422092, 0.15384, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocyo5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_g6nop")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.458824
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.626502
+shader_parameter/physics_pos_offset = Vector3(4.3481e-13, -0.208878, 4.3481e-13)
+shader_parameter/color = Color(0.241165, 0.420137, 0.153542, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pnbw0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ocyo5")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.454902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.621769
+shader_parameter/physics_pos_offset = Vector3(4.27409e-13, -0.205322, 4.27409e-13)
+shader_parameter/color = Color(0.240084, 0.418182, 0.153244, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_of7uy"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_pnbw0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.45098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.617016
+shader_parameter/physics_pos_offset = Vector3(4.20072e-13, -0.201797, 4.20072e-13)
+shader_parameter/color = Color(0.239004, 0.416227, 0.152946, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kil2j"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_of7uy")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.447059
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.612245
+shader_parameter/physics_pos_offset = Vector3(4.12798e-13, -0.198303, 4.12798e-13)
+shader_parameter/color = Color(0.237924, 0.414272, 0.152647, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aomsp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_kil2j")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.443137
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.607455
+shader_parameter/physics_pos_offset = Vector3(4.05588e-13, -0.194839, 4.05588e-13)
+shader_parameter/color = Color(0.236843, 0.412317, 0.152349, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mix6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_aomsp")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.439216
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.602646
+shader_parameter/physics_pos_offset = Vector3(3.98441e-13, -0.191406, 3.98441e-13)
+shader_parameter/color = Color(0.235763, 0.410362, 0.152051, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76wac"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_0mix6")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.435294
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.59782
+shader_parameter/physics_pos_offset = Vector3(3.91358e-13, -0.188004, 3.91358e-13)
+shader_parameter/color = Color(0.234683, 0.408407, 0.151753, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bj4d"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_76wac")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.431373
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.592976
+shader_parameter/physics_pos_offset = Vector3(3.84338e-13, -0.184631, 3.84338e-13)
+shader_parameter/color = Color(0.233603, 0.406452, 0.151455, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8s6hs"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4bj4d")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.427451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.588113
+shader_parameter/physics_pos_offset = Vector3(3.77382e-13, -0.18129, 3.77382e-13)
+shader_parameter/color = Color(0.232522, 0.404497, 0.151157, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iexvw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8s6hs")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.423529
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.583234
+shader_parameter/physics_pos_offset = Vector3(3.70489e-13, -0.177979, 3.70489e-13)
+shader_parameter/color = Color(0.231442, 0.402542, 0.150859, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frrtu"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_iexvw")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.419608
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.578337
+shader_parameter/physics_pos_offset = Vector3(3.6366e-13, -0.174698, 3.6366e-13)
+shader_parameter/color = Color(0.230362, 0.400587, 0.15056, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjwuf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_frrtu")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.415686
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.573423
+shader_parameter/physics_pos_offset = Vector3(3.56894e-13, -0.171448, 3.56894e-13)
+shader_parameter/color = Color(0.229281, 0.398632, 0.150262, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4l5g"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rjwuf")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.411765
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.568492
+shader_parameter/physics_pos_offset = Vector3(3.50192e-13, -0.168228, 3.50192e-13)
+shader_parameter/color = Color(0.228201, 0.396677, 0.149964, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vy46x"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_q4l5g")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.407843
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.563544
+shader_parameter/physics_pos_offset = Vector3(3.43554e-13, -0.165039, 3.43554e-13)
+shader_parameter/color = Color(0.227121, 0.394722, 0.149666, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urw3i"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vy46x")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.403922
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.55858
+shader_parameter/physics_pos_offset = Vector3(3.36979e-13, -0.16188, 3.36979e-13)
+shader_parameter/color = Color(0.22604, 0.392767, 0.149368, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx57c"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_urw3i")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.4
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.5536
+shader_parameter/physics_pos_offset = Vector3(3.30467e-13, -0.158752, 3.30467e-13)
+shader_parameter/color = Color(0.22496, 0.390812, 0.14907, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgism"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_tx57c")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.396078
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.548604
+shader_parameter/physics_pos_offset = Vector3(3.24019e-13, -0.155655, 3.24019e-13)
+shader_parameter/color = Color(0.22388, 0.388857, 0.148772, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4p87g"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lgism")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.392157
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.543592
+shader_parameter/physics_pos_offset = Vector3(3.17635e-13, -0.152588, 3.17635e-13)
+shader_parameter/color = Color(0.222799, 0.386903, 0.148474, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rryhs"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4p87g")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.388235
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.538564
+shader_parameter/physics_pos_offset = Vector3(3.11314e-13, -0.149551, 3.11314e-13)
+shader_parameter/color = Color(0.221719, 0.384948, 0.148175, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnp2h"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rryhs")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.384314
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.533521
+shader_parameter/physics_pos_offset = Vector3(3.05056e-13, -0.146545, 3.05056e-13)
+shader_parameter/color = Color(0.220639, 0.382993, 0.147877, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alh71"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qnp2h")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.380392
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.528463
+shader_parameter/physics_pos_offset = Vector3(2.98862e-13, -0.14357, 2.98862e-13)
+shader_parameter/color = Color(0.219559, 0.381038, 0.147579, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_evww2"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_alh71")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.376471
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.523391
+shader_parameter/physics_pos_offset = Vector3(2.92732e-13, -0.140625, 2.92732e-13)
+shader_parameter/color = Color(0.218478, 0.379083, 0.147281, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ltvra"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_evww2")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.372549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.518303
+shader_parameter/physics_pos_offset = Vector3(2.86665e-13, -0.137711, 2.86665e-13)
+shader_parameter/color = Color(0.217398, 0.377128, 0.146983, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1o8s"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ltvra")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.368627
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.513201
+shader_parameter/physics_pos_offset = Vector3(2.80662e-13, -0.134827, 2.80662e-13)
+shader_parameter/color = Color(0.216318, 0.375173, 0.146685, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjix7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_p1o8s")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.364706
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.508084
+shader_parameter/physics_pos_offset = Vector3(2.74722e-13, -0.131973, 2.74722e-13)
+shader_parameter/color = Color(0.215237, 0.373218, 0.146387, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0t2sb"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vjix7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.360784
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.502954
+shader_parameter/physics_pos_offset = Vector3(2.68846e-13, -0.12915, 2.68846e-13)
+shader_parameter/color = Color(0.214157, 0.371263, 0.146089, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ht50s"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_0t2sb")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.356863
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.49781
+shader_parameter/physics_pos_offset = Vector3(2.63033e-13, -0.126358, 2.63033e-13)
+shader_parameter/color = Color(0.213077, 0.369308, 0.14579, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_15j7y"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ht50s")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.352941
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.492652
+shader_parameter/physics_pos_offset = Vector3(2.57284e-13, -0.123596, 2.57284e-13)
+shader_parameter/color = Color(0.211996, 0.367353, 0.145492, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_le1e7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_15j7y")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.34902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.487481
+shader_parameter/physics_pos_offset = Vector3(2.51598e-13, -0.120865, 2.51598e-13)
+shader_parameter/color = Color(0.210916, 0.365398, 0.145194, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ms2e"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_le1e7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.345098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.482297
+shader_parameter/physics_pos_offset = Vector3(2.45976e-13, -0.118164, 2.45976e-13)
+shader_parameter/color = Color(0.209836, 0.363443, 0.144896, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dc2ps"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_2ms2e")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.341176
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.477099
+shader_parameter/physics_pos_offset = Vector3(2.40418e-13, -0.115494, 2.40418e-13)
+shader_parameter/color = Color(0.208756, 0.361488, 0.144598, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fxj0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_dc2ps")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.337255
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.471889
+shader_parameter/physics_pos_offset = Vector3(2.34923e-13, -0.112854, 2.34923e-13)
+shader_parameter/color = Color(0.207675, 0.359533, 0.1443, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2a1y4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3fxj0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.333333
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.466667
+shader_parameter/physics_pos_offset = Vector3(2.29491e-13, -0.110245, 2.29491e-13)
+shader_parameter/color = Color(0.206595, 0.357578, 0.144002, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vrkgv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_2a1y4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.329412
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.461432
+shader_parameter/physics_pos_offset = Vector3(2.24123e-13, -0.107666, 2.24123e-13)
+shader_parameter/color = Color(0.205515, 0.355623, 0.143704, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6bol"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vrkgv")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.32549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.456185
+shader_parameter/physics_pos_offset = Vector3(2.18818e-13, -0.105118, 2.18818e-13)
+shader_parameter/color = Color(0.204434, 0.353668, 0.143405, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1olrb"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_j6bol")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.321569
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.450926
+shader_parameter/physics_pos_offset = Vector3(2.13577e-13, -0.1026, 2.13577e-13)
+shader_parameter/color = Color(0.203354, 0.351713, 0.143107, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mi7rc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1olrb")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.317647
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.445655
+shader_parameter/physics_pos_offset = Vector3(2.084e-13, -0.100113, 2.084e-13)
+shader_parameter/color = Color(0.202274, 0.349758, 0.142809, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csklf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_mi7rc")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.313725
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.440374
+shader_parameter/physics_pos_offset = Vector3(2.03286e-13, -0.0976562, 2.03286e-13)
+shader_parameter/color = Color(0.201193, 0.347803, 0.142511, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iiwgm"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_csklf")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.309804
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.43508
+shader_parameter/physics_pos_offset = Vector3(1.98236e-13, -0.0952301, 1.98236e-13)
+shader_parameter/color = Color(0.200113, 0.345848, 0.142213, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0gk0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_iiwgm")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.305882
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.429776
+shader_parameter/physics_pos_offset = Vector3(1.93249e-13, -0.0928345, 1.93249e-13)
+shader_parameter/color = Color(0.199033, 0.343893, 0.141915, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23dtp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_v0gk0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.301961
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.424461
+shader_parameter/physics_pos_offset = Vector3(1.88326e-13, -0.0904694, 1.88326e-13)
+shader_parameter/color = Color(0.197952, 0.341938, 0.141617, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1rjd"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_23dtp")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.298039
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.419136
+shader_parameter/physics_pos_offset = Vector3(1.83466e-13, -0.0881348, 1.83466e-13)
+shader_parameter/color = Color(0.196872, 0.339983, 0.141319, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ms8k"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_t1rjd")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.294118
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.4138
+shader_parameter/physics_pos_offset = Vector3(1.78669e-13, -0.0858307, 1.78669e-13)
+shader_parameter/color = Color(0.195792, 0.338028, 0.14102, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jk3h"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4ms8k")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.290196
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.408454
+shader_parameter/physics_pos_offset = Vector3(1.73937e-13, -0.0835571, 1.73937e-13)
+shader_parameter/color = Color(0.194712, 0.336073, 0.140722, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_da8ic"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3jk3h")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.286275
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.403098
+shader_parameter/physics_pos_offset = Vector3(1.69267e-13, -0.0813141, 1.69267e-13)
+shader_parameter/color = Color(0.193631, 0.334119, 0.140424, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i476c"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_da8ic")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.282353
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.397733
+shader_parameter/physics_pos_offset = Vector3(1.64662e-13, -0.0791016, 1.64662e-13)
+shader_parameter/color = Color(0.192551, 0.332164, 0.140126, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnlc0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_i476c")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.278431
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.392358
+shader_parameter/physics_pos_offset = Vector3(1.6012e-13, -0.0769196, 1.6012e-13)
+shader_parameter/color = Color(0.191471, 0.330209, 0.139828, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w53y3"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rnlc0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.27451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.386973
+shader_parameter/physics_pos_offset = Vector3(1.55641e-13, -0.0747681, 1.55641e-13)
+shader_parameter/color = Color(0.19039, 0.328254, 0.13953, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qa"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_w53y3")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.270588
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.38158
+shader_parameter/physics_pos_offset = Vector3(1.51226e-13, -0.0726471, 1.51226e-13)
+shader_parameter/color = Color(0.18931, 0.326299, 0.139232, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fxjw7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_w48qa")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.266667
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.376178
+shader_parameter/physics_pos_offset = Vector3(1.46874e-13, -0.0705566, 1.46874e-13)
+shader_parameter/color = Color(0.18823, 0.324344, 0.138933, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bis1b"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_fxjw7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.262745
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.370767
+shader_parameter/physics_pos_offset = Vector3(1.42586e-13, -0.0684967, 1.42586e-13)
+shader_parameter/color = Color(0.187149, 0.322389, 0.138635, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cs32"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_bis1b")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.258824
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.365348
+shader_parameter/physics_pos_offset = Vector3(1.38362e-13, -0.0664673, 1.38362e-13)
+shader_parameter/color = Color(0.186069, 0.320434, 0.138337, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aom1g"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1cs32")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.254902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.35992
+shader_parameter/physics_pos_offset = Vector3(1.34201e-13, -0.0644684, 1.34201e-13)
+shader_parameter/color = Color(0.184989, 0.318479, 0.138039, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_826tx"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_aom1g")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.25098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.354485
+shader_parameter/physics_pos_offset = Vector3(1.30103e-13, -0.0625, 1.30103e-13)
+shader_parameter/color = Color(0.183909, 0.316524, 0.137741, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18d1w"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_826tx")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.247059
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.349042
+shader_parameter/physics_pos_offset = Vector3(1.26069e-13, -0.0605621, 1.26069e-13)
+shader_parameter/color = Color(0.182828, 0.314569, 0.137443, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4o4hy"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_18d1w")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.243137
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.343591
+shader_parameter/physics_pos_offset = Vector3(1.22099e-13, -0.0586548, 1.22099e-13)
+shader_parameter/color = Color(0.181748, 0.312614, 0.137145, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2fim"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4o4hy")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.239216
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.338133
+shader_parameter/physics_pos_offset = Vector3(1.18192e-13, -0.056778, 1.18192e-13)
+shader_parameter/color = Color(0.180668, 0.310659, 0.136847, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41wgh"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_l2fim")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.235294
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.332668
+shader_parameter/physics_pos_offset = Vector3(1.14348e-13, -0.0549316, 1.14348e-13)
+shader_parameter/color = Color(0.179587, 0.308704, 0.136548, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ob5xa"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_41wgh")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.231373
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.327197
+shader_parameter/physics_pos_offset = Vector3(1.10569e-13, -0.0531158, 1.10569e-13)
+shader_parameter/color = Color(0.178507, 0.306749, 0.13625, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpvgh"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ob5xa")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.227451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.321718
+shader_parameter/physics_pos_offset = Vector3(1.06852e-13, -0.0513306, 1.06852e-13)
+shader_parameter/color = Color(0.177427, 0.304794, 0.135952, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qy3cq"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lpvgh")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.223529
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.316233
+shader_parameter/physics_pos_offset = Vector3(1.03199e-13, -0.0495758, 1.03199e-13)
+shader_parameter/color = Color(0.176346, 0.302839, 0.135654, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dx30"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qy3cq")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.219608
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.310742
+shader_parameter/physics_pos_offset = Vector3(9.96102e-14, -0.0478516, 9.96102e-14)
+shader_parameter/color = Color(0.175266, 0.300884, 0.135356, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7i3pt"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7dx30")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.215686
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.305245
+shader_parameter/physics_pos_offset = Vector3(9.60845e-14, -0.0461578, 9.60845e-14)
+shader_parameter/color = Color(0.174186, 0.298929, 0.135058, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jy3nu"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7i3pt")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.211765
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.299742
+shader_parameter/physics_pos_offset = Vector3(9.26222e-14, -0.0444946, 9.26222e-14)
+shader_parameter/color = Color(0.173105, 0.296974, 0.13476, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twk22"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jy3nu")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.207843
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.294233
+shader_parameter/physics_pos_offset = Vector3(8.92236e-14, -0.0428619, 8.92236e-14)
+shader_parameter/color = Color(0.172025, 0.295019, 0.134462, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptavu"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_twk22")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.203922
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.288719
+shader_parameter/physics_pos_offset = Vector3(8.58884e-14, -0.0412598, 8.58884e-14)
+shader_parameter/color = Color(0.170945, 0.293064, 0.134163, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfhft"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ptavu")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.2
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.2832
+shader_parameter/physics_pos_offset = Vector3(8.26168e-14, -0.0396881, 8.26168e-14)
+shader_parameter/color = Color(0.169865, 0.291109, 0.133865, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thcbo"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jfhft")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.196078
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.277676
+shader_parameter/physics_pos_offset = Vector3(7.94086e-14, -0.038147, 7.94086e-14)
+shader_parameter/color = Color(0.168784, 0.289154, 0.133567, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3spg0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_thcbo")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.192157
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.272147
+shader_parameter/physics_pos_offset = Vector3(7.62641e-14, -0.0366364, 7.62641e-14)
+shader_parameter/color = Color(0.167704, 0.287199, 0.133269, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkui6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3spg0")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.188235
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.266614
+shader_parameter/physics_pos_offset = Vector3(7.3183e-14, -0.0351562, 7.3183e-14)
+shader_parameter/color = Color(0.166624, 0.285244, 0.132971, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o20mj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xkui6")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.184314
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.261077
+shader_parameter/physics_pos_offset = Vector3(7.01655e-14, -0.0337067, 7.01655e-14)
+shader_parameter/color = Color(0.165543, 0.283289, 0.132673, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6up4q"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_o20mj")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.180392
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.255535
+shader_parameter/physics_pos_offset = Vector3(6.72115e-14, -0.0322876, 6.72115e-14)
+shader_parameter/color = Color(0.164463, 0.281335, 0.132375, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pnmqv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6up4q")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.176471
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.24999
+shader_parameter/physics_pos_offset = Vector3(6.4321e-14, -0.030899, 6.4321e-14)
+shader_parameter/color = Color(0.163383, 0.27938, 0.132077, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bukpm"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_pnmqv")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.172549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.244441
+shader_parameter/physics_pos_offset = Vector3(6.14941e-14, -0.029541, 6.14941e-14)
+shader_parameter/color = Color(0.162302, 0.277425, 0.131778, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qa74k"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_bukpm")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.168627
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.238889
+shader_parameter/physics_pos_offset = Vector3(5.87306e-14, -0.0282135, 5.87306e-14)
+shader_parameter/color = Color(0.161222, 0.27547, 0.13148, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2vpt"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qa74k")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.164706
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.233333
+shader_parameter/physics_pos_offset = Vector3(5.60307e-14, -0.0269165, 5.60307e-14)
+shader_parameter/color = Color(0.160142, 0.273515, 0.131182, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2rd2"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_q2vpt")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.160784
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.227774
+shader_parameter/physics_pos_offset = Vector3(5.33944e-14, -0.02565, 5.33944e-14)
+shader_parameter/color = Color(0.159061, 0.27156, 0.130884, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jy4sf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_v2rd2")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.156863
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.222213
+shader_parameter/physics_pos_offset = Vector3(5.08215e-14, -0.0244141, 5.08215e-14)
+shader_parameter/color = Color(0.157981, 0.269605, 0.130586, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esx48"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jy4sf")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.152941
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.216649
+shader_parameter/physics_pos_offset = Vector3(4.83122e-14, -0.0232086, 4.83122e-14)
+shader_parameter/color = Color(0.156901, 0.26765, 0.130288, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xegkg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_esx48")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.14902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.211083
+shader_parameter/physics_pos_offset = Vector3(4.58664e-14, -0.0220337, 4.58664e-14)
+shader_parameter/color = Color(0.155821, 0.265695, 0.12999, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cedbp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xegkg")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.145098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.205515
+shader_parameter/physics_pos_offset = Vector3(4.34842e-14, -0.0208893, 4.34842e-14)
+shader_parameter/color = Color(0.15474, 0.26374, 0.129691, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb0sb"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_cedbp")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.141176
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.199945
+shader_parameter/physics_pos_offset = Vector3(4.11654e-14, -0.0197754, 4.11654e-14)
+shader_parameter/color = Color(0.15366, 0.261785, 0.129393, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1808m"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_hb0sb")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.137255
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.194373
+shader_parameter/physics_pos_offset = Vector3(3.89102e-14, -0.018692, 3.89102e-14)
+shader_parameter/color = Color(0.15258, 0.25983, 0.129095, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2enpo"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1808m")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.133333
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.1888
+shader_parameter/physics_pos_offset = Vector3(3.67186e-14, -0.0176392, 3.67186e-14)
+shader_parameter/color = Color(0.151499, 0.257875, 0.128797, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l7gsk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_2enpo")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.129412
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.183226
+shader_parameter/physics_pos_offset = Vector3(3.45904e-14, -0.0166168, 3.45904e-14)
+shader_parameter/color = Color(0.150419, 0.25592, 0.128499, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn5yj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_l7gsk")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.12549
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.17765
+shader_parameter/physics_pos_offset = Vector3(3.25258e-14, -0.015625, 3.25258e-14)
+shader_parameter/color = Color(0.149339, 0.253965, 0.128201, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2mnc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_rn5yj")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.121569
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.172074
+shader_parameter/physics_pos_offset = Vector3(3.05247e-14, -0.0146637, 3.05247e-14)
+shader_parameter/color = Color(0.148258, 0.25201, 0.127903, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smhk8"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_t2mnc")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.117647
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.166497
+shader_parameter/physics_pos_offset = Vector3(2.85871e-14, -0.0137329, 2.85871e-14)
+shader_parameter/color = Color(0.147178, 0.250055, 0.127605, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5m4y4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_smhk8")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.113725
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.16092
+shader_parameter/physics_pos_offset = Vector3(2.67131e-14, -0.0128326, 2.67131e-14)
+shader_parameter/color = Color(0.146098, 0.2481, 0.127306, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_weyvr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5m4y4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.109804
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.155343
+shader_parameter/physics_pos_offset = Vector3(2.49026e-14, -0.0119629, 2.49026e-14)
+shader_parameter/color = Color(0.145018, 0.246145, 0.127008, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bw5b7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_weyvr")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.105882
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.149765
+shader_parameter/physics_pos_offset = Vector3(2.31556e-14, -0.0111237, 2.31556e-14)
+shader_parameter/color = Color(0.143937, 0.24419, 0.12671, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrdjw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_bw5b7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.101961
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.144188
+shader_parameter/physics_pos_offset = Vector3(2.14721e-14, -0.0103149, 2.14721e-14)
+shader_parameter/color = Color(0.142857, 0.242235, 0.126412, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3d6vw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_hrdjw")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0980392
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.138612
+shader_parameter/physics_pos_offset = Vector3(1.98522e-14, -0.00953674, 1.98522e-14)
+shader_parameter/color = Color(0.141777, 0.24028, 0.126114, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_878mi"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3d6vw")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0941176
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.133036
+shader_parameter/physics_pos_offset = Vector3(1.82958e-14, -0.00878906, 1.82958e-14)
+shader_parameter/color = Color(0.140696, 0.238325, 0.125816, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l6eo4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_878mi")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0901961
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.127461
+shader_parameter/physics_pos_offset = Vector3(1.68029e-14, -0.0080719, 1.68029e-14)
+shader_parameter/color = Color(0.139616, 0.23637, 0.125518, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otosk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_l6eo4")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0862745
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.121888
+shader_parameter/physics_pos_offset = Vector3(1.53735e-14, -0.00738525, 1.53735e-14)
+shader_parameter/color = Color(0.138536, 0.234415, 0.12522, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18sef"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_otosk")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0823529
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.116315
+shader_parameter/physics_pos_offset = Vector3(1.40077e-14, -0.00672913, 1.40077e-14)
+shader_parameter/color = Color(0.137455, 0.23246, 0.124921, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddy7n"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_18sef")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0784314
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.110745
+shader_parameter/physics_pos_offset = Vector3(1.27054e-14, -0.00610352, 1.27054e-14)
+shader_parameter/color = Color(0.136375, 0.230505, 0.124623, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btsuy"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ddy7n")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0745098
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.105176
+shader_parameter/physics_pos_offset = Vector3(1.14666e-14, -0.00550842, 1.14666e-14)
+shader_parameter/color = Color(0.135295, 0.228551, 0.124325, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akfv5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_btsuy")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0705882
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.099609
+shader_parameter/physics_pos_offset = Vector3(1.02914e-14, -0.00494385, 1.02914e-14)
+shader_parameter/color = Color(0.134214, 0.226596, 0.124027, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1llv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_akfv5")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0666667
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0940444
+shader_parameter/physics_pos_offset = Vector3(9.17964e-15, -0.00440979, 9.17964e-15)
+shader_parameter/color = Color(0.133134, 0.224641, 0.123729, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5fhq"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_j1llv")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0627451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0884823
+shader_parameter/physics_pos_offset = Vector3(8.13145e-15, -0.00390625, 8.13145e-15)
+shader_parameter/color = Color(0.132054, 0.222686, 0.123431, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2mxg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_b5fhq")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0588235
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0829229
+shader_parameter/physics_pos_offset = Vector3(7.14678e-15, -0.00343323, 7.14678e-15)
+shader_parameter/color = Color(0.130974, 0.220731, 0.123133, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r7hh"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_j2mxg")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.054902
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0773663
+shader_parameter/physics_pos_offset = Vector3(6.22564e-15, -0.00299072, 6.22564e-15)
+shader_parameter/color = Color(0.129893, 0.218776, 0.122835, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6de02"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6r7hh")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0509804
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0718129
+shader_parameter/physics_pos_offset = Vector3(5.36802e-15, -0.00257874, 5.36802e-15)
+shader_parameter/color = Color(0.128813, 0.216821, 0.122536, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xecx7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6de02")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0470588
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0662627
+shader_parameter/physics_pos_offset = Vector3(4.57394e-15, -0.00219727, 4.57394e-15)
+shader_parameter/color = Color(0.127733, 0.214866, 0.122238, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x46nr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xecx7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0431373
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0607162
+shader_parameter/physics_pos_offset = Vector3(3.84338e-15, -0.00184631, 3.84338e-15)
+shader_parameter/color = Color(0.126652, 0.212911, 0.12194, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eard6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_x46nr")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0392157
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0551733
+shader_parameter/physics_pos_offset = Vector3(3.17635e-15, -0.00152588, 3.17635e-15)
+shader_parameter/color = Color(0.125572, 0.210956, 0.121642, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gt8h7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_eard6")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0352941
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0496345
+shader_parameter/physics_pos_offset = Vector3(2.57284e-15, -0.00123596, 2.57284e-15)
+shader_parameter/color = Color(0.124492, 0.209001, 0.121344, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kofn5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_gt8h7")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0313725
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0440999
+shader_parameter/physics_pos_offset = Vector3(2.03286e-15, -0.000976562, 2.03286e-15)
+shader_parameter/color = Color(0.123411, 0.207046, 0.121046, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5s142"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_kofn5")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.027451
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0385697
+shader_parameter/physics_pos_offset = Vector3(1.55641e-15, -0.000747681, 1.55641e-15)
+shader_parameter/color = Color(0.122331, 0.205091, 0.120748, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2ge6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5s142")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0235294
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0330441
+shader_parameter/physics_pos_offset = Vector3(1.14348e-15, -0.000549316, 1.14348e-15)
+shader_parameter/color = Color(0.121251, 0.203136, 0.120449, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxtes"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_r2ge6")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0196078
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0275234
+shader_parameter/physics_pos_offset = Vector3(7.94086e-16, -0.00038147, 7.94086e-16)
+shader_parameter/color = Color(0.120171, 0.201181, 0.120151, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xk4pp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jxtes")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0156863
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0220077
+shader_parameter/physics_pos_offset = Vector3(5.08215e-16, -0.000244141, 5.08215e-16)
+shader_parameter/color = Color(0.11909, 0.199226, 0.119853, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfimg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xk4pp")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0117647
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0164973
+shader_parameter/physics_pos_offset = Vector3(2.85871e-16, -0.000137329, 2.85871e-16)
+shader_parameter/color = Color(0.11801, 0.197271, 0.119555, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dre21"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_gfimg")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.00784314
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0109924
+shader_parameter/physics_pos_offset = Vector3(1.27054e-16, -6.10352e-05, 1.27054e-16)
+shader_parameter/color = Color(0.11693, 0.195316, 0.119257, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xn18r"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_dre21")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.00392157
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.00549324
+shader_parameter/physics_pos_offset = Vector3(3.17635e-17, -1.52588e-05, 3.17635e-17)
+shader_parameter/color = Color(0.115849, 0.193361, 0.118959, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjxmq"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xn18r")
+shader = ExtResource("2_eh76l")
+shader_parameter/height = 1.0
+shader_parameter/h = 0.0
+shader_parameter/density = 0.25
+shader_parameter/thickness = 0.0
+shader_parameter/physics_pos_offset = Vector3(0, 0, 0)
+shader_parameter/color = Color(0.114769, 0.191406, 0.118661, 1)
+shader_parameter/base_texture = SubResource("NoiseTexture2D_57xym")
+
+[sub_resource type="Gradient" id="Gradient_x63py"]
+offsets = PackedFloat32Array(0, 0.888158)
+colors = PackedColorArray(0.114769, 0.191406, 0.118661, 1, 0.359437, 0.634167, 0.186181, 1)
+
+[sub_resource type="Curve" id="Curve_pvp4v"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.921816, 0.387628, 0, -0.387628, 0.921816, 0, 1.09348, 1.85408)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.273758, 0.961799, 0, -0.961799, 0.273758, 0, 1.71365, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.81264, -0.561655, -0.155432, -0.123962, -0.0940131, 0.987823, -0.569428, 0.822013, 0.00677482, -0.237438, -1.03013, -3.03681)
+mesh = SubResource("CapsuleMesh_iivyr")
+surface_material_override/0 = SubResource("ShaderMaterial_sjxmq")
+script = ExtResource("2_tx36r")
+
+[node name="Node" type="Node" parent="MeshInstance3D"]
+script = ExtResource("2_11adj")
+apply = null
+number_of_shells = 256
+density = 0.25
+base_texture = SubResource("NoiseTexture2D_57xym")
+height_gradient = SubResource("Gradient_x63py")
+shell_material = ExtResource("3_sj0v8")
+thickness = SubResource("Curve_pvp4v")
+tint = Color(1, 1, 1, 1)
+gravity = Vector3(2.08165e-12, -1, 2.08165e-12)
+dynamic = true

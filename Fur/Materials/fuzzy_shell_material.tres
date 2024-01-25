@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d23fcf8nvkobb"]
+
+[ext_resource type="Shader" path="res://Fur/Shaders/fuzzy.gdshader" id="1_4cy67"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_brnce"]
+noise_type = 5
+frequency = 0.535
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1tnbs"]
+noise = SubResource("FastNoiseLite_brnce")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4cy67")
+shader_parameter/height = 1.0
+shader_parameter/h = 2.08165e-12
+shader_parameter/density = 0.14
+shader_parameter/light_attenuation = 4.0
+shader_parameter/thickness_power = 1.0
+shader_parameter/physics_pos_offset = Vector3(0, -1, 0)
+shader_parameter/color = null
+shader_parameter/base_texture = SubResource("NoiseTexture2D_1tnbs")
