@@ -16,6 +16,14 @@ extends Node
 	set(v):
 		base_texture = v
 		setup_materials()
+@export var displacement_noise: Texture2D:
+	set(v):
+		displacement_noise = v
+		setup_materials()
+@export var displacement_noise_strength: float = 0.5:
+	set(v):
+		displacement_noise_strength = v
+		setup_materials()
 @export var height: float = 1.0:
 	set(v):
 		height = v
@@ -59,6 +67,8 @@ func material_for_level(level: int):
 	var h = float(level) / (number_of_shells-1)
 	mat.set_shader_parameter("h", h)
 	mat.set_shader_parameter("base_texture", base_texture)
+	mat.set_shader_parameter("displacement_noise", displacement_noise)
+	mat.set_shader_parameter("displacement_noise_strength", displacement_noise_strength)
 	mat.set_shader_parameter("density", density)
 	var thick = thickness.sample(h)
 	mat.set_shader_parameter("thickness", thick)	
