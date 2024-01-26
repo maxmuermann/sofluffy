@@ -8,11 +8,17 @@ var rot: Vector4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pos = transform.origin	
+	pos = transform.origin
+	
+	#var tween = create_tween()
+	#tween.set_parallel(false)
+	#tween.tween_property($Fur, "height", 1.5, 1.0)
+	#tween.tween_property($Fur, "height", 0.1, 1.0)
+	#tween.set_loops()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#return
-	transform.origin = pos + Vector3(0, 1, 0) *  sin(Time.get_ticks_msec() / 1000.0 * period * PI * 2)
-	#transform.basis = transform.basis.from_euler(Vector3(45.0, Time.get_ticks_msec() / 1000.0, 0))
+	transform.origin = pos + Vector3(0, 1, 0) *  sin(Time.get_ticks_msec() / 1500.0 * period * PI * 2)
+	#transform.basis = transform.basis.from_euler(Vector3(45.0, Time.get_ticks_msec() / 1000.0, 0))	

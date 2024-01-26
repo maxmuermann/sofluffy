@@ -24,7 +24,7 @@ void vertex() {
 void fragment() {
 	vec2 ts = vec2(textureSize(base_texture, 0)) * density; // texture size in pixels
 	
-	vec2 xy = UV + texture(displacement_noise, UV).xy * displacement_noise_strength * ts;
+	vec2 xy = UV + (texture(displacement_noise, UV).xy - vec2(0.5, 0.5)) * displacement_noise_strength;
 	
 	vec2 uv = xy * density; // current pixel UV
 	vec3 val = texture(base_texture, uv).rgb; // sample length texture

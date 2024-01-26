@@ -8,7 +8,7 @@ extends Node
 	set(v):
 		number_of_shells = v
 		setup_materials()
-@export var density: float = 1.0:
+@export_range(0, 100, 0.05, "or_greater") var density: float = 1.0:
 	set(v):
 		density = v
 		setup_materials()
@@ -20,11 +20,11 @@ extends Node
 	set(v):
 		displacement_noise = v
 		setup_materials()
-@export var displacement_noise_strength: float = 0.5:
+@export_range(0, 1, 0.005, "or_greater") var displacement_noise_strength: float = 0.5:
 	set(v):
 		displacement_noise_strength = v
 		setup_materials()
-@export var height: float = 1.0:
+@export_range(0, 2, 0.05, "or_greater") var height: float = 1.0:
 	set(v):
 		height = v
 		setup_materials()
@@ -33,10 +33,7 @@ extends Node
 		height_gradient = v
 		setup_materials()
 @export var shell_material: Material = load("res://Fur/Materials/fuzzy_shell_material.tres");
-@export var thickness: Curve:
-	set(v):
-		thickness = v
-		setup_materials()
+@export var thickness: Curve
 @export var tint: Color = Color.DARK_OLIVE_GREEN:
 	set(v):
 		tint = v
@@ -54,14 +51,16 @@ var previous_dpos: Vector3 = Vector3.ZERO
 func _ready():
 	mesh = get_parent()
 	clear_materials()
-	setup_materials()
+	create_materials()
 	previous_position = mesh.transform.origin
+	
 	
 func clear_materials():
 	mesh.set_surface_override_material(0, null)
+
+
 	
-func material_for_level(level: int):
-	var mat: ShaderMaterial = shell_material.duplicate()
+func configure_material_for_level(mat: ShaderMaterial, level: int):
 	mat.set_shader_parameter("height", height)
 	
 	var h = float(level) / (number_of_shells-1)
@@ -73,9 +72,26 @@ func material_for_level(level: int):
 	var thick = thickness.sample(h)
 	mat.set_shader_parameter("thickness", thick)	
 	mat.set_shader_parameter("color", height_gradient.sample(h) * tint)
-	return mat
+	
+	
+func material_for_level(level: int):
+	# TODO: based on alpha, return different shader material
+	return shell_material.duplicate()
+	
 	
 func setup_materials():
+	if(mesh == null): return
+	var mat:ShaderMaterial = mesh.get_surface_override_material(0)
+	configure_material_for_level(mat, 0)
+	var i = 0
+
+	while(mat != null):
+		configure_material_for_level(mat, i)
+		mat = mat.next_pass
+		i+=1
+	
+		
+func create_materials():
 	if(mesh == null):
 		return
 	# shell 0	
@@ -84,12 +100,13 @@ func setup_materials():
 	
 	for i in range(1, number_of_shells):
 		var new_mat: ShaderMaterial = material_for_level(i)
+		configure_material_for_level(new_mat, i)
 		mat.next_pass = new_mat
 		mat = new_mat
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	var disp = gravity
 	
 	if(dynamic):
@@ -106,11 +123,11 @@ func _process(delta):
 	
 	# iterate through materials from 0 height to 1 and set physics params
 	var mat:ShaderMaterial = mesh.get_surface_override_material(0)
-	var h = height / number_of_shells	
+	var h = height / (number_of_shells-1)
 	var i = 0
 
 	while(mat != null):
-		var disp_at_height = disp * pow(h * i, 2)
+		var disp_at_height = disp * h * pow(i, 1.1)
 		mat.set_shader_parameter("physics_pos_offset", disp_at_height)
 		mat = mat.next_pass
 		i+=1
