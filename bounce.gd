@@ -20,5 +20,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#return
-	transform.origin = pos + Vector3(0, 1, 0) *  sin(Time.get_ticks_msec() / 1500.0 * period * PI * 2)
+	transform.origin = pos + Vector3(0, 1, 0) *  abs(sin(Time.get_ticks_msec() / 1500.0 * period * PI * 2))
 	#transform.basis = transform.basis.from_euler(Vector3(45.0, Time.get_ticks_msec() / 1000.0, 0))	

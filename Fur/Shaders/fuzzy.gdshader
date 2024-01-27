@@ -34,7 +34,7 @@ void fragment() {
 	float relDist = pow(length(fract(xy * ts) - center), 2);
 	
 	//if(val.r >= h) {
-	if((val.r - thickness >= relDist) && (h > 0.0)) {
+	if((val.r - thickness >= relDist)) {
 		ALBEDO = color;
 	} else {
 		discard;

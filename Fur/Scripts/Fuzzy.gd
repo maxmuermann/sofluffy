@@ -7,6 +7,8 @@ extends Node
 @export var number_of_shells: int = 32:
 	set(v):
 		number_of_shells = v
+		clear_materials()
+		create_materials()
 		setup_materials()
 @export_range(0, 100, 0.05, "or_greater") var density: float = 1.0:
 	set(v):
@@ -43,24 +45,57 @@ extends Node
 @export var dynamic: bool = false
 
 var mesh: MeshInstance3D
+var last_original_material: Material
+var shells: Array = []
+
 
 var previous_position: Vector3;
 var previous_dpos: Vector3 = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mesh = get_parent()
 	clear_materials()
-	create_materials()
-	previous_position = mesh.transform.origin
+	create_materials()	
 	
 	
 func clear_materials():
-	mesh.set_surface_override_material(0, null)
+	if last_original_material == null: return
+	last_original_material.next_pass = null
+	for shell in shells:
+		shell.next_pass = null
+	shells = []
 
 
+func create_materials():
+	mesh = get_parent()
+	if(mesh == null): return
+	last_original_material = mesh.get_surface_override_material(0) #.duplicate(true)
+	#mesh.set_surface_override_material(0, last_original_material)
+	while(last_original_material.next_pass != null):
+		last_original_material = last_original_material.next_pass
+	#  last_original material is now the final pass of the original material
+	previous_position = mesh.transform.origin
 	
-func configure_material_for_level(mat: ShaderMaterial, level: int):
+	if(mesh == null):
+		return
+
+	var mat = last_original_material
+	
+	for i in range(number_of_shells):
+		var new_mat = shell_material.duplicate()
+		mat.next_pass = new_mat
+		mat = new_mat
+		shells.append(mat)
+		
+		
+func setup_materials():
+	if(mesh == null): return
+
+	for i in number_of_shells:
+		configure_material_for_level(shells[i], i)
+
+
+func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("height", height)
 	
 	var h = float(level) / (number_of_shells-1)
@@ -72,47 +107,18 @@ func configure_material_for_level(mat: ShaderMaterial, level: int):
 	var thick = thickness.sample(h)
 	mat.set_shader_parameter("thickness", thick)	
 	mat.set_shader_parameter("color", height_gradient.sample(h) * tint)
-	
-	
-func material_for_level(level: int):
-	# TODO: based on alpha, return different shader material
-	return shell_material.duplicate()
-	
-	
-func setup_materials():
-	if(mesh == null): return
-	var mat:ShaderMaterial = mesh.get_surface_override_material(0)
-	configure_material_for_level(mat, 0)
-	var i = 0
-
-	while(mat != null):
-		configure_material_for_level(mat, i)
-		mat = mat.next_pass
-		i+=1
-	
-		
-func create_materials():
-	if(mesh == null):
-		return
-	# shell 0	
-	var mat = material_for_level(0)
-	mesh.set_surface_override_material(0, mat)
-	
-	for i in range(1, number_of_shells):
-		var new_mat: ShaderMaterial = material_for_level(i)
-		configure_material_for_level(new_mat, i)
-		mat.next_pass = new_mat
-		mat = new_mat
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var disp = gravity
 	
+	#var m = get_parent()
+	
 	if(dynamic):
 		# calculate movement from previous position
 		var dpos = mesh.transform.origin - previous_position
-		dpos *= 30		
+		dpos *= 30.0
 		
 		var act = lerp(previous_dpos, dpos, 0.5)
 		
@@ -122,13 +128,11 @@ func _process(delta):
 	previous_position = mesh.transform.origin
 	
 	# iterate through materials from 0 height to 1 and set physics params
-	var mat:ShaderMaterial = mesh.get_surface_override_material(0)
-	var h = height / (number_of_shells-1)
-	var i = 0
+	var dh = 1.0 / (number_of_shells-1)
+	var h = height * dh	
 
-	while(mat != null):
-		var disp_at_height = disp * h * pow(i, 1.1)
+	for i in range(number_of_shells):
+		var mat = shells[i]
+		var disp_at_height = disp * h * pow(i, 1.2)
 		mat.set_shader_parameter("physics_pos_offset", disp_at_height)
-		mat = mat.next_pass
 		i+=1
-
