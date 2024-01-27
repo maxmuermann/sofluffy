@@ -59,8 +59,10 @@ func _ready():
 	
 	
 func clear_materials():
-	if last_original_material == null: return
-	last_original_material.next_pass = null
+	if last_original_material != null:
+		last_original_material.next_pass = null
+	elif mesh != null:
+		mesh.set_surface_override_material(0, null)
 	for shell in shells:
 		shell.next_pass = null
 	shells = []
@@ -70,6 +72,7 @@ func create_materials():
 	mesh = get_parent()
 	if(mesh == null): return
 	last_original_material = mesh.get_surface_override_material(0) #.duplicate(true)
+	
 	#mesh.set_surface_override_material(0, last_original_material)
 	while(last_original_material.next_pass != null):
 		last_original_material = last_original_material.next_pass
@@ -83,7 +86,10 @@ func create_materials():
 	
 	for i in range(number_of_shells):
 		var new_mat = shell_material.duplicate()
-		mat.next_pass = new_mat
+		if(last_original_material == null && i == 0):
+			mesh.set_surface_override_material(0, new_mat)
+		else:
+			mat.next_pass = new_mat
 		mat = new_mat
 		shells.append(mat)
 		
@@ -120,7 +126,11 @@ func _process(delta):
 		var dpos = mesh.transform.origin - previous_position
 		dpos *= 30.0
 		
-		var act = lerp(previous_dpos, dpos, 0.5)
+		var act: Vector3 = lerp(previous_dpos, dpos, 0.3) # <0.1 looks like it's underwater
+		
+		var l = act.length()
+		if l > height:
+			act = act / l * height
 		
 		disp -= act
 		previous_dpos = act
