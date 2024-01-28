@@ -13,6 +13,7 @@ noise = SubResource("FastNoiseLite_brnce")
 render_priority = 0
 shader = ExtResource("1_4cy67")
 shader_parameter/height = 1.0
+shader_parameter/normal_strength = 0.5
 shader_parameter/h = 2.08165e-12
 shader_parameter/density = 0.14
 shader_parameter/displacement_noise_strength = 0.5

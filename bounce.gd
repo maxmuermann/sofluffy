@@ -10,15 +10,21 @@ var rot: Vector4
 func _ready():
 	pos = transform.origin
 	
-	#var tween = create_tween()
-	#tween.set_parallel(false)
-	#tween.tween_property($Fur, "height", 1.5, 1.0)
-	#tween.tween_property($Fur, "height", 0.1, 1.0)
-	#tween.set_loops()
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Fur, "height", 0.7, 2.0)
+	tween.tween_property($Fur, "height", 0.05, 2.0)
+	tween.set_loops()
+	
+	tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Fur, "gravity", Vector3(0, -1.5, 0), 4.0)
+	tween.tween_property($Fur, "gravity", Vector3(0, 0, 0), 4.0)
+	tween.set_loops()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#return
-	transform.origin = pos + Vector3(0, 1, 0) *  abs(sin(Time.get_ticks_msec() / 1500.0 * period * PI * 2))
-	#transform.basis = transform.basis.from_euler(Vector3(45.0, Time.get_ticks_msec() / 1000.0, 0))	
+	#transform.origin = pos + Vector3(0, 1, 0) *  abs(sin(Time.get_ticks_msec() / 1500.0 * period * PI * 2))
+	transform.basis = transform.basis.from_euler(Vector3(0.0, Time.get_ticks_msec() / 1000.0, 0))	

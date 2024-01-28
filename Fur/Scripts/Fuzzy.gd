@@ -30,6 +30,18 @@ extends Node
 	set(v):
 		height = v
 		setup_materials()
+@export_range(0, 1, 0.005)  var normal_strength: float = 1.0:
+	set(v):
+		normal_strength = v
+		setup_materials()
+@export var static_direction_local: Vector3 = Vector3.ZERO:
+	set(v):
+		static_direction_local = v
+		setup_materials()
+@export var static_direction_world: Vector3 = Vector3.ZERO:
+	set(v):
+		static_direction_world = v
+		setup_materials()
 @export var height_gradient: Gradient:
 	set(v):
 		height_gradient = v
@@ -45,7 +57,6 @@ extends Node
 @export var dynamic: bool = false
 
 var mesh: MeshInstance3D
-var last_original_material: Material
 var shells: Array = []
 
 
@@ -55,14 +66,13 @@ var previous_dpos: Vector3 = Vector3.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	clear_materials()
-	create_materials()	
+	create_materials()
+	setup_materials()
 	
 	
 func clear_materials():
-	if last_original_material != null:
-		last_original_material.next_pass = null
-	elif mesh != null:
-		mesh.set_surface_override_material(0, null)
+	if(mesh == null): return
+	mesh.get_surface_override_material(0).next_pass = null
 	for shell in shells:
 		shell.next_pass = null
 	shells = []
@@ -70,26 +80,14 @@ func clear_materials():
 
 func create_materials():
 	mesh = get_parent()
-	if(mesh == null): return
-	last_original_material = mesh.get_surface_override_material(0) #.duplicate(true)
-	
-	#mesh.set_surface_override_material(0, last_original_material)
-	while(last_original_material.next_pass != null):
-		last_original_material = last_original_material.next_pass
-	#  last_original material is now the final pass of the original material
-	previous_position = mesh.transform.origin
-	
-	if(mesh == null):
-		return
+	if(mesh == null): return	
+	previous_position = mesh.transform.origin	
 
-	var mat = last_original_material
+	var mat = mesh.get_surface_override_material(0)
 	
 	for i in range(number_of_shells):
 		var new_mat = shell_material.duplicate()
-		if(last_original_material == null && i == 0):
-			mesh.set_surface_override_material(0, new_mat)
-		else:
-			mat.next_pass = new_mat
+		mat.next_pass = new_mat
 		mat = new_mat
 		shells.append(mat)
 		
@@ -103,6 +101,9 @@ func setup_materials():
 
 func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("height", height)
+	mat.set_shader_parameter("normal_strength", normal_strength)
+	mat.set_shader_parameter("static_direction_local", static_direction_local)
+	mat.set_shader_parameter("static_direction_world", static_direction_world)
 	
 	var h = float(level) / (number_of_shells-1)
 	mat.set_shader_parameter("h", h)
@@ -113,7 +114,6 @@ func configure_material_for_level(mat: Material, level: int):
 	var thick = thickness.sample(h)
 	mat.set_shader_parameter("thickness", thick)	
 	mat.set_shader_parameter("color", height_gradient.sample(h) * tint)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
