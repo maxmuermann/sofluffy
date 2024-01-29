@@ -53,15 +53,19 @@ extends Node
 		tint = v
 		setup_materials()
 # physics parameters are set in process, no need to setup materials for this
-@export var gravity: Vector3 = Vector3(0,-1,0)
-@export var dynamic: bool = false
+@export var gravity: Vector3 = Vector3(0,0,0)
+@export var stiffness: float = 1000
+@export var mass: float = 0.001
+@export var damping: float = 0.001
+@export var stretch: float = 1.0
 
 var mesh: MeshInstance3D
 var shells: Array = []
 
 
-var previous_position: Vector3;
-var previous_dpos: Vector3 = Vector3.ZERO
+var previous_position: Vector3
+var spring_offset: Vector3 = Vector3.ZERO
+var spring_velocity: Vector3 = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -81,7 +85,6 @@ func clear_materials():
 func create_materials():
 	mesh = get_parent()
 	if(mesh == null): return	
-	previous_position = mesh.transform.origin	
 
 	var mat = mesh.get_surface_override_material(0)
 	
@@ -90,6 +93,8 @@ func create_materials():
 		mat.next_pass = new_mat
 		mat = new_mat
 		shells.append(mat)
+		
+	previous_position = mesh.transform.origin
 		
 		
 func setup_materials():
@@ -117,25 +122,32 @@ func configure_material_for_level(mat: Material, level: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var disp = gravity
+	# calculate compound linear forces acting on the shells
+	var f = gravity
 	
-	#var m = get_parent()
+	# calculate movement from previous position
+	var dx = mesh.transform.origin - previous_position # movement from previous position
+	var v = dx / delta # velocity
+	spring_offset += dx # new offset, after base has moved	
 	
-	if(dynamic):
-		# calculate movement from previous position
-		var dpos = mesh.transform.origin - previous_position
-		dpos *= 30.0
-		
-		var act: Vector3 = lerp(previous_dpos, dpos, 0.3) # <0.1 looks like it's underwater
-		
-		var l = act.length()
-		if l > height:
-			act = act / l * height
-		
-		disp -= act
-		previous_dpos = act
+	# dampened spring model: F = -kx - bv
+	# k: stiffness
+	# x: spring extension
+	# b: damping
+	# v: velocity ()
 	
-	previous_position = mesh.transform.origin
+	f += -stiffness * spring_offset - damping * (v+spring_velocity)
+	
+	var a = f / mass
+	spring_velocity += a * delta
+	var s = spring_velocity * delta / 2
+	
+	spring_offset += s
+	
+	# clamp to max length
+	var l = spring_offset.length()
+	if l > height * stretch:
+		spring_offset = spring_offset / l * height
 	
 	# iterate through materials from 0 height to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
@@ -143,6 +155,8 @@ func _process(delta):
 
 	for i in range(number_of_shells):
 		var mat = shells[i]
-		var disp_at_height = disp * h * pow(i, 1.2)
-		mat.set_shader_parameter("physics_pos_offset", disp_at_height)
+		var offset_at_height = 8 * spring_offset * h * pow(i, 1.1)
+		mat.set_shader_parameter("physics_pos_offset", -offset_at_height)
 		i+=1
+		
+	previous_position = mesh.transform.origin
