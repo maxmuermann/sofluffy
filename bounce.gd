@@ -29,8 +29,8 @@ func _process(delta):
 	transform.origin = pos + Vector3(0, 0.5, 0) *  abs(sin(Time.get_ticks_msec() / 1500.0 * period * PI * 2))
 	transform.basis = transform.basis.from_euler(
 		Vector3(
-			0.5 * sin(Time.get_ticks_msec() / 500.0 * period * PI * 2),
-			sin(Time.get_ticks_msec() / 1500.0 * period * PI * 2),
+			0.4 * sin(Time.get_ticks_msec() / 400.0 * period * PI * 2),
+			0.7 * sin(Time.get_ticks_msec() / 1500.0 * period * PI * 2),
 			0
 		)
 	)	

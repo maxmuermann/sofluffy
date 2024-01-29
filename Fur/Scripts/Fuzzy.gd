@@ -62,7 +62,6 @@ extends Node
 var mesh: MeshInstance3D
 var shells: Array = []
 
-
 # linear spring physics
 var previous_position: Vector3
 var spring_offset: Vector3 = Vector3.ZERO
@@ -143,12 +142,6 @@ func linear_spring_physics(delta: float):
 	var v = dx / delta # velocity
 	spring_offset += dx # new offset, after base has moved	
 	
-	# dampened spring model: F = -kx - bv
-	# k: stiffness
-	# x: spring extension
-	# b: damping
-	# v: velocity ()
-	
 	f += -stiffness * spring_offset - damping * (v+spring_velocity)
 	
 	var a = f / mass
@@ -184,12 +177,6 @@ func rotational_spring_physics(delta: float):
 	var w: Vector3 = dp / delta # velocity
 	spring_rotation += dp # new offset, after base has moved	
 	
-	# dampened spring model: F = -kx - bv
-	# k: stiffness
-	# x: spring extension
-	# b: damping
-	# v: velocity ()
-	
 	f += -spring_rotation * stiffness - damping * (w+spring_angular_velocity)
 	
 	var a = f / mass
@@ -198,10 +185,10 @@ func rotational_spring_physics(delta: float):
 	
 	spring_rotation += p
 	
-	# TODO: lamp to max rotation? How do we do that with a quaternion?
-	# var l = spring_offset.length()
-	# if l > height * stretch:
-	# 	spring_offset = spring_offset / l * height
+	# clamp to max rotation
+	var l = spring_rotation.length()
+	if l > PI / 8:
+		spring_rotation = spring_rotation / l * PI / 8
 	
 	# iterate through materials from 0 height to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
