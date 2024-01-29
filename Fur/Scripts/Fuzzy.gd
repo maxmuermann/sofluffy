@@ -129,6 +129,7 @@ func configure_material_for_level(mat: Material, level: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Engine.is_editor_hint(): return
 	linear_spring_physics(delta)
 	rotational_spring_physics(delta)
 	
