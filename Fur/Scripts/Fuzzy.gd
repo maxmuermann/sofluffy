@@ -63,9 +63,16 @@ var mesh: MeshInstance3D
 var shells: Array = []
 
 
+# linear spring physics
 var previous_position: Vector3
 var spring_offset: Vector3 = Vector3.ZERO
 var spring_velocity: Vector3 = Vector3.ZERO
+
+# rotational spring physics
+var previous_rotation: Vector3 = Vector3.ZERO
+var spring_rotation: Vector3 = Vector3.ZERO
+var spring_angular_velocity: Vector3 = Vector3.ZERO
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -95,6 +102,7 @@ func create_materials():
 		shells.append(mat)
 		
 	previous_position = mesh.transform.origin
+	previous_rotation = mesh.transform.basis.get_euler()
 		
 		
 func setup_materials():
@@ -122,6 +130,11 @@ func configure_material_for_level(mat: Material, level: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	linear_spring_physics(delta)
+	rotational_spring_physics(delta)
+	
+	
+func linear_spring_physics(delta: float):
 	# calculate compound linear forces acting on the shells
 	var f = gravity
 	
@@ -160,3 +173,44 @@ func _process(delta):
 		i+=1
 		
 	previous_position = mesh.transform.origin
+
+
+func rotational_spring_physics(delta: float):
+	# calculate compound linear forces acting on the shells
+	var f = Vector3.ZERO
+	
+	# calculate rotation from previous position
+	var dp: Vector3 = mesh.transform.basis.get_euler() - previous_rotation # movement from previous rotation
+	var w: Vector3 = dp / delta # velocity
+	spring_rotation += dp # new offset, after base has moved	
+	
+	# dampened spring model: F = -kx - bv
+	# k: stiffness
+	# x: spring extension
+	# b: damping
+	# v: velocity ()
+	
+	f += -spring_rotation * stiffness - damping * (w+spring_angular_velocity)
+	
+	var a = f / mass
+	spring_angular_velocity += a * delta
+	var p = spring_angular_velocity * delta / 2
+	
+	spring_rotation += p
+	
+	# TODO: lamp to max rotation? How do we do that with a quaternion?
+	# var l = spring_offset.length()
+	# if l > height * stretch:
+	# 	spring_offset = spring_offset / l * height
+	
+	# iterate through materials from 0 height to 1 and set physics params
+	var dh = 1.0 / (number_of_shells-1)
+	var h = height * dh	
+
+	for i in range(number_of_shells):
+		var mat = shells[i]
+		var rotation_at_height = spring_rotation * h * i * 10
+		mat.set_shader_parameter("physics_rot_offset", Basis.from_euler(rotation_at_height))
+		i+=1
+		
+	previous_rotation = mesh.transform.basis.get_euler()

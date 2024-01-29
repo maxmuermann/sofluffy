@@ -15,7 +15,9 @@ uniform float displacement_noise_strength = 0.5;
 
 uniform float thickness = 1;
 
+// physics
 uniform vec3 physics_pos_offset = vec3(0.0, -1.0, 0.0);
+uniform mat3 physics_rot_offset;
 
 uniform vec3 color: source_color;
 
@@ -23,6 +25,7 @@ void vertex() {
 	vec3 physics_pos_offset_world = (vec4(physics_pos_offset, 0.0) * MODEL_MATRIX).xyz * h * 0.2;
 	vec3 direction = static_direction_local + (vec4(static_direction_world, 0.0) * MODEL_MATRIX).xyz;
 	VERTEX += (NORMAL * normal_strength + direction * (1.0 - normal_strength)) * height * h + physics_pos_offset_world;
+	VERTEX = VERTEX * physics_rot_offset;
 }
 
 void fragment() {
