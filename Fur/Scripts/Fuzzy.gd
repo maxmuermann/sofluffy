@@ -30,7 +30,7 @@ var density: float = 1.0:
 		setup_materials()
 		
 @export
-var density_texture: Texture2D = preload("res://Fur/Materials/sofluffy_default.tres"):
+var density_texture: Texture2D = preload("res://Fur/Materials/sofluffy_default.tres").duplicate():
 	set(v):
 		density_texture = v
 		setup_materials()
@@ -124,16 +124,16 @@ var emission_texture: Texture2D:
 @export_group("The Rest")
 
 @export
-var displacement_noise: Texture2D = preload("res://Fur/Materials/sofluffy_jitter_default.tres"):
+var displacement_noise: Texture2D = preload("res://Fur/Materials/sofluffy_jitter_default.tres").duplicate():
 	set(v):
 		displacement_noise = v
 		setup_materials()
 		
 @export
-var shell_material: Material = preload("res://Fur/Materials/fuzzy_shell_material.tres");
+var shell_material: Material = preload("res://Fur/Materials/fuzzy_shell_material.tres").duplicate();
 
 @export
-var thickness: Curve = preload("res://Fur/Materials/sofluffy_thickness_default.tres"):
+var thickness: Curve = preload("res://Fur/Materials/sofluffy_thickness_default.tres").duplicate():
 	set(v):
 		thickness = v
 		setup_materials()
