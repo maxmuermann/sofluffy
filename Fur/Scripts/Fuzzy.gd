@@ -30,19 +30,19 @@ var density: float = 1.0:
 		setup_materials()
 		
 @export
-var density_texture: Texture2D:
+var density_texture: Texture2D = preload("res://Fur/Materials/sofluffy_default.tres"):
 	set(v):
 		density_texture = v
 		setup_materials()
 
 @export_range(0, 1, 0.001, "or_greater")
-var displacement_noise_strength: float = 0.5:
+var displacement_noise_strength: float = 0:
 	set(v):
 		displacement_noise_strength = v
 		setup_materials()
 		
 @export_range(0, 2, 0.01, "or_greater")
-var length: float = 1.0:
+var length: float = 0.25:
 	set(v):
 		length = v
 		setup_materials()
@@ -71,7 +71,7 @@ var static_direction_world: Vector3 = Vector3.ZERO:
 @export_group("Material")
 
 @export
-var height_gradient: Gradient:
+var height_gradient: Gradient = Gradient.new():
 	set(v):
 		height_gradient = v
 		setup_materials()
@@ -124,16 +124,19 @@ var emission_texture: Texture2D:
 @export_group("The Rest")
 
 @export
-var displacement_noise: Texture2D:
+var displacement_noise: Texture2D = preload("res://Fur/Materials/sofluffy_jitter_default.tres"):
 	set(v):
 		displacement_noise = v
 		setup_materials()
 		
 @export
-var shell_material: Material = load("res://Fur/Materials/fuzzy_shell_material.tres");
+var shell_material: Material = preload("res://Fur/Materials/fuzzy_shell_material.tres");
 
 @export
-var thickness: Curve
+var thickness: Curve = preload("res://Fur/Materials/sofluffy_thickness_default.tres"):
+	set(v):
+		thickness = v
+		setup_materials()
 		
 # physics parameters are set in _process, no need to call setup_materials()
 @export var gravity: Vector3 = Vector3(0,0,0)
@@ -166,10 +169,18 @@ func _validate_property(property: Dictionary):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if density_texture.noise == null:
+		density_texture.noise = FastNoiseLite.new()
 	clear_materials()
 	create_materials()
 	setup_materials()
 	
+func _enter_tree():
+	clear_materials()
+	create_materials()
+	setup_materials()
+	notify_property_list_changed()
+
 # remove fur material
 func clear_materials():
 	if(mesh == null): return
