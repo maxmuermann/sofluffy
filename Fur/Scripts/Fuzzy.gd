@@ -145,10 +145,12 @@ var emission_texture: Texture2D:
 	set(v):
 		physics_preview = v
 		if(!physics_preview):
+			# TODO: move to a physics_init func
 			spring_offset = Vector3.ZERO
 			spring_velocity = Vector3.ZERO
 			spring_rotation = Vector3.ZERO
 			spring_angular_velocity = Vector3.ZERO
+			setup_materials()
 @export var gravity: Vector3 = Vector3(0,0,0)
 @export var stiffness: float = 1000
 @export var mass: float = 0.001
@@ -225,6 +227,7 @@ func setup_materials():
 
 # set shader parameters for a single shell at the given level
 func configure_material_for_level(mat: Material, level: int):
+	# var h = float(level) / (number_of_shells-1)
 	var h = float(level) / (number_of_shells-1)
 	var thick = thickness.sample(h)
 	# growth
@@ -285,11 +288,11 @@ func linear_spring_physics(delta: float):
 	
 	# iterate through materials from 0 length to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
-	var h = length * dh	
+	var h = dh	
 
 	for i in range(number_of_shells):
 		var mat = shells[i]
-		var offset_at_height = 8 * spring_offset * h * pow(i, 1.1)
+		var offset_at_height = 8 * spring_offset * pow(h * i, 1.0/length)
 		mat.set_shader_parameter("physics_pos_offset", -offset_at_height)
 		i+=1
 		
@@ -318,16 +321,17 @@ func rotational_spring_physics(delta: float):
 	
 	# clamp to max rotation
 	var l = spring_rotation.length()
-	if l > PI / 8:
-		spring_rotation = spring_rotation / l * PI / 8
+	var max = PI * length / 2.0
+	if l > max:
+		spring_rotation = spring_rotation / l * max
 	
 	# iterate through materials from 0 length to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
-	var h = length * dh	
+	var h = dh	
 
 	for i in range(number_of_shells):
 		var mat = shells[i]
-		var rotation_at_height = spring_rotation * h * i * 10
+		var rotation_at_height = spring_rotation * pow(h * i, 1.0 / length)
 		mat.set_shader_parameter("physics_rot_offset", Basis.from_euler(rotation_at_height))
 		i+=1
 		
