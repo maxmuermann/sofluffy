@@ -14,7 +14,8 @@ var preview_in_editor: bool = true:
 
 
 @export_group("Growth")
-	
+
+## Number of shells to generate. Higher numbers look better, but incur larger performance penalties.
 @export
 var number_of_shells: int = 32:
 	set(v):
@@ -22,19 +23,34 @@ var number_of_shells: int = 32:
 		clear_materials()
 		create_materials()
 		setup_materials()
-		
-@export_range(0, 100, 0.01, "or_greater")
+
+## Scaling of the fur density texture. Higher numbers make the fur more dense.
+@export_range(0, 10, 0.01, "or_greater")
 var density: float = 1.0:
 	set(v):
 		density = v
 		setup_materials()
-		
+
+## Fur density (length) texture. Values scale hair length by [1..0[. Black pixels are not rendered.
 @export
 var density_texture: Texture2D = preload("res://Fur/Materials/sofluffy_default.tres").duplicate():
 	set(v):
 		density_texture = v
 		setup_materials()
 
+## Thickness profile of a single strand.
+@export
+var thickness: Curve = preload("res://Fur/Materials/sofluffy_thickness_default.tres").duplicate():
+	set(v):
+		thickness = v
+		setup_materials()
+
+@export
+var displacement_noise: Texture2D = preload("res://Fur/Materials/sofluffy_jitter_default.tres").duplicate():
+	set(v):
+		displacement_noise = v
+		setup_materials()	
+		
 @export_range(0, 1, 0.001, "or_greater")
 var displacement_noise_strength: float = 0:
 	set(v):
@@ -69,6 +85,8 @@ var static_direction_world: Vector3 = Vector3.ZERO:
 
 # Material
 @export_group("Material")
+
+var shell_material: Material = preload("res://Fur/Materials/fuzzy_shell_material.tres").duplicate();
 
 @export
 var height_gradient: Gradient = Gradient.new():
@@ -120,25 +138,17 @@ var emission_texture: Texture2D:
 		setup_materials()
 		
 
+@export_group("Physics")
 
-@export_group("The Rest")
-
-@export
-var displacement_noise: Texture2D = preload("res://Fur/Materials/sofluffy_jitter_default.tres").duplicate():
-	set(v):
-		displacement_noise = v
-		setup_materials()
-		
-@export
-var shell_material: Material = preload("res://Fur/Materials/fuzzy_shell_material.tres").duplicate();
-
-@export
-var thickness: Curve = preload("res://Fur/Materials/sofluffy_thickness_default.tres").duplicate():
-	set(v):
-		thickness = v
-		setup_materials()
-		
 # physics parameters are set in _process, no need to call setup_materials()
+@export var physics_preview: bool = false:
+	set(v):
+		physics_preview = v
+		if(!physics_preview):
+			spring_offset = Vector3.ZERO
+			spring_velocity = Vector3.ZERO
+			spring_rotation = Vector3.ZERO
+			spring_angular_velocity = Vector3.ZERO
 @export var gravity: Vector3 = Vector3(0,0,0)
 @export var stiffness: float = 1000
 @export var mass: float = 0.001
@@ -151,12 +161,12 @@ var mesh: MeshInstance3D
 # the generated shell materials
 var shells: Array = []
 
-# linear spring physics variables
+# linear spring physics state
 var previous_position: Vector3
 var spring_offset: Vector3 = Vector3.ZERO
 var spring_velocity: Vector3 = Vector3.ZERO
 
-# rotational spring physics variables
+# rotational spring physics state
 var previous_rotation: Vector3 = Vector3.ZERO
 var spring_rotation: Vector3 = Vector3.ZERO
 var spring_angular_velocity: Vector3 = Vector3.ZERO
@@ -171,15 +181,13 @@ func _validate_property(property: Dictionary):
 func _ready():
 	if density_texture.noise == null:
 		density_texture.noise = FastNoiseLite.new()
-	clear_materials()
-	create_materials()
-	setup_materials()
-	
+
 func _enter_tree():
 	clear_materials()
 	create_materials()
 	setup_materials()
 	notify_property_list_changed()
+
 
 # remove fur material
 func clear_materials():
@@ -188,6 +196,7 @@ func clear_materials():
 	for shell in shells:
 		shell.next_pass = null
 	shells = []
+
 
 # create cascade of shell materials and assign to subsequent next_pass slots
 func create_materials():
@@ -213,11 +222,11 @@ func setup_materials():
 	for i in number_of_shells:
 		configure_material_for_level(shells[i], i)
 
+
 # set shader parameters for a single shell at the given level
 func configure_material_for_level(mat: Material, level: int):
 	var h = float(level) / (number_of_shells-1)
 	var thick = thickness.sample(h)
-	
 	# growth
 	mat.set_shader_parameter("height", length)
 	mat.set_shader_parameter("normal_strength", normal_strength)
@@ -229,41 +238,40 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("displacement_noise_strength", displacement_noise_strength)
 	mat.set_shader_parameter("density", density)
 	mat.set_shader_parameter("thickness", thick)
-
 	# Albedo
 	mat.set_shader_parameter("color", height_gradient.sample(h) * albedo_color)
 	mat.set_shader_parameter("use_albedo_texture", albedo_texture != null)
 	mat.set_shader_parameter("albedo_texture", albedo_texture)
-
 	# Emission
 	mat.set_shader_parameter("use_emission", use_emission)
 	mat.set_shader_parameter("emission_color", emission_color)
 	mat.set_shader_parameter("emission_energy_multiplier", emission_energy_multiplier)
 	mat.set_shader_parameter("use_emission_texture", emission_texture != null)
 	mat.set_shader_parameter("emission_texture", emission_texture)
-
 	# initial Physics parameters
 	mat.set_shader_parameter("physics_pos_offset", Vector3.ZERO)
 	mat.set_shader_parameter("physics_rot_offset", Basis.IDENTITY)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
 func _process(delta):	
 	linear_spring_physics(delta)
 	rotational_spring_physics(delta)
 	
+
 # calculate physics displacement for linear movement
 func linear_spring_physics(delta: float):
+	if Engine.is_editor_hint() and !physics_preview: return
 	# calculate compound linear forces acting on the shells
 	var f = gravity
-	
-	if !Engine.is_editor_hint():
-		# calculate movement from previous position
-		var dx = mesh.transform.origin - previous_position # movement from previous position
-		var v = dx / delta # velocity
-		spring_offset += dx # new offset, after base has moved	
 		
-		f += -stiffness * spring_offset - damping * (v+spring_velocity)
+	# calculate movement from previous position
+	var dx = mesh.transform.origin - previous_position # movement from previous position
+	var v = dx / delta # velocity
+	spring_offset += dx # new offset, after base has moved	
 	
+	f += -stiffness * spring_offset - damping * (v+spring_velocity)
+
 	var a = f / mass
 	spring_velocity += a * delta
 	var s = spring_velocity * delta / 2
@@ -288,18 +296,19 @@ func linear_spring_physics(delta: float):
 	previous_position = mesh.transform.origin
 
 
+
 # calculate physics displacement for rotational movement
 func rotational_spring_physics(delta: float):
+	if Engine.is_editor_hint() and !physics_preview: return
 	# calculate compound rotational forces acting on the shells, as a Vector3 of Euler angles
 	var f = Vector3.ZERO
 	
-	if !Engine.is_editor_hint():
-		# calculate rotation from previous position
-		var dp: Vector3 = mesh.transform.basis.get_euler() - previous_rotation # rotation from previous rotation
-		var w: Vector3 = dp / delta # velocity
-		spring_rotation += dp # new offset, after base has rotated
-		
-		f += -spring_rotation * stiffness - damping * (w+spring_angular_velocity)
+	# calculate rotation from previous position
+	var dp: Vector3 = mesh.transform.basis.get_euler() - previous_rotation # rotation from previous rotation
+	var w: Vector3 = dp / delta # velocity
+	spring_rotation += dp # new offset, after base has rotated
+	
+	f += -spring_rotation * stiffness - damping * (w+spring_angular_velocity)
 	
 	var a = f / mass
 	spring_angular_velocity += a * delta
