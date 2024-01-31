@@ -43,21 +43,21 @@ var density: float = 1.0:
 
 ## Fur density (length) texture. Values scale hair length by [1..0[. Black pixels are not rendered.
 @export
-var density_texture: Texture2D = preload("res://addons/so_fluffy/sofluffy_default.tres").duplicate():
+var density_texture: Texture2D = preload("res://addons/so_fluffy/density_default.tres").duplicate():
 	set(v):
 		density_texture = v
 		setup_materials()
 
 ## Thickness profile of a single strand. The values are inverted (1 it thin, 0 is thick) so that the curve presets can be used.
 @export
-var thickness: Curve = preload("res://addons/so_fluffy/sofluffy_thickness_default.tres").duplicate():
+var thickness: Curve = preload("res://addons/so_fluffy/thickness_default.tres").duplicate():
 	set(v):
 		thickness = v
 		setup_materials()
 
 ## Noise texture to overlay higher-frequency jitter on the fur. Best provided as a normal map.
 @export
-var jitter_texture: Texture2D = preload("res://addons/so_fluffy/sofluffy_jitter_default.tres").duplicate():
+var jitter_texture: Texture2D = preload("res://addons/so_fluffy/jitter_default.tres").duplicate():
 	set(v):
 		jitter_texture = v
 		setup_materials()	
@@ -69,21 +69,21 @@ var jitter_strength: float = 0.3:
 		jitter_strength = v
 		setup_materials()
 
-## Blends the fur growth direction between the surface normal and the static directions below	
+## Blends the fur growth direction between the surface normal and the static directions below. A value of 1 means fur grows only in the direction of normals, a value of 0 means it grows only in a static direction.
 @export_range(0, 1, 0.005)
 var normal_strength: float = 1.0:
 	set(v):
 		normal_strength = v
 		setup_materials()
 
-## Static direction of fur growth in local space. This is useful for fur that grows in a specific direction but moves with the object, such as a mane or a mohawk.
+## Static direction of fur growth in object space. This is useful for fur that grows in a specific direction but moves with the object, such as a mane or a mohawk.
 @export
 var static_direction_local: Vector3 = Vector3.ZERO:
 	set(v):
 		static_direction_local = v
 		setup_materials()
 		
-## Static direction of fur growth in world space. This is useful for fur that grows in a specific direction in world coordinates, such as grass, which always grows upward.
+## Static direction of fur growth in world space. This is useful for fur that grows in a specific direction in world coordinates, such as grass, which always grows upwards.
 @export
 var static_direction_world: Vector3 = Vector3.ZERO:
 	set(v):
