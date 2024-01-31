@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/so_fluffy/plugin.cfg")
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.231373, 0.231373, 0.231373, 1)

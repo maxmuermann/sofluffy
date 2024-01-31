@@ -3,7 +3,7 @@ extends Node
 
 ## Show fur in editor. Fur rendering is relatively expensive, so it is recommened to disable this when not needed.
 @export
-var preview_in_editor: bool = true:
+var preview_in_editor: bool = false:
 	set(v):
 		var previous_value = preview_in_editor
 		preview_in_editor = v		
@@ -20,7 +20,7 @@ var preview_in_editor: bool = true:
 
 ## Number of shells to generate. Higher numbers look better, but incur larger performance penalties.
 @export
-var number_of_shells: int = 32:
+var number_of_shells: int = 64:
 	set(v):
 		number_of_shells = v
 		clear_materials()
@@ -29,7 +29,7 @@ var number_of_shells: int = 32:
 
 ## Strand length
 @export_range(0, 2, 0.01, "or_greater")
-var length: float = 0.25:
+var length: float = 0.1:
 	set(v):
 		length = v
 		setup_materials()
@@ -43,26 +43,26 @@ var density: float = 1.0:
 
 ## Fur density (length) texture. Values scale hair length by [1..0[. Black pixels are not rendered.
 @export
-var density_texture: Texture2D = preload("res://Fur/Materials/sofluffy_default.tres").duplicate():
+var density_texture: Texture2D = preload("res://addons/so_fluffy/sofluffy_default.tres").duplicate():
 	set(v):
 		density_texture = v
 		setup_materials()
 
 ## Thickness profile of a single strand.
 @export
-var thickness: Curve = preload("res://Fur/Materials/sofluffy_thickness_default.tres").duplicate():
+var thickness: Curve = preload("res://addons/so_fluffy/sofluffy_thickness_default.tres").duplicate():
 	set(v):
 		thickness = v
 		setup_materials()
 
 @export
-var jitter_texture: Texture2D = preload("res://Fur/Materials/sofluffy_jitter_default.tres").duplicate():
+var jitter_texture: Texture2D = preload("res://addons/so_fluffy/sofluffy_jitter_default.tres").duplicate():
 	set(v):
 		jitter_texture = v
 		setup_materials()	
 		
 @export_range(0, 1, 0.001, "or_greater")
-var jitter_strength: float = 0:
+var jitter_strength: float = 2.5:
 	set(v):
 		jitter_strength = v
 		setup_materials()
@@ -90,7 +90,8 @@ var static_direction_world: Vector3 = Vector3.ZERO:
 # Material
 @export_group("Material")
 
-var shell_material: Material = preload("res://Fur/Materials/fuzzy_shell_material.tres").duplicate();
+var shell_material: Material = preload("res://addons/so_fluffy/shell_material.tres").duplicate(true);
+var default_skin_material: Material = preload("res://addons/so_fluffy/skin_material.tres").duplicate(true);
 
 @export
 var height_gradient: Gradient = Gradient.new():
@@ -145,25 +146,20 @@ var emission_texture: Texture2D:
 @export_group("Physics")
 
 # physics parameters are set in _process, no need to call setup_materials()
-@export var physics_preview: bool = false:
+@export var physics_preview: bool = true:
 	set(v):
 		physics_preview = v
 		if(!physics_preview):
-			# TODO: move to a physics_init func
-			spring_offset = Vector3.ZERO
-			spring_velocity = Vector3.ZERO
-			spring_rotation = Vector3.ZERO
-			spring_angular_velocity = Vector3.ZERO
 			setup_materials()
 			init_physics()
 @export var gravity: Vector3 = Vector3(0,0,0)
-@export var stiffness: float = 1000
-@export var mass: float = 0.001
-@export var damping: float = 0.001
+@export var stiffness: float = 80
+@export var mass: float = 0.15
+@export var damping: float = 3
 @export var stretch: float = 1.0
 
-# the mesh we're growing fur on
-var mesh: MeshInstance3D
+# the geometry we're growing fur on
+var mesh: GeometryInstance3D
 
 # the generated shell materials
 var shells: Array = []
@@ -186,7 +182,7 @@ func _validate_property(property: Dictionary):
 
 func _ready():
 	if density_texture.noise == null:
-		density_texture.noise = FastNoiseLite.new()
+		density_texture.noise = FastNoiseLite.new()	
 
 
 func _enter_tree():
@@ -199,7 +195,7 @@ func _enter_tree():
 # remove fur material
 func clear_materials():
 	if(mesh == null): return
-	mesh.get_surface_override_material(0).next_pass = null
+	mesh.material_override.next_pass = null
 	for shell in shells:
 		shell.next_pass = null
 	shells = []
@@ -210,7 +206,11 @@ func create_materials():
 	mesh = get_parent()
 	if(mesh == null): return	
 
-	var mat = mesh.get_surface_override_material(0)
+	var mat = mesh.material_override
+	# set default skin material, if none present
+	if mat == null:
+		mat = default_skin_material.duplicate()
+		mesh.material_override = mat
 	
 	for i in range(number_of_shells):
 		var new_mat = shell_material.duplicate()
@@ -258,6 +258,11 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("emission_texture", emission_texture)	
 
 func init_physics():
+	spring_offset = Vector3.ZERO
+	spring_velocity = Vector3.ZERO
+	spring_rotation = Vector3.ZERO
+	spring_angular_velocity = Vector3.ZERO
+
 	if mesh == null: return
 	for mat in shells:
 		# initial Physics parameters
