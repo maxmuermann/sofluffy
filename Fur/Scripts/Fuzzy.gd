@@ -1,6 +1,7 @@
 @tool
 extends Node
 
+## Show fur in editor. Fur rendering is relatively expensive, so it is recommened to disable this when not needed.
 @export
 var preview_in_editor: bool = true:
 	set(v):
@@ -11,8 +12,10 @@ var preview_in_editor: bool = true:
 			if preview_in_editor:
 				create_materials()
 				setup_materials()
+				init_physics()
 
 
+## Parameters that affect the growth of the fur - density, length, jitter, etc.
 @export_group("Growth")
 
 ## Number of shells to generate. Higher numbers look better, but incur larger performance penalties.
@@ -22,6 +25,13 @@ var number_of_shells: int = 32:
 		number_of_shells = v
 		clear_materials()
 		create_materials()
+		setup_materials()
+
+## Strand length
+@export_range(0, 2, 0.01, "or_greater")
+var length: float = 0.25:
+	set(v):
+		length = v
 		setup_materials()
 
 ## Scaling of the fur density texture. Higher numbers make the fur more dense.
@@ -46,21 +56,15 @@ var thickness: Curve = preload("res://Fur/Materials/sofluffy_thickness_default.t
 		setup_materials()
 
 @export
-var displacement_noise: Texture2D = preload("res://Fur/Materials/sofluffy_jitter_default.tres").duplicate():
+var jitter_texture: Texture2D = preload("res://Fur/Materials/sofluffy_jitter_default.tres").duplicate():
 	set(v):
-		displacement_noise = v
+		jitter_texture = v
 		setup_materials()	
 		
 @export_range(0, 1, 0.001, "or_greater")
-var displacement_noise_strength: float = 0:
+var jitter_strength: float = 0:
 	set(v):
-		displacement_noise_strength = v
-		setup_materials()
-		
-@export_range(0, 2, 0.01, "or_greater")
-var length: float = 0.25:
-	set(v):
-		length = v
+		jitter_strength = v
 		setup_materials()
 		
 @export_range(0, 1, 0.005)
@@ -151,6 +155,7 @@ var emission_texture: Texture2D:
 			spring_rotation = Vector3.ZERO
 			spring_angular_velocity = Vector3.ZERO
 			setup_materials()
+			init_physics()
 @export var gravity: Vector3 = Vector3(0,0,0)
 @export var stiffness: float = 1000
 @export var mass: float = 0.001
@@ -179,10 +184,10 @@ func _validate_property(property: Dictionary):
 	if property.name in ["emission_color", "emission_energy_multiplier", "emission_texture"] and !use_emission:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if density_texture.noise == null:
 		density_texture.noise = FastNoiseLite.new()
+
 
 func _enter_tree():
 	clear_materials()
@@ -219,7 +224,7 @@ func create_materials():
 
 # setup parameters for all shell materials
 func setup_materials():
-	if(mesh == null): return
+	if mesh == null: return
 
 	for i in number_of_shells:
 		configure_material_for_level(shells[i], i)
@@ -237,8 +242,8 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("static_direction_world", static_direction_world)
 	mat.set_shader_parameter("h", h)
 	mat.set_shader_parameter("density_texture", density_texture)
-	mat.set_shader_parameter("displacement_noise", displacement_noise)
-	mat.set_shader_parameter("displacement_noise_strength", displacement_noise_strength)
+	mat.set_shader_parameter("jitter_texture", jitter_texture)
+	mat.set_shader_parameter("jitter_strength", jitter_strength)
 	mat.set_shader_parameter("density", density)
 	mat.set_shader_parameter("thickness", thick)
 	# Albedo
@@ -250,11 +255,14 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("emission_color", emission_color)
 	mat.set_shader_parameter("emission_energy_multiplier", emission_energy_multiplier)
 	mat.set_shader_parameter("use_emission_texture", emission_texture != null)
-	mat.set_shader_parameter("emission_texture", emission_texture)
-	# initial Physics parameters
-	mat.set_shader_parameter("physics_pos_offset", Vector3.ZERO)
-	mat.set_shader_parameter("physics_rot_offset", Basis.IDENTITY)
+	mat.set_shader_parameter("emission_texture", emission_texture)	
 
+func init_physics():
+	if mesh == null: return
+	for mat in shells:
+		# initial Physics parameters
+		mat.set_shader_parameter("physics_pos_offset", Vector3.ZERO)
+		mat.set_shader_parameter("physics_rot_offset", Basis.IDENTITY)
 
 
 func _process(delta):	
@@ -262,7 +270,7 @@ func _process(delta):
 	rotational_spring_physics(delta)
 	
 
-# calculate physics displacement for linear movement
+# calculate spring physics for linear movement
 func linear_spring_physics(delta: float):
 	if Engine.is_editor_hint() and !physics_preview: return
 	# calculate compound linear forces acting on the shells
@@ -299,8 +307,7 @@ func linear_spring_physics(delta: float):
 	previous_position = mesh.transform.origin
 
 
-
-# calculate physics displacement for rotational movement
+# calculate spring physics for rotational movement
 func rotational_spring_physics(delta: float):
 	if Engine.is_editor_hint() and !physics_preview: return
 	# calculate compound rotational forces acting on the shells, as a Vector3 of Euler angles

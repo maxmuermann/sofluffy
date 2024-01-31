@@ -9,8 +9,8 @@ uniform vec3 static_direction_world = vec3(0.0,0.0,0.0);
 uniform float h = 0;
 uniform float density = 1.0;
 uniform sampler2D density_texture : source_color, filter_nearest;
-uniform sampler2D displacement_noise : filter_nearest;
-uniform float displacement_noise_strength = 0.5;
+uniform sampler2D jitter_texture : filter_nearest;
+uniform float jitter_strength = 0.5;
 
 uniform vec3 color: source_color;
 uniform bool use_albedo_texture = false;
@@ -39,7 +39,7 @@ void vertex() {
 void fragment() {
 	vec2 ts = vec2(textureSize(density_texture, 0)) * density; // texture size in pixels
 	
-	vec2 xy = UV + (texture(displacement_noise, UV).xy - vec2(0.5, 0.5)) * displacement_noise_strength;
+	vec2 xy = UV + (texture(jitter_texture, UV).xy - vec2(0.5, 0.5)) * jitter_strength;
 	
 	vec2 uv = xy * density; // current pixel UV
 	vec3 val = texture(density_texture, uv).rgb; // sample length texture
