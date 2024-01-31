@@ -8,7 +8,7 @@ uniform vec3 static_direction_local = vec3(0.0,0.0,0.0);
 uniform vec3 static_direction_world = vec3(0.0,0.0,0.0);
 uniform float h = 0;
 uniform float density = 1.0;
-uniform sampler2D density_texture : source_color, filter_nearest;
+uniform sampler2D heightmap_texture : source_color, filter_nearest;
 uniform sampler2D jitter_texture : filter_nearest;
 uniform float jitter_strength = 0.5;
 
@@ -29,6 +29,18 @@ uniform float thickness = 1;
 uniform vec3 physics_pos_offset = vec3(0.0, 0.0, 0.0);
 uniform mat3 physics_rot_offset;
 
+// Gold Noise ©2015 dcerisano@standard3d.com
+// - based on the Golden Ratio
+// - uniform normalized distribution
+// - fastest static noise generator function (also runs at low precision)
+// - use with indicated fractional seeding method. 
+// @see https://www.shadertoy.com/view/ltB3zD
+float gold_noise(vec2 p) {
+	vec3 p3  = fract(vec3(p.xyx) * .1031);
+    p3 += dot(p3, p3.yzx + 33.33);
+    return fract((p3.x + p3.y) * p3.z);
+}
+
 void vertex() {	
 	vec3 physics_pos_offset_world = (vec4(physics_pos_offset, 0.0) * MODEL_MATRIX).xyz * h * 0.2;
 	vec3 direction = static_direction_local + (vec4(static_direction_world, 0.0) * MODEL_MATRIX).xyz;
@@ -36,20 +48,23 @@ void vertex() {
 	VERTEX = VERTEX * physics_rot_offset;
 }
 
-void fragment() {
-	vec2 ts = vec2(textureSize(density_texture, 0)) * density; // texture size in pixels
+void fragment() {	
+	vec2 uv = UV * density; // current pixel UV, scaled by density
 	
-	vec2 xy = UV + (texture(jitter_texture, UV).xy - vec2(0.5, 0.5)) * jitter_strength;
+	float ts = 1024.0;
 	
-	vec2 uv = xy * density; // current pixel UV
-	vec3 val = texture(density_texture, uv).rgb; // sample length texture
+	// noise
+	float len = gold_noise(floor(uv * 1024.0));
+	
+	vec3 val = texture(heightmap_texture, UV
+	).rgb; // sample length texture
+	len *= val.r;
 	
 	// calculate distance of current pixel from center of texture pixel
 	vec2 center = vec2(0.5, 0.5);
-	float relDist = pow(length(fract(xy * ts) - center), 2);
+	float relDist = pow(length(fract(uv * ts) - center), 2);
 	
-	//if(val.r >= h) {
-	if((val.r - thickness >= relDist)) {
+	if((len - thickness >= relDist)) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;
 		vec3 col = color;
 		if(use_albedo_texture) {

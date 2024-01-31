@@ -34,18 +34,18 @@ var length: float = 0.1:
 		length = v
 		setup_materials()
 
-## Scaling of the fur density texture. Higher numbers make the fur more dense.
-@export_range(0, 10, 0.01, "or_greater")
+## Scaling of the fur density. Higher numbers make the fur more dense.
+@export_range(0.010, 3, 0.001, "or_greater")
 var density: float = 1.0:
 	set(v):
 		density = v
 		setup_materials()
 
-## Fur density (length) texture. Values scale hair length by [1..0[. Black pixels are not rendered.
+## Fur heightmap texture. Values scale hair length by [1..0[. Black pixels are not rendered.
 @export
-var density_texture: Texture2D = preload("res://addons/so_fluffy/density_default.tres").duplicate():
+var heightmap_texture: Texture2D = preload("res://addons/so_fluffy/density_default.tres").duplicate():
 	set(v):
-		density_texture = v
+		heightmap_texture = v
 		setup_materials()
 
 ## Thickness profile of a single strand. The values are inverted (1 it thin, 0 is thick) so that the curve presets can be used.
@@ -95,7 +95,7 @@ var static_direction_world: Vector3 = Vector3.ZERO:
 # Material parameters
 @export_group("Appearance")
 
-var shell_material: Material = preload("res://addons/so_fluffy/shell_material.tres").duplicate(true);
+var shell_material: Material = preload("res://addons/so_fluffy/shell_material.tres").duplicate();
 
 ## Albedo color is multiplied by this gradient, sampled by relative height. The default gradient simulates ambient occlusion.
 @export
@@ -205,8 +205,8 @@ func _validate_property(property: Dictionary):
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready():
-	if density_texture.noise == null:
-		density_texture.noise = FastNoiseLite.new()
+	if heightmap_texture.noise == null:
+		heightmap_texture.noise = FastNoiseLite.new()
 	init_physics()
 
 
@@ -264,7 +264,7 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("static_direction_local", static_direction_local)
 	mat.set_shader_parameter("static_direction_world", static_direction_world)
 	mat.set_shader_parameter("h", h)
-	mat.set_shader_parameter("density_texture", density_texture)
+	mat.set_shader_parameter("heightmap_texture", heightmap_texture)
 	mat.set_shader_parameter("jitter_texture", jitter_texture)
 	mat.set_shader_parameter("jitter_strength", jitter_strength)
 	mat.set_shader_parameter("density", density)
