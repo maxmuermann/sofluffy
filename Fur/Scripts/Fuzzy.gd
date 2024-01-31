@@ -321,9 +321,9 @@ func rotational_spring_physics(delta: float):
 	
 	# clamp to max rotation
 	var l = spring_rotation.length()
-	var max = PI * length / 2.0
-	if l > max:
-		spring_rotation = spring_rotation / l * max
+	var maxL = PI * length / 2.0
+	if l > maxL:
+		spring_rotation = spring_rotation / l * maxL
 	
 	# iterate through materials from 0 length to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
