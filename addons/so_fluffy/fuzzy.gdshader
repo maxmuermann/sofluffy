@@ -26,7 +26,7 @@ uniform sampler2D emission_texture : source_color;
 uniform float thickness = 1;
 
 // physics
-uniform vec3 physics_pos_offset = vec3(0.0, -1.0, 0.0);
+uniform vec3 physics_pos_offset = vec3(0.0, 0.0, 0.0);
 uniform mat3 physics_rot_offset;
 
 void vertex() {	

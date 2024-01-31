@@ -3,7 +3,7 @@ extends Node
 
 ## Show fur in editor. Fur rendering is relatively expensive, so it is recommened to disable this when not needed.
 @export
-var preview_in_editor: bool = false:
+var preview_in_editor: bool = true:
 	set(v):
 		var previous_value = preview_in_editor
 		preview_in_editor = v		
@@ -16,7 +16,7 @@ var preview_in_editor: bool = false:
 
 
 ## Parameters that affect the growth of the fur - density, length, jitter, etc.
-@export_group("Growth")
+@export_group("Shape")
 
 ## Number of shells to generate. Higher numbers look better, but incur larger performance penalties.
 @export
@@ -48,37 +48,42 @@ var density_texture: Texture2D = preload("res://addons/so_fluffy/sofluffy_defaul
 		density_texture = v
 		setup_materials()
 
-## Thickness profile of a single strand.
+## Thickness profile of a single strand. The values are inverted (1 it thin, 0 is thick) so that the curve presets can be used.
 @export
 var thickness: Curve = preload("res://addons/so_fluffy/sofluffy_thickness_default.tres").duplicate():
 	set(v):
 		thickness = v
 		setup_materials()
 
+## Noise texture to overlay higher-frequency jitter on the fur. Best provided as a normal map.
 @export
 var jitter_texture: Texture2D = preload("res://addons/so_fluffy/sofluffy_jitter_default.tres").duplicate():
 	set(v):
 		jitter_texture = v
 		setup_materials()	
 		
+## Strength of the jitter effect. Higher numbers apply more jitter.
 @export_range(0, 1, 0.001, "or_greater")
-var jitter_strength: float = 2.5:
+var jitter_strength: float = 0.3:
 	set(v):
 		jitter_strength = v
 		setup_materials()
-		
+
+## Blends the fur growth direction between the surface normal and the static directions below	
 @export_range(0, 1, 0.005)
 var normal_strength: float = 1.0:
 	set(v):
 		normal_strength = v
 		setup_materials()
-		
+
+## Static direction of fur growth in local space. This is useful for fur that grows in a specific direction but moves with the object, such as a mane or a mohawk.
 @export
 var static_direction_local: Vector3 = Vector3.ZERO:
 	set(v):
 		static_direction_local = v
 		setup_materials()
 		
+## Static direction of fur growth in world space. This is useful for fur that grows in a specific direction in world coordinates, such as grass, which always grows upward.
 @export
 var static_direction_world: Vector3 = Vector3.ZERO:
 	set(v):
@@ -87,12 +92,12 @@ var static_direction_world: Vector3 = Vector3.ZERO:
 		
 
 
-# Material
-@export_group("Material")
+# Material parameters
+@export_group("Appearance")
 
 var shell_material: Material = preload("res://addons/so_fluffy/shell_material.tres").duplicate(true);
-var default_skin_material: Material = preload("res://addons/so_fluffy/skin_material.tres").duplicate(true);
 
+## Albedo color is multiplied by this gradient, sampled by relative height. The default gradient simulates ambient occlusion.
 @export
 var height_gradient: Gradient = Gradient.new():
 	set(v):
@@ -101,12 +106,14 @@ var height_gradient: Gradient = Gradient.new():
 
 ## Albedo 
 @export_subgroup("Albedo")
+## Plain hair color
 @export_color_no_alpha
 var albedo_color: Color = Color.DARK_OLIVE_GREEN:
 	set(v):
 		albedo_color = v
 		setup_materials()
 
+## Texture defining hair color. Albedo color is [i]multiplied[\i] by the texture color.
 @export
 var albedo_texture: Texture2D:
 	set(v):
@@ -124,18 +131,21 @@ var use_emission: bool = false:
 		setup_materials()
 		notify_property_list_changed() # necessary to trigger _validate_property, apparently
 
+## Uniform emission color
 @export_color_no_alpha
 var emission_color: Color:
 	set(v):
 		emission_color = v
 		setup_materials()
 
+## Emission energy multiplier. Higher numbers make the emission brighter.
 @export_range(0, 16, 0.01)
 var emission_energy_multiplier: float = 1.0:
 	set(v):
 		emission_energy_multiplier = v
 		setup_materials()
 
+## Texture defining emission color. Emission color is [i]added[i] to the texture color.
 @export
 var emission_texture: Texture2D:
 	set(v):
@@ -146,17 +156,29 @@ var emission_texture: Texture2D:
 @export_group("Physics")
 
 # physics parameters are set in _process, no need to call setup_materials()
+@export var physics_enabled: bool = true:
+	set(v):
+		physics_enabled = v		
+		init_physics()
+		notify_property_list_changed()
+
+## Simulate physics in the editor. Physics simulation is very cheap, but can be distracting while editing.
 @export var physics_preview: bool = true:
 	set(v):
 		physics_preview = v
 		if(!physics_preview):
 			setup_materials()
 			init_physics()
+## gravity constant
 @export var gravity: Vector3 = Vector3(0,0,0)
+## hair spring stiffness
 @export var stiffness: float = 80
+## hair mass - higher numbers make the hair more resistant to movement
 @export var mass: float = 0.15
+## spring damping
 @export var damping: float = 3
-@export var stretch: float = 1.0
+## allow hair to stretch beyond its length for a more elastic appearance. A value of 1 means no stretch is allowed.
+@export_range(1, 2, 0.01, "or_greater") var stretch: float = 1.0
 
 # the geometry we're growing fur on
 var mesh: GeometryInstance3D
@@ -174,15 +196,18 @@ var previous_rotation: Vector3 = Vector3.ZERO
 var spring_rotation: Vector3 = Vector3.ZERO
 var spring_angular_velocity: Vector3 = Vector3.ZERO
 
-
 func _validate_property(property: Dictionary):
 	# hide/show emission section details
 	if property.name in ["emission_color", "emission_energy_multiplier", "emission_texture"] and !use_emission:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
+	# hide/show physics section details
+	if property.name in ["physics_preview", "gravity", "stiffness", "mass", "damping", "stretch"] and !physics_enabled:
+		property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready():
 	if density_texture.noise == null:
-		density_texture.noise = FastNoiseLite.new()	
+		density_texture.noise = FastNoiseLite.new()
+	init_physics()
 
 
 func _enter_tree():
@@ -195,7 +220,7 @@ func _enter_tree():
 # remove fur material
 func clear_materials():
 	if(mesh == null): return
-	mesh.material_override.next_pass = null
+	mesh.material_overlay = null
 	for shell in shells:
 		shell.next_pass = null
 	shells = []
@@ -206,13 +231,11 @@ func create_materials():
 	mesh = get_parent()
 	if(mesh == null): return	
 
-	var mat = mesh.material_override
-	# set default skin material, if none present
-	if mat == null:
-		mat = default_skin_material.duplicate()
-		mesh.material_override = mat
-	
-	for i in range(number_of_shells):
+	var mat = shell_material.duplicate()
+	mesh.material_overlay = mat
+	shells.append(mat)
+
+	for i in range(1, number_of_shells):
 		var new_mat = shell_material.duplicate()
 		mat.next_pass = new_mat
 		mat = new_mat
@@ -261,23 +284,27 @@ func init_physics():
 	spring_offset = Vector3.ZERO
 	spring_velocity = Vector3.ZERO
 	spring_rotation = Vector3.ZERO
-	spring_angular_velocity = Vector3.ZERO
+	spring_angular_velocity = Vector3.ZERO	
 
 	if mesh == null: return
+
+	previous_position = mesh.transform.origin
+	previous_rotation = mesh.transform.basis.get_euler()
+
 	for mat in shells:
 		# initial Physics parameters
 		mat.set_shader_parameter("physics_pos_offset", Vector3.ZERO)
 		mat.set_shader_parameter("physics_rot_offset", Basis.IDENTITY)
 
 
-func _process(delta):	
+func _physics_process(delta):	
 	linear_spring_physics(delta)
 	rotational_spring_physics(delta)
-	
 
 # calculate spring physics for linear movement
 func linear_spring_physics(delta: float):
-	if Engine.is_editor_hint() and !physics_preview: return
+	if !physics_enabled: return
+	if Engine.is_editor_hint() and (!physics_preview || !preview_in_editor): return
 	# calculate compound linear forces acting on the shells
 	var f = gravity
 		
@@ -314,7 +341,8 @@ func linear_spring_physics(delta: float):
 
 # calculate spring physics for rotational movement
 func rotational_spring_physics(delta: float):
-	if Engine.is_editor_hint() and !physics_preview: return
+	if !physics_enabled: return
+	if Engine.is_editor_hint() and (!physics_preview || !preview_in_editor): return
 	# calculate compound rotational forces acting on the shells, as a Vector3 of Euler angles
 	var f = Vector3.ZERO
 	
