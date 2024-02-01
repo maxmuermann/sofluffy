@@ -69,6 +69,13 @@ var jitter_strength: float = 0.3:
 		jitter_strength = v
 		setup_materials()
 
+## how much jitter affects the base vs the tip of the strand - higher values make the strands more curved.
+@export_range(0, 1, 0.001, "or_greater")
+var jitter_bendiness: float = 0.3:
+	set(v):
+		jitter_bendiness = v
+		setup_materials()
+
 ## Blends the fur growth direction between the surface normal and the static directions below. A value of 1 means fur grows only in the direction of normals, a value of 0 means it grows only in a static direction.
 @export_range(0, 1, 0.005)
 var normal_strength: float = 1.0:
@@ -267,6 +274,7 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("heightmap_texture", heightmap_texture)
 	mat.set_shader_parameter("jitter_texture", jitter_texture)
 	mat.set_shader_parameter("jitter_strength", jitter_strength)
+	mat.set_shader_parameter("jitter_bendiness", jitter_bendiness)
 	mat.set_shader_parameter("density", density)
 	mat.set_shader_parameter("thickness", thick)
 	# Albedo
