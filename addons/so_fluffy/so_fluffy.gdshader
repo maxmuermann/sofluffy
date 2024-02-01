@@ -8,8 +8,9 @@ uniform vec3 static_direction_local = vec3(0.0,0.0,0.0);
 uniform vec3 static_direction_world = vec3(0.0,0.0,0.0);
 uniform float h = 0;
 uniform float density = 1.0;
+uniform float sparseness = 0.5;
 uniform sampler2D heightmap_texture : source_color, filter_nearest;
-uniform sampler2D turbulence_texture : filter_nearest;
+uniform sampler2D turbulence_texture : filter_linear;
 uniform float turbulence_strength = 0.5;
 uniform float turbulence_bendiness = 0.5;
 
@@ -26,7 +27,7 @@ uniform bool use_emission_texture = false;
 uniform sampler2D emission_texture : source_color;
 
 
-uniform float thickness = 1;
+uniform sampler2D thickness_curve;
 uniform float thickness_scale = 1.0;
 
 // physics
@@ -59,11 +60,12 @@ void fragment() {
 	
 	vec2 turbulence = texture(turbulence_texture, uv).xy - vec2(0.5, 0.5);
 	
-	vec2 displacement = turbulence * turbulence_strength * 1.0;
-	vec2 xy = uv + displacement * pow((1.0-h), 3.0 * turbulence_bendiness) * 0.1;
+	vec2 displacement = turbulence * turbulence_strength * 0.1;
+	vec2 xy = uv + displacement * pow((1.0 - h * 0.5), 1.0 * turbulence_strength) * 1.0
+	;
 	
 	// density noise
-	float len = gold_noise(floor(xy * 1024.0));
+	float len = pow(gold_noise(floor(xy * 1024.0)), sparseness);
 	
 	vec3 val = texture(heightmap_texture, UV).rgb; // sample heightmap length texture at original UV - we don't care how far the strand has been displaced
 	len *= val.r;
@@ -71,6 +73,8 @@ void fragment() {
 	// calculate distance of current pixel from center of texture pixel
 	vec2 center = vec2(0.5, 0.5);
 	float relDist = length(fract(xy * ts) - center) / thickness_scale * 2.0;
+	
+	float thickness = texture(thickness_curve, vec2(h * 0.99, 0.0)).r;
 	
 	if((len - thickness >= relDist)) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;
@@ -81,7 +85,7 @@ void fragment() {
 		if(scale_height_gradient) {
 			grad_h /= len;
 		}
-		vec3 height_col = texture(height_gradient, vec2(grad_h, 0.0)).rgb;
+		vec3 height_col = texture(height_gradient, vec2(grad_h * 0.999, 0.0)).rgb;
 		col *= height_col;
 		
 		if(use_albedo_texture) {

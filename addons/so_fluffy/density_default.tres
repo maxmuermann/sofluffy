@@ -2,9 +2,11 @@
 
 [sub_resource type="Gradient" id="Gradient_k0srd"]
 offsets = PackedFloat32Array(0, 0.666368)
+colors = PackedColorArray(0.497474, 0.497474, 0.497474, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fnqm7"]
-frequency = 0.0775
+noise_type = 2
+frequency = 0.0033
 
 [resource]
 color_ramp = SubResource("Gradient_k0srd")

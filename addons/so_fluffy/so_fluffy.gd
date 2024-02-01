@@ -34,11 +34,18 @@ var length: float = 0.1:
 		length = v
 		setup_materials()
 
-## Scaling of the fur density. Higher numbers make the fur more dense.
+## Scaling of the fur density - strands per area. Higher numbers make the fur more dense.
 @export_range(0.010, 3, 0.001, "or_greater")
-var density: float = 1.0:
+var density: float = 0.5:
 	set(v):
 		density = v
+		setup_materials()
+
+## Sparseness of the height distribution of strands - numbers below 1 for thicker fur, above 1 for sprser fur.
+@export_range(0.0, 4, 0.001, "or_greater")
+var sparseness: float = 0.5:
+	set(v):
+		sparseness = v
 		setup_materials()
 
 ## Fur heightmap texture. Values scale hair length by [1..0[. Black pixels are not rendered.
@@ -50,9 +57,9 @@ var heightmap_texture: Texture2D = preload("res://addons/so_fluffy/density_defau
 
 ## Thickness profile of a single strand. The values are inverted (1 it thin, 0 is thick) so that the curve presets can be used.
 @export
-var thickness: Curve = preload("res://addons/so_fluffy/thickness_default.tres").duplicate():
+var thickness_curve: CurveTexture = CurveTexture.new():
 	set(v):
-		thickness = v
+		thickness_curve = v
 		setup_materials()
 
 ## uniformly scales up th thickness of all strands.
@@ -74,13 +81,6 @@ var turbulence_texture: Texture2D = preload("res://addons/so_fluffy/turbulence_d
 var turbulence_strength: float = 0.3:
 	set(v):
 		turbulence_strength = v
-		setup_materials()
-
-## how much turbulence affects the base vs the tip of the strand - higher values make the strands more curved.
-@export_range(0, 1, 0.001, "or_greater")
-var turbulence_bendiness: float = 0.3:
-	set(v):
-		turbulence_bendiness = v
 		setup_materials()
 
 ## Blends the fur growth direction between the surface normal and the static directions below. A value of 1 means fur grows only in the direction of normals, a value of 0 means it grows only in a static direction.
@@ -278,7 +278,7 @@ func setup_materials():
 func configure_material_for_level(mat: Material, level: int):
 	# var h = float(level) / (number_of_shells-1)
 	var h = float(level) / (number_of_shells-1)
-	var thick = thickness.sample(h)
+	# var thick = thickness.sample(h)
 	# growth
 	mat.set_shader_parameter("height", length)
 	mat.set_shader_parameter("normal_strength", normal_strength)
@@ -288,9 +288,9 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("heightmap_texture", heightmap_texture)
 	mat.set_shader_parameter("turbulence_texture", turbulence_texture)
 	mat.set_shader_parameter("turbulence_strength", turbulence_strength)
-	mat.set_shader_parameter("turbulence_bendiness", turbulence_bendiness)
 	mat.set_shader_parameter("density", density)
-	mat.set_shader_parameter("thickness", thick)
+	mat.set_shader_parameter("sparseness", sparseness)
+	mat.set_shader_parameter("thickness_curve", thickness_curve)
 	mat.set_shader_parameter("thickness_scale", thickness_scale)
 	# Albedo
 	mat.set_shader_parameter("color", albedo_color)
