@@ -14,6 +14,8 @@ uniform float turbulence_strength = 0.5;
 uniform float turbulence_bendiness = 0.5;
 
 uniform vec3 color: source_color;
+uniform sampler2D height_gradient: source_color, filter_nearest;
+uniform bool scale_height_gradient = true;
 uniform bool use_albedo_texture = false;
 uniform sampler2D albedo_texture : source_color;
 
@@ -58,7 +60,7 @@ void fragment() {
 	vec2 turbulence = texture(turbulence_texture, uv).xy - vec2(0.5, 0.5);
 	
 	vec2 displacement = turbulence * turbulence_strength * 1.0;
-	vec2 xy = uv + displacement * pow(h, 3.0 * turbulence_bendiness) * 0.1;
+	vec2 xy = uv + displacement * pow((1.0-h), 3.0 * turbulence_bendiness) * 0.1;
 	
 	// density noise
 	float len = gold_noise(floor(xy * 1024.0));
@@ -66,14 +68,22 @@ void fragment() {
 	vec3 val = texture(heightmap_texture, UV).rgb; // sample heightmap length texture at original UV - we don't care how far the strand has been displaced
 	len *= val.r;
 	
-	
 	// calculate distance of current pixel from center of texture pixel
 	vec2 center = vec2(0.5, 0.5);
-	float relDist = length(fract(xy * ts) - center) / thickness_scale;
+	float relDist = length(fract(xy * ts) - center) / thickness_scale * 2.0;
 	
 	if((len - thickness >= relDist)) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;
 		vec3 col = color;
+		
+		// sample height gradient
+		float grad_h = h;
+		if(scale_height_gradient) {
+			grad_h /= len;
+		}
+		vec3 height_col = texture(height_gradient, vec2(grad_h, 0.0)).rgb;
+		col *= height_col;
+		
 		if(use_albedo_texture) {
 			col *= texture(albedo_texture, UV).rgb;
 		}

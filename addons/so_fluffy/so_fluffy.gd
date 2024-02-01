@@ -113,9 +113,16 @@ var shell_material: Material = preload("res://addons/so_fluffy/shell_material.tr
 
 ## Albedo color is multiplied by this gradient, sampled by relative height. The default gradient simulates ambient occlusion.
 @export
-var height_gradient: Gradient = Gradient.new():
+var height_gradient: GradientTexture2D = GradientTexture2D.new():
 	set(v):
 		height_gradient = v
+		setup_materials()
+
+## Should the height gradient be scaled with the length of individual strands? If true, each strand will use the full gradient.
+@export
+var scale_height_gradient: bool = false:
+	set(v):
+		scale_height_gradient = v
 		setup_materials()
 
 ## Albedo 
@@ -286,7 +293,9 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("thickness", thick)
 	mat.set_shader_parameter("thickness_scale", thickness_scale)
 	# Albedo
-	mat.set_shader_parameter("color", height_gradient.sample(h) * albedo_color)
+	mat.set_shader_parameter("color", albedo_color)
+	mat.set_shader_parameter("height_gradient", height_gradient)
+	mat.set_shader_parameter("scale_height_gradient", scale_height_gradient)
 	mat.set_shader_parameter("use_albedo_texture", albedo_texture != null)
 	mat.set_shader_parameter("albedo_texture", albedo_texture)
 	# Emission
