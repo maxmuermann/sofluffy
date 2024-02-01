@@ -15,7 +15,7 @@ var preview_in_editor: bool = true:
 				init_physics()
 
 
-## Parameters that affect the growth of the fur - density, length, jitter, etc.
+## Parameters that affect the growth of the fur - density, length, turbulence, etc.
 @export_group("Shape")
 
 ## Number of shells to generate. Higher numbers look better, but incur larger performance penalties.
@@ -55,25 +55,32 @@ var thickness: Curve = preload("res://addons/so_fluffy/thickness_default.tres").
 		thickness = v
 		setup_materials()
 
-## Noise texture to overlay higher-frequency jitter on the fur. Best provided as a normal map.
-@export
-var jitter_texture: Texture2D = preload("res://addons/so_fluffy/jitter_default.tres").duplicate():
+## uniformly scales up th thickness of all strands.
+@export_range(0.01, 4.0, 0.01, "or_greater")
+var thickness_scale: float = 1.0:
 	set(v):
-		jitter_texture = v
-		setup_materials()	
-		
-## Strength of the jitter effect. Higher numbers apply more jitter.
-@export_range(0, 1, 0.001, "or_greater")
-var jitter_strength: float = 0.3:
-	set(v):
-		jitter_strength = v
+		thickness_scale = v
 		setup_materials()
 
-## how much jitter affects the base vs the tip of the strand - higher values make the strands more curved.
-@export_range(0, 1, 0.001, "or_greater")
-var jitter_bendiness: float = 0.3:
+## Noise texture to overlay higher-frequency turbulence on the fur. Best provided as a normal map.
+@export
+var turbulence_texture: Texture2D = preload("res://addons/so_fluffy/turbulence_default.tres").duplicate():
 	set(v):
-		jitter_bendiness = v
+		turbulence_texture = v
+		setup_materials()	
+		
+## Strength of the turbulence effect. Higher numbers apply more turbulence.
+@export_range(0, 1, 0.001, "or_greater")
+var turbulence_strength: float = 0.3:
+	set(v):
+		turbulence_strength = v
+		setup_materials()
+
+## how much turbulence affects the base vs the tip of the strand - higher values make the strands more curved.
+@export_range(0, 1, 0.001, "or_greater")
+var turbulence_bendiness: float = 0.3:
+	set(v):
+		turbulence_bendiness = v
 		setup_materials()
 
 ## Blends the fur growth direction between the surface normal and the static directions below. A value of 1 means fur grows only in the direction of normals, a value of 0 means it grows only in a static direction.
@@ -272,11 +279,12 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("static_direction_world", static_direction_world)
 	mat.set_shader_parameter("h", h)
 	mat.set_shader_parameter("heightmap_texture", heightmap_texture)
-	mat.set_shader_parameter("jitter_texture", jitter_texture)
-	mat.set_shader_parameter("jitter_strength", jitter_strength)
-	mat.set_shader_parameter("jitter_bendiness", jitter_bendiness)
+	mat.set_shader_parameter("turbulence_texture", turbulence_texture)
+	mat.set_shader_parameter("turbulence_strength", turbulence_strength)
+	mat.set_shader_parameter("turbulence_bendiness", turbulence_bendiness)
 	mat.set_shader_parameter("density", density)
 	mat.set_shader_parameter("thickness", thick)
+	mat.set_shader_parameter("thickness_scale", thickness_scale)
 	# Albedo
 	mat.set_shader_parameter("color", height_gradient.sample(h) * albedo_color)
 	mat.set_shader_parameter("use_albedo_texture", albedo_texture != null)

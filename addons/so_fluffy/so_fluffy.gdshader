@@ -9,9 +9,9 @@ uniform vec3 static_direction_world = vec3(0.0,0.0,0.0);
 uniform float h = 0;
 uniform float density = 1.0;
 uniform sampler2D heightmap_texture : source_color, filter_nearest;
-uniform sampler2D jitter_texture : filter_nearest;
-uniform float jitter_strength = 0.5;
-uniform float jitter_bendiness = 0.5;
+uniform sampler2D turbulence_texture : filter_nearest;
+uniform float turbulence_strength = 0.5;
+uniform float turbulence_bendiness = 0.5;
 
 uniform vec3 color: source_color;
 uniform bool use_albedo_texture = false;
@@ -55,10 +55,10 @@ void fragment() {
 	
 	float ts = 1024.0;
 	
-	vec2 jitter = texture(jitter_texture, uv).xy - vec2(0.5, 0.5);
+	vec2 turbulence = texture(turbulence_texture, uv).xy - vec2(0.5, 0.5);
 	
-	vec2 displacement = jitter * jitter_strength * 0.3;
-	vec2 xy = uv + displacement * pow(h, 3.0 * jitter_bendiness) * 0.1;
+	vec2 displacement = turbulence * turbulence_strength * 1.0;
+	vec2 xy = uv + displacement * pow(h, 3.0 * turbulence_bendiness) * 0.1;
 	
 	// density noise
 	float len = gold_noise(floor(xy * 1024.0));
