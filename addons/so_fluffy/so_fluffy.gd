@@ -361,6 +361,9 @@ func linear_spring_physics(delta: float):
 	previous_position = mesh.transform.origin
 
 
+func short_angle(a):
+	return fmod(2 * a, 2 * PI) - a
+
 # calculate spring physics for rotational movement
 func rotational_spring_physics(delta: float):
 	if !physics_enabled: return
@@ -370,6 +373,10 @@ func rotational_spring_physics(delta: float):
 	
 	# calculate rotation from previous position
 	var dp: Vector3 = mesh.transform.basis.get_euler() - previous_rotation # rotation from previous rotation
+	
+	dp = Vector3(short_angle(dp.x), short_angle(dp.y), short_angle(dp.z))
+	print(dp)
+
 	var w: Vector3 = dp / delta # velocity
 	spring_rotation += dp # new offset, after base has rotated
 	
