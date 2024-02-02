@@ -74,9 +74,9 @@ void fragment() {
 	vec2 center = vec2(0.5, 0.5);
 	float relDist = length(fract(xy * ts) - center) / thickness_scale * 2.0;
 	
-	float thickness = texture(thickness_curve, vec2(h * 0.99, 0.0)).r;
+	float thickness = texture(thickness_curve, vec2(clamp(h / len, 0.0, 0.99), 0.0)).r;
 	
-	if((len - thickness >= relDist)) {
+	if((len - thickness >= relDist && h < len)) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;
 		vec3 col = color;
 		
