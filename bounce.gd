@@ -1,13 +1,17 @@
 extends MeshInstance3D
 
 var pos: Vector3
-var rot: Vector4
-@export var dist: float = 1.0
-@export var period: float = 1.0
+var rot: Vector3
+@export var bounce_msec: float = 2000
+@export var dpos: Vector3 = Vector3(0, 0.4, 0)
+@export var rot_msec: float = 2000
+@export var drot: Vector3 = Vector3(0, 2 * PI, 0)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pos = transform.origin
+	rot = transform.basis.get_euler()
 	
 	# var tween: Tween
 
@@ -33,11 +37,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	transform.origin = pos + Vector3(0, 0.8, 0) *  abs(sin(Time.get_ticks_msec() / 2000.0 * period * PI * 2))
-	# transform.basis = transform.basis.from_euler(
-	# 	Vector3(
-	# 		0.1, #0.4 * sin(Time.get_ticks_msec() / 400.0 * period * PI * 2),
-	# 		2.5 + 0.6 * sin(Time.get_ticks_msec() / 2400.0 * period * PI * 2),
-	# 		0.1 * sin(Time.get_ticks_msec() / 1200.0 * period * PI * 2)
-	# 	)
-	# )	
+	transform.origin = pos + dpos *  abs(sin(Time.get_ticks_msec() / bounce_msec * PI * 2))
+	transform.basis = transform.basis.from_euler(
+		rot + drot * Time.get_ticks_msec() / rot_msec
+	)
