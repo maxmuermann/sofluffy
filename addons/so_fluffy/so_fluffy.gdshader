@@ -10,12 +10,14 @@ uniform float h = 0;
 uniform float density = 1.0;
 uniform float sparseness = 0.5;
 uniform sampler2D heightmap_texture : source_color, filter_nearest;
+uniform bool use_heightmap_texture = false;
 uniform sampler2D turbulence_texture : filter_linear;
 uniform float turbulence_strength = 0.5;
 uniform float turbulence_bendiness = 0.5;
 
 uniform vec3 color: source_color;
 uniform sampler2D height_gradient: source_color, filter_nearest;
+uniform bool use_height_gradient = false;
 uniform bool scale_height_gradient = true;
 uniform bool use_albedo_texture = false;
 uniform sampler2D albedo_texture : source_color;
@@ -28,6 +30,7 @@ uniform sampler2D emission_texture : source_color;
 
 
 uniform sampler2D thickness_curve;
+uniform bool use_thickness_curve = false;
 uniform float thickness_scale = 1.0;
 
 // physics
@@ -57,24 +60,33 @@ void fragment() {
 	vec2 uv = UV * density; // current pixel UV, scaled by density
 	
 	float ts = 1024.0;
+	vec2 xy = uv;
 	
-	vec2 turbulence = texture(turbulence_texture, uv).xy - vec2(0.5, 0.5);
+	if(turbulence_strength > 0.0) {
+		vec2 turbulence = texture(turbulence_texture, uv).xy - vec2(0.5, 0.5);
 	
-	vec2 displacement = turbulence * turbulence_strength * 0.1;
-	vec2 xy = uv + displacement * pow((1.0 - h * 0.5), 1.0 * turbulence_strength) * 1.0
-	;
+		vec2 displacement = turbulence * turbulence_strength * 0.1;
+		xy = xy + displacement * pow((1.0 - h * 0.5), 1.0 * turbulence_strength) * 1.0;
+	}
 	
 	// density noise
 	float len = pow(gold_noise(floor(xy * 1024.0)), sparseness);
 	
-	vec3 val = texture(heightmap_texture, UV).rgb; // sample heightmap length texture at original UV - we don't care how far the strand has been displaced
-	len *= val.r;
+	if(use_heightmap_texture) {
+		vec3 val = texture(heightmap_texture, UV).rgb; // sample heightmap length texture at original UV - we don't care how far the strand has been displaced
+		len *= val.r;
+	}
 	
 	// calculate distance of current pixel from center of texture pixel
 	vec2 center = vec2(0.5, 0.5);
 	float relDist = length(fract(xy * ts) - center) / thickness_scale * 2.0;
 	
-	float thickness = texture(thickness_curve, vec2(clamp(h / len, 0.0, 0.99), 0.0)).r;
+	float thickness;
+	if(use_thickness_curve) {
+		thickness = texture(thickness_curve, vec2(clamp(h / len, 0.0, 0.99), 0.0)).r;
+	} else {
+		thickness = h;
+	} 
 	
 	if((len - thickness >= relDist && h < len)) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;
@@ -85,7 +97,14 @@ void fragment() {
 		if(scale_height_gradient) {
 			grad_h /= len;
 		}
-		vec3 height_col = texture(height_gradient, vec2(grad_h * 0.999, 0.0)).rgb;
+		
+		vec3 height_col;
+		if(use_height_gradient) {
+			height_col = texture(height_gradient, vec2(grad_h * 0.999, 0.0)).rgb;
+		} else {
+			float hg = pow(h, 0.9);
+			height_col = vec3(hg,hg,hg);
+		}
 		col *= height_col;
 		
 		if(use_albedo_texture) {

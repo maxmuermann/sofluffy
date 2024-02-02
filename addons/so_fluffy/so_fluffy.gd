@@ -57,7 +57,7 @@ var heightmap_texture: Texture2D: # = preload("res://addons/so_fluffy/density_de
 
 ## Thickness profile of a single strand. The values are inverted (1 it thin, 0 is thick) so that the curve presets can be used.
 @export
-var thickness_curve: CurveTexture = CurveTexture.new():
+var thickness_curve: CurveTexture:
 	set(v):
 		thickness_curve = v
 		setup_materials()
@@ -113,7 +113,7 @@ var shell_material: Material = preload("res://addons/so_fluffy/shell_material.tr
 
 ## Albedo color is multiplied by this gradient, sampled by relative height. The default gradient simulates ambient occlusion.
 @export
-var height_gradient: GradientTexture2D = GradientTexture2D.new():
+var height_gradient: GradientTexture2D:
 	set(v):
 		height_gradient = v
 		setup_materials()
@@ -190,16 +190,23 @@ var emission_texture: Texture2D:
 		if(!physics_preview):
 			setup_materials()
 			init_physics()
+## adjust the magnitude of rotational physics effects
+@export var rotational_physics_scale: float = 1.0
 ## gravity constant
 @export var gravity: Vector3 = Vector3(0,0,0)
-## hair spring stiffness
-@export var stiffness: float = 80
-## hair mass - higher numbers make the hair more resistant to movement
+## strand spring spring_constant
+@export var spring_constant: float = 80
+## strand mass - higher numbers make the hair more resistant to movement
 @export var mass: float = 0.15
 ## spring damping
 @export var damping: float = 3
-## allow hair to stretch beyond its length for a more elastic appearance. A value of 1 means no stretch is allowed.
+## allow strand to stretch beyond its length for a more elastic appearance. A value of 1 means no stretch is allowed.
 @export_range(1, 2, 0.01, "or_greater") var stretch: float = 1.0
+
+## controls how stiff the strands are over their length - higher numbers make the strands more bendy
+@export_range(0, 4, 0.01, "or_greater")
+var stiffness: float = 1.0
+
 
 # the geometry we're growing fur on
 var mesh: GeometryInstance3D
@@ -222,7 +229,7 @@ func _validate_property(property: Dictionary):
 	if property.name in ["emission_color", "emission_energy_multiplier", "emission_texture"] and !use_emission:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 	# hide/show physics section details
-	if property.name in ["physics_preview", "gravity", "stiffness", "mass", "damping", "stretch"] and !physics_enabled:
+	if property.name in ["physics_preview", "gravity", "spring_constant", "mass", "damping", "stretch"] and !physics_enabled:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready():
@@ -284,15 +291,18 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("static_direction_world", static_direction_world)
 	mat.set_shader_parameter("h", h)
 	mat.set_shader_parameter("heightmap_texture", heightmap_texture)
+	mat.set_shader_parameter("use_heightmap_texture", heightmap_texture != null)
 	mat.set_shader_parameter("turbulence_texture", turbulence_texture)
 	mat.set_shader_parameter("turbulence_strength", turbulence_strength)
 	mat.set_shader_parameter("density", density)
 	mat.set_shader_parameter("sparseness", sparseness)
 	mat.set_shader_parameter("thickness_curve", thickness_curve)
+	mat.set_shader_parameter("use_thickness_curve", thickness_curve != null)
 	mat.set_shader_parameter("thickness_scale", thickness_scale)
 	# Albedo
 	mat.set_shader_parameter("color", albedo_color)
 	mat.set_shader_parameter("height_gradient", height_gradient)
+	mat.set_shader_parameter("use_height_gradient", height_gradient != null)
 	mat.set_shader_parameter("scale_height_gradient", scale_height_gradient)
 	mat.set_shader_parameter("use_albedo_texture", albedo_texture != null)
 	mat.set_shader_parameter("albedo_texture", albedo_texture)
@@ -338,13 +348,15 @@ func linear_spring_physics(delta: float):
 
 	var st = 8.0 # "exaggeration" factor for more fun spring movement
 
-	f += -stiffness * spring_offset - damping * (v+spring_velocity)
+	f += -spring_constant * spring_offset - damping * (v+spring_velocity)
 
 	var a = f / mass
 	spring_velocity += a * delta
 	var s = spring_velocity * delta / 2
 	
 	spring_offset += s
+
+	spring_velocity = spring_velocity.limit_length( 20.0 * length )
 
 	# iterate through materials from 0 length to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
@@ -354,7 +366,7 @@ func linear_spring_physics(delta: float):
 
 	for i in range(number_of_shells):
 		var mat = shells[i]
-		var offset_at_height = st * spring_offset * pow(h * i, 1.0)
+		var offset_at_height = st * spring_offset * pow(h * i, stiffness)
 		mat.set_shader_parameter("physics_pos_offset", -offset_at_height)
 		i+=1
 		
@@ -375,12 +387,11 @@ func rotational_spring_physics(delta: float):
 	var dp: Vector3 = mesh.transform.basis.get_euler() - previous_rotation # rotation from previous rotation
 	
 	dp = Vector3(short_angle(dp.x), short_angle(dp.y), short_angle(dp.z))
-	print(dp)
 
 	var w: Vector3 = dp / delta # velocity
 	spring_rotation += dp # new offset, after base has rotated
 	
-	f += -spring_rotation * stiffness - damping * (w+spring_angular_velocity)
+	f += -spring_rotation * spring_constant - damping * (w+spring_angular_velocity)
 	
 	var a = f / mass
 	spring_angular_velocity += a * delta
@@ -396,7 +407,7 @@ func rotational_spring_physics(delta: float):
 
 	for i in range(number_of_shells):
 		var mat = shells[i]
-		var rotation_at_height = spring_rotation * pow(h * i, 1.0)
+		var rotation_at_height = rotational_physics_scale * spring_rotation * pow(h * i, stiffness)
 		mat.set_shader_parameter("physics_rot_offset", Basis.from_euler(rotation_at_height))
 		i+=1
 		
