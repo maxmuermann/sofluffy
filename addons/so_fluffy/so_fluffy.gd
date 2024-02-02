@@ -50,7 +50,7 @@ var sparseness: float = 0.5:
 
 ## Fur heightmap texture. Values scale hair length by [1..0[. Black pixels are not rendered.
 @export
-var heightmap_texture: Texture2D = preload("res://addons/so_fluffy/density_default.tres").duplicate():
+var heightmap_texture: Texture2D: # = preload("res://addons/so_fluffy/density_default.tres").duplicate():
 	set(v):
 		heightmap_texture = v
 		setup_materials()
@@ -226,8 +226,6 @@ func _validate_property(property: Dictionary):
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready():
-	if heightmap_texture.noise == null:
-		heightmap_texture.noise = FastNoiseLite.new()
 	init_physics()
 
 
@@ -336,8 +334,10 @@ func linear_spring_physics(delta: float):
 	# calculate movement from previous position
 	var dx = mesh.transform.origin - previous_position # movement from previous position
 	var v = dx / delta # velocity
-	spring_offset += dx # new offset, after base has moved	
-	
+	spring_offset += dx # new offset, after base has moved
+
+	var st = 8.0 # "exaggeration" factor for more fun spring movement
+
 	f += -stiffness * spring_offset - damping * (v+spring_velocity)
 
 	var a = f / mass
@@ -345,19 +345,16 @@ func linear_spring_physics(delta: float):
 	var s = spring_velocity * delta / 2
 	
 	spring_offset += s
-	
-	# clamp to max length
-	var l = spring_offset.length()
-	if l > length * stretch:
-		spring_offset = spring_offset / l * length
-	
+
 	# iterate through materials from 0 length to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
-	var h = dh	
+	var h = dh
+
+	spring_offset = spring_offset.limit_length(length / st * stretch)
 
 	for i in range(number_of_shells):
 		var mat = shells[i]
-		var offset_at_height = 8 * spring_offset * pow(h * i, 1.0/length)
+		var offset_at_height = st * spring_offset * pow(h * i, 1.0)
 		mat.set_shader_parameter("physics_pos_offset", -offset_at_height)
 		i+=1
 		
@@ -384,19 +381,15 @@ func rotational_spring_physics(delta: float):
 	
 	spring_rotation += p
 	
-	# clamp to max rotation
-	var l = spring_rotation.length()
-	var maxL = PI * length / 2.0
-	if l > maxL:
-		spring_rotation = spring_rotation / l * maxL
-	
 	# iterate through materials from 0 length to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
 	var h = dh	
 
+	spring_rotation = spring_rotation.limit_length(PI * length / 2.0)
+
 	for i in range(number_of_shells):
 		var mat = shells[i]
-		var rotation_at_height = spring_rotation * pow(h * i, 1.0 / length)
+		var rotation_at_height = spring_rotation * pow(h * i, 1.0)
 		mat.set_shader_parameter("physics_rot_offset", Basis.from_euler(rotation_at_height))
 		i+=1
 		
