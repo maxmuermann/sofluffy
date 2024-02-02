@@ -5,14 +5,11 @@ var rot: Vector4
 @export var dist: float = 1.0
 @export var period: float = 1.0
 
-@export var light: Light3D
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pos = transform.origin
 	
-	var tween: Tween
+	# var tween: Tween
 
 	#tween = create_tween()
 	#tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
@@ -36,12 +33,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# return
-	transform.origin = pos + Vector3(0, 0.4, 0) *  abs(sin(Time.get_ticks_msec() / 1200.0 * period * PI * 2))
-	transform.basis = transform.basis.from_euler(
-		Vector3(
-			0.1, #0.4 * sin(Time.get_ticks_msec() / 400.0 * period * PI * 2),
-			2.5 + 0.6 * sin(Time.get_ticks_msec() / 2400.0 * period * PI * 2),
-			0.1 * sin(Time.get_ticks_msec() / 1200.0 * period * PI * 2)
-		)
-	)	
+	transform.origin = pos + Vector3(0, 0.8, 0) *  abs(sin(Time.get_ticks_msec() / 2000.0 * period * PI * 2))
+	# transform.basis = transform.basis.from_euler(
+	# 	Vector3(
+	# 		0.1, #0.4 * sin(Time.get_ticks_msec() / 400.0 * period * PI * 2),
+	# 		2.5 + 0.6 * sin(Time.get_ticks_msec() / 2400.0 * period * PI * 2),
+	# 		0.1 * sin(Time.get_ticks_msec() / 1200.0 * period * PI * 2)
+	# 	)
+	# )	
