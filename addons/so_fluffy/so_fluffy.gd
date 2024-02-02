@@ -64,7 +64,7 @@ var thickness_curve: CurveTexture:
 
 ## uniformly scales up th thickness of all strands.
 @export_range(0.01, 4.0, 0.01, "or_greater")
-var thickness_scale: float = 1.0:
+var thickness_scale: float = 1.5:
 	set(v):
 		thickness_scale = v
 		setup_materials()
@@ -129,7 +129,7 @@ var scale_height_gradient: bool = false:
 @export_subgroup("Albedo")
 ## Plain hair color
 @export_color_no_alpha
-var albedo_color: Color = Color.DARK_OLIVE_GREEN:
+var albedo_color: Color = Color.LIGHT_BLUE:
 	set(v):
 		albedo_color = v
 		setup_materials()
