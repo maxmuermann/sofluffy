@@ -207,12 +207,32 @@ var emission_texture: Texture2D:
 @export_range(0, 4, 0.01, "or_greater")
 var stiffness: float = 1.0
 
+@export var lod_count: int = 4:
+	set(v):
+		lod_count = v		
+		apply_lod()
+		setup_materials()
+
+# TODO: TESTING ONLY
+@export var lod: int = 0:
+	set(v):
+		var old_lod = lod
+		lod = v
+		if lod != old_lod:
+			print("lod: ", lod)
+			apply_lod()
+			setup_materials()
+
+var lod_shell_count: int = 0
 
 # the geometry we're growing fur on
 var mesh: GeometryInstance3D
 
 # the generated shell materials
 var shells: Array = []
+
+# shells for current LOD
+var lod_shells: Array = []
 
 # linear spring physics state
 var previous_position: Vector3
@@ -269,7 +289,26 @@ func create_materials():
 		
 	previous_position = mesh.transform.origin
 	previous_rotation = mesh.transform.basis.get_euler()
-		
+
+
+func apply_lod():	
+	if mesh == null: return
+
+	lod_shells = []
+	
+	var min_shell_count = 8
+
+	lod_shell_count = min_shell_count + (1 - float(lod) / (lod_count-1)) * (number_of_shells - min_shell_count)
+
+	var step = float(number_of_shells-1) / (lod_shell_count-1)
+
+	lod_shells.append(shells[0])
+
+	for i in range(lod_shell_count-1):		
+		var base = int(step * i)
+		var next = int(step * (i+1))
+		shells[base].next_pass = shells[next]
+		lod_shells.append(shells[next])
 
 # setup parameters for all shell materials
 func setup_materials():
@@ -281,9 +320,12 @@ func setup_materials():
 
 # set shader parameters for a single shell at the given level
 func configure_material_for_level(mat: Material, level: int):
-	# var h = float(level) / (number_of_shells-1)
 	var h = float(level) / (number_of_shells-1)
-	# var thick = thickness.sample(h)
+	
+	# lower number of shells means visually less dense fur. We adjust the thickness based on an empirical formula
+	# to compensate for the loss of strand pixels
+	var lod_thickness = 4.5987 * pow(lod_shell_count, -0.2807)
+
 	# growth
 	mat.set_shader_parameter("height", length)
 	mat.set_shader_parameter("normal_strength", normal_strength)
@@ -298,7 +340,7 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("sparseness", sparseness)
 	mat.set_shader_parameter("thickness_curve", thickness_curve)
 	mat.set_shader_parameter("use_thickness_curve", thickness_curve != null)
-	mat.set_shader_parameter("thickness_scale", thickness_scale)
+	mat.set_shader_parameter("thickness_scale", thickness_scale * lod_thickness)
 	# Albedo
 	mat.set_shader_parameter("color", albedo_color)
 	mat.set_shader_parameter("height_gradient", height_gradient)
@@ -329,6 +371,40 @@ func init_physics():
 		mat.set_shader_parameter("physics_pos_offset", Vector3.ZERO)
 		mat.set_shader_parameter("physics_rot_offset", Basis.IDENTITY)
 
+func _process(delta):
+	# LOD
+	# TODO: make LOD min/max distance configurable
+	var lod_min_dist = 3.0
+	var lod_max_dist = 36.0
+
+	if mesh == null: return
+	# calculate distance from transform origin to camera		
+	var camera: Camera3D = get_viewport().get_camera_3d()
+	if camera == null: return
+	
+	# TODO: possibly use AABB for distance calculation.
+	var aabb: AABB = mesh.get_aabb()
+	
+	var closest = closest_point_on_aabb(aabb, camera.transform.origin)
+
+	# lod distance in the range [0, 1]	
+	var rel_dist: float = clamp((camera.transform.origin.distance_to(closest) - lod_min_dist) / (lod_max_dist - lod_min_dist), 0, 1)
+
+	# print(rel_dist)
+
+	lod = floor(rel_dist * lod_count)
+
+		
+
+func closest_point_on_aabb(aabb: AABB, p: Vector3):
+	var closest = Vector3.ZERO
+	var pos = mesh.to_global(aabb.position)
+	var end = mesh.to_global(aabb.end)
+	closest.x = clamp(p.x, pos.x, end.x)
+	closest.y = clamp(p.y, pos.y, end.y)
+	closest.z = clamp(p.z, pos.z, end.z)
+	return closest
+	
 
 func _physics_process(delta):	
 	linear_spring_physics(delta)
