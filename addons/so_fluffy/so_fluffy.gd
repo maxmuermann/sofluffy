@@ -207,6 +207,13 @@ var emission_texture: Texture2D:
 @export_range(0, 4, 0.01, "or_greater")
 var stiffness: float = 1.0
 
+@export var lod_enabled: bool = false:
+	set(v):
+		lod_enabled = v
+		if !lod_enabled:
+			lod = 0
+		notify_property_list_changed()
+
 @export var lod_count: int = 4:
 	set(v):
 		lod_count = v		
@@ -371,28 +378,29 @@ func init_physics():
 		mat.set_shader_parameter("physics_pos_offset", Vector3.ZERO)
 		mat.set_shader_parameter("physics_rot_offset", Basis.IDENTITY)
 
-func _process(delta):
+func _process(delta):	
 	# LOD
-	# TODO: make LOD min/max distance configurable
-	var lod_min_dist = 3.0
-	var lod_max_dist = 36.0
+	if lod_enabled:
+		# TODO: make LOD min/max distance configurable
+		var lod_min_dist = 3.0
+		var lod_max_dist = 36.0
 
-	if mesh == null: return
-	# calculate distance from transform origin to camera		
-	var camera: Camera3D = get_viewport().get_camera_3d()
-	if camera == null: return
-	
-	# TODO: possibly use AABB for distance calculation.
-	var aabb: AABB = mesh.get_aabb()
-	
-	var closest = closest_point_on_aabb(aabb, camera.transform.origin)
+		if mesh == null: return
+		# calculate distance from transform origin to camera		
+		var camera: Camera3D = get_viewport().get_camera_3d()
+		if camera == null: return
+		
+		# TODO: possibly use AABB for distance calculation.
+		var aabb: AABB = mesh.get_aabb()
+		
+		var closest = closest_point_on_aabb(aabb, camera.transform.origin)
 
-	# lod distance in the range [0, 1]	
-	var rel_dist: float = clamp((camera.transform.origin.distance_to(closest) - lod_min_dist) / (lod_max_dist - lod_min_dist), 0, 1)
+		# lod distance in the range [0, 1]	
+		var rel_dist: float = clamp((camera.transform.origin.distance_to(closest) - lod_min_dist) / (lod_max_dist - lod_min_dist), 0, 1)
 
-	# print(rel_dist)
+		# print(rel_dist)
 
-	lod = floor(rel_dist * lod_count)
+		lod = floor(rel_dist * lod_count)
 
 		
 
