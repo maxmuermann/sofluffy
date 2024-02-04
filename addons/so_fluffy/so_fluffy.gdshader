@@ -8,7 +8,8 @@ uniform vec3 static_direction_local = vec3(0.0,0.0,0.0);
 uniform vec3 static_direction_world = vec3(0.0,0.0,0.0);
 uniform float h = 0;
 uniform float density = 1.0;
-uniform float sparseness = 0.5;
+uniform int seed = 0;
+uniform float scruffiness = 0.5;
 uniform sampler2D heightmap_texture : source_color, filter_nearest;
 uniform bool use_heightmap_texture = false;
 uniform sampler2D turbulence_texture : filter_linear;
@@ -44,6 +45,7 @@ uniform mat3 physics_rot_offset;
 // - use with indicated fractional seeding method. 
 // @see https://www.shadertoy.com/view/ltB3zD
 float gold_noise(vec2 p) {
+	p = p + vec2(float(seed), float(seed));
 	vec3 p3  = fract(vec3(p.xyx) * .1031);
     p3 += dot(p3, p3.yzx + 33.33);
     return fract((p3.x + p3.y) * p3.z);
@@ -70,7 +72,7 @@ void fragment() {
 	}
 	
 	// density noise
-	float len = pow(gold_noise(floor(xy * 1024.0)), sparseness);
+	float len = scruffiness <= 0.0 ? 1.0 : pow(gold_noise(floor(xy * 1024.0)), scruffiness);
 	
 	if(use_heightmap_texture) {
 		vec3 val = texture(heightmap_texture, UV).rgb; // sample heightmap length texture at original UV - we don't care how far the strand has been displaced
@@ -83,7 +85,7 @@ void fragment() {
 	
 	float thickness;
 	if(use_thickness_curve) {
-		thickness = texture(thickness_curve, vec2(clamp(h / len, 0.0, 0.99), 0.0)).r;
+		thickness = texture(thickness_curve, vec2(clamp(h / len, 0.0, 0.99), 0.0)).r * len;
 	} else {
 		thickness = h;
 	} 

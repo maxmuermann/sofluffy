@@ -1,10 +1,10 @@
-[gd_scene load_steps=78 format=3 uid="uid://f51ny4v0m7iv"]
+[gd_scene load_steps=80 format=3 uid="uid://by3v2m3s86hnd"]
 
 [ext_resource type="Shader" path="res://addons/so_fluffy/so_fluffy.gdshader" id="1_u88hs"]
 [ext_resource type="Texture2D" uid="uid://cbtaiy4k3iqi1" path="res://demos/bw_vert_1_4.png" id="2_f2b26"]
-[ext_resource type="Script" path="res://bounce.gd" id="3_e21yv"]
+[ext_resource type="Script" path="res://demos/bounce.gd" id="3_e21yv"]
 [ext_resource type="Script" path="res://addons/so_fluffy/so_fluffy.gd" id="4_g63sl"]
-[ext_resource type="Script" path="res://FPSLabel.gd" id="5_8e266"]
+[ext_resource type="Script" path="res://demos/FPSLabel.gd" id="5_8e266"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvf43"]
 diffuse_mode = 1
@@ -33,7 +33,7 @@ frequency = 0.0242
 as_normal_map = true
 noise = SubResource("FastNoiseLite_30hqb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_knqa4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ws4u"]
 render_priority = 0
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
@@ -42,7 +42,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 1.0
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -56,16 +56,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.08164e-13, -0.199999, -2.08164e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.08165e-13, -0.2, -2.08165e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_coc4g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgrhn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_knqa4")
+next_pass = SubResource("ShaderMaterial_3ws4u")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -73,7 +73,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.984127
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -87,16 +87,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.07831e-13, -0.199679, -2.07831e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.07832e-13, -0.19968, -2.07832e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a1pl5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blml0"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_coc4g")
+next_pass = SubResource("ShaderMaterial_tgrhn")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -104,7 +104,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.968254
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -118,16 +118,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.07494e-13, -0.199355, -2.07494e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.07495e-13, -0.199356, -2.07495e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_itobn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sf5mn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_a1pl5")
+next_pass = SubResource("ShaderMaterial_blml0")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -135,7 +135,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.952381
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -149,16 +149,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.07151e-13, -0.199026, -2.07151e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.07152e-13, -0.199027, -2.07152e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x1jf6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7rmg"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_itobn")
+next_pass = SubResource("ShaderMaterial_sf5mn")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -166,7 +166,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.936508
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -180,16 +180,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.06803e-13, -0.198691, -2.06803e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.06804e-13, -0.198692, -2.06804e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kays4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mppxc"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_x1jf6")
+next_pass = SubResource("ShaderMaterial_m7rmg")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -197,7 +197,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.920635
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -211,16 +211,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.0645e-13, -0.198352, -2.0645e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.06451e-13, -0.198353, -2.06451e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5s8p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85bcr"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_kays4")
+next_pass = SubResource("ShaderMaterial_mppxc")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -228,7 +228,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.904762
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -242,16 +242,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.06091e-13, -0.198007, -2.06091e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.06092e-13, -0.198008, -2.06092e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubrph"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wo8m1"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_y5s8p")
+next_pass = SubResource("ShaderMaterial_85bcr")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -259,7 +259,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.888889
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -273,16 +273,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.05727e-13, -0.197657, -2.05727e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.05728e-13, -0.197658, -2.05728e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ha2uw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gca56"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ubrph")
+next_pass = SubResource("ShaderMaterial_wo8m1")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -290,7 +290,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.873016
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -304,16 +304,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.05356e-13, -0.197301, -2.05356e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.05357e-13, -0.197302, -2.05357e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqw76"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dtiv4"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ha2uw")
+next_pass = SubResource("ShaderMaterial_gca56")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -321,7 +321,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.857143
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -335,16 +335,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.0498e-13, -0.19694, -2.0498e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.04981e-13, -0.196941, -2.04981e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_isrlh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gv6s"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_iqw76")
+next_pass = SubResource("ShaderMaterial_dtiv4")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -352,7 +352,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.84127
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -366,16 +366,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.04597e-13, -0.196572, -2.04597e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.04598e-13, -0.196573, -2.04598e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybdiq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_24p2e"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_isrlh")
+next_pass = SubResource("ShaderMaterial_5gv6s")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -383,7 +383,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.825397
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -397,16 +397,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.04208e-13, -0.196198, -2.04208e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.04209e-13, -0.196199, -2.04209e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3q77l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvnhv"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ybdiq")
+next_pass = SubResource("ShaderMaterial_24p2e")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -414,7 +414,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.809524
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -428,16 +428,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.03811e-13, -0.195817, -2.03811e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.03812e-13, -0.195818, -2.03812e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0rr8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8x5h"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3q77l")
+next_pass = SubResource("ShaderMaterial_xvnhv")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -445,7 +445,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.793651
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -459,16 +459,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.03408e-13, -0.19543, -2.03408e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.03409e-13, -0.195431, -2.03409e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tiynq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iphfw"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_r0rr8")
+next_pass = SubResource("ShaderMaterial_f8x5h")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -476,7 +476,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.777778
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -490,16 +490,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.02998e-13, -0.195035, -2.02998e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.02999e-13, -0.195036, -2.02999e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fw3tf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onknl"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_tiynq")
+next_pass = SubResource("ShaderMaterial_iphfw")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -507,7 +507,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.761905
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -521,16 +521,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.0258e-13, -0.194634, -2.0258e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.02581e-13, -0.194635, -2.02581e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j15xe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21i7k"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_fw3tf")
+next_pass = SubResource("ShaderMaterial_onknl")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -538,7 +538,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.746032
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -552,16 +552,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.02154e-13, -0.194224, -2.02154e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.02155e-13, -0.194225, -2.02155e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aesf5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umurc"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_j15xe")
+next_pass = SubResource("ShaderMaterial_21i7k")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -569,7 +569,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.730159
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -583,16 +583,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.01719e-13, -0.193807, -2.01719e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.0172e-13, -0.193808, -2.0172e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tg3l8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8wr0y"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_aesf5")
+next_pass = SubResource("ShaderMaterial_umurc")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -600,7 +600,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.714286
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -614,16 +614,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.01276e-13, -0.193382, -2.01276e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.01277e-13, -0.193383, -2.01277e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vylp1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6skdn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_tg3l8")
+next_pass = SubResource("ShaderMaterial_8wr0y")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -631,7 +631,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.698413
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -645,16 +645,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.00825e-13, -0.192947, -2.00825e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.00826e-13, -0.192948, -2.00826e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xml8g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5old"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_vylp1")
+next_pass = SubResource("ShaderMaterial_6skdn")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -662,7 +662,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.68254
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -676,16 +676,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-2.00363e-13, -0.192504, -2.00363e-13)
+shader_parameter/physics_pos_offset = Vector3(-2.00364e-13, -0.192505, -2.00364e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_62pny"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8aik"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xml8g")
+next_pass = SubResource("ShaderMaterial_y5old")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -693,7 +693,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.666667
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -707,16 +707,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.99892e-13, -0.192052, -1.99892e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.99893e-13, -0.192053, -1.99893e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ilkbc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twt42"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_62pny")
+next_pass = SubResource("ShaderMaterial_o8aik")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -724,7 +724,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.650794
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -738,16 +738,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.99411e-13, -0.19159, -1.99411e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.99412e-13, -0.191591, -1.99412e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjnx1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xoqur"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ilkbc")
+next_pass = SubResource("ShaderMaterial_twt42")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -755,7 +755,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.634921
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -769,16 +769,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.9892e-13, -0.191117, -1.9892e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.98921e-13, -0.191118, -1.98921e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yr4x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avxec"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_jjnx1")
+next_pass = SubResource("ShaderMaterial_xoqur")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -786,7 +786,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.619048
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -800,16 +800,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.98417e-13, -0.190634, -1.98417e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.98418e-13, -0.190635, -1.98418e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8v8j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cedek"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3yr4x")
+next_pass = SubResource("ShaderMaterial_avxec")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -817,7 +817,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.603175
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -831,16 +831,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.97902e-13, -0.190139, -1.97902e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.97903e-13, -0.19014, -1.97903e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xw11e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgb6h"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_a8v8j")
+next_pass = SubResource("ShaderMaterial_cedek")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -848,7 +848,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.587302
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -862,16 +862,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.97375e-13, -0.189633, -1.97375e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.97376e-13, -0.189634, -1.97376e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qk52d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gb187"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xw11e")
+next_pass = SubResource("ShaderMaterial_qgb6h")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -879,7 +879,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.571429
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -893,16 +893,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.96835e-13, -0.189114, -1.96835e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.96836e-13, -0.189115, -1.96836e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tciys"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ln38"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_qk52d")
+next_pass = SubResource("ShaderMaterial_gb187")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -910,7 +910,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.555556
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -924,16 +924,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.96281e-13, -0.188582, -1.96281e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.96282e-13, -0.188583, -1.96282e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xd3ke"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkssq"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_tciys")
+next_pass = SubResource("ShaderMaterial_8ln38")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -941,7 +941,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.539683
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -955,16 +955,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.95713e-13, -0.188036, -1.95713e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.95714e-13, -0.188037, -1.95714e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hq5k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23su6"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xd3ke")
+next_pass = SubResource("ShaderMaterial_xkssq")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -972,7 +972,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.52381
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -986,16 +986,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.9513e-13, -0.187476, -1.9513e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.9513e-13, -0.187477, -1.9513e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7u3l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sk3k1"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_2hq5k")
+next_pass = SubResource("ShaderMaterial_23su6")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1003,7 +1003,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.507937
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1017,16 +1017,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.9453e-13, -0.1869, -1.9453e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.94531e-13, -0.186901, -1.94531e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlpc3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8s6v"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_v7u3l")
+next_pass = SubResource("ShaderMaterial_sk3k1")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1034,7 +1034,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.492063
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1048,16 +1048,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.93913e-13, -0.186307, -1.93913e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.93914e-13, -0.186308, -1.93914e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx4bf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qes1p"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_vlpc3")
+next_pass = SubResource("ShaderMaterial_d8s6v")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1065,7 +1065,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.47619
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1079,16 +1079,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.93279e-13, -0.185697, -1.93279e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.93279e-13, -0.185698, -1.93279e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljxjp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6v6k4"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_tx4bf")
+next_pass = SubResource("ShaderMaterial_qes1p")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1096,7 +1096,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.460317
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1110,16 +1110,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.92624e-13, -0.185069, -1.92624e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.92625e-13, -0.18507, -1.92625e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybc48"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03lpg"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ljxjp")
+next_pass = SubResource("ShaderMaterial_6v6k4")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1127,7 +1127,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.444444
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1141,16 +1141,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.9195e-13, -0.184421, -1.9195e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.91951e-13, -0.184422, -1.91951e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rk7a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rey8o"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ybc48")
+next_pass = SubResource("ShaderMaterial_03lpg")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1158,7 +1158,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.428571
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1172,16 +1172,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.91253e-13, -0.183751, -1.91253e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.91254e-13, -0.183752, -1.91254e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hksbs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbjgo"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_5rk7a")
+next_pass = SubResource("ShaderMaterial_rey8o")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1189,7 +1189,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.412698
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1203,16 +1203,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.90532e-13, -0.183059, -1.90532e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.90533e-13, -0.18306, -1.90533e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjns6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miu8a"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_hksbs")
+next_pass = SubResource("ShaderMaterial_nbjgo")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1220,7 +1220,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.396825
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1234,16 +1234,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.89787e-13, -0.182342, -1.89787e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.89788e-13, -0.182343, -1.89788e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fif30"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_683hs"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_mjns6")
+next_pass = SubResource("ShaderMaterial_miu8a")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1251,7 +1251,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.380952
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1265,16 +1265,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.89013e-13, -0.1816, -1.89013e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.89014e-13, -0.181601, -1.89014e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1gao"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0x65"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_fif30")
+next_pass = SubResource("ShaderMaterial_683hs")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1282,7 +1282,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.365079
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1296,16 +1296,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.88211e-13, -0.180828, -1.88211e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.88212e-13, -0.180829, -1.88212e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjtod"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkxcc"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_m1gao")
+next_pass = SubResource("ShaderMaterial_j0x65")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1313,7 +1313,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.349206
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1327,16 +1327,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.87376e-13, -0.180026, -1.87376e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.87377e-13, -0.180027, -1.87377e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhea8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7eois"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_hjtod")
+next_pass = SubResource("ShaderMaterial_mkxcc")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1344,7 +1344,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.333333
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1358,16 +1358,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.86506e-13, -0.179191, -1.86506e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.86507e-13, -0.179192, -1.86507e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l30ok"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_acgmc"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_nhea8")
+next_pass = SubResource("ShaderMaterial_7eois")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1375,7 +1375,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.31746
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1389,16 +1389,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.85599e-13, -0.178319, -1.85599e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.85599e-13, -0.17832, -1.85599e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_trxq4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lb3by"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_l30ok")
+next_pass = SubResource("ShaderMaterial_acgmc")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1406,7 +1406,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.301587
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1420,16 +1420,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.84649e-13, -0.177406, -1.84649e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.8465e-13, -0.177407, -1.8465e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvxva"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwybw"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_trxq4")
+next_pass = SubResource("ShaderMaterial_lb3by")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1437,7 +1437,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.285714
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1451,16 +1451,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.83653e-13, -0.17645, -1.83653e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.83654e-13, -0.176451, -1.83654e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgq5v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_loik8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_hvxva")
+next_pass = SubResource("ShaderMaterial_mwybw")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1468,7 +1468,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.269841
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1482,16 +1482,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.82607e-13, -0.175444, -1.82607e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.82607e-13, -0.175445, -1.82607e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6nu4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu3mm"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_hgq5v")
+next_pass = SubResource("ShaderMaterial_loik8")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1499,7 +1499,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.253968
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1513,16 +1513,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.81503e-13, -0.174384, -1.81503e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.81504e-13, -0.174385, -1.81504e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk2ry"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itwu0"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_i6nu4")
+next_pass = SubResource("ShaderMaterial_uu3mm")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1530,7 +1530,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.238095
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1544,16 +1544,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.80335e-13, -0.173262, -1.80335e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.80336e-13, -0.173263, -1.80336e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u27hh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_meuh8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_rk2ry")
+next_pass = SubResource("ShaderMaterial_itwu0")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1561,7 +1561,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.222222
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1575,16 +1575,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.79095e-13, -0.172071, -1.79095e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.79096e-13, -0.172071, -1.79096e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eg7s2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qj66v"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_u27hh")
+next_pass = SubResource("ShaderMaterial_meuh8")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1592,7 +1592,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.206349
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1606,16 +1606,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.77773e-13, -0.1708, -1.77773e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.77774e-13, -0.170801, -1.77774e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0p477"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqb71"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_eg7s2")
+next_pass = SubResource("ShaderMaterial_qj66v")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1623,7 +1623,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.190476
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1637,16 +1637,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.76356e-13, -0.169438, -1.76356e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.76357e-13, -0.169439, -1.76357e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f47me"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rve4"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_0p477")
+next_pass = SubResource("ShaderMaterial_gqb71")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1654,7 +1654,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.174603
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1668,16 +1668,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.74828e-13, -0.167971, -1.74828e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.74829e-13, -0.167971, -1.74829e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lxka"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77x1a"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_f47me")
+next_pass = SubResource("ShaderMaterial_4rve4")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1685,7 +1685,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.15873
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1699,16 +1699,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.7317e-13, -0.166377, -1.7317e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.7317e-13, -0.166378, -1.7317e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3v518"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm4ex"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_1lxka")
+next_pass = SubResource("ShaderMaterial_77x1a")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1716,7 +1716,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.142857
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1730,16 +1730,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.71355e-13, -0.164633, -1.71355e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.71355e-13, -0.164634, -1.71355e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yv0f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57uye"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3v518")
+next_pass = SubResource("ShaderMaterial_sm4ex")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1747,7 +1747,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.126984
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1761,16 +1761,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.69348e-13, -0.162706, -1.69348e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.69349e-13, -0.162707, -1.69349e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fb14u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqrn1"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3yv0f")
+next_pass = SubResource("ShaderMaterial_57uye")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1778,7 +1778,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.111111
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1792,16 +1792,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.67102e-13, -0.160548, -1.67102e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.67103e-13, -0.160548, -1.67103e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8v0m7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f03yr"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_fb14u")
+next_pass = SubResource("ShaderMaterial_aqrn1")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1809,7 +1809,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.0952381
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1823,16 +1823,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.64546e-13, -0.158092, -1.64546e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.64547e-13, -0.158092, -1.64547e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rx14b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8j8l0"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_8v0m7")
+next_pass = SubResource("ShaderMaterial_f03yr")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1840,7 +1840,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.0793651
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1854,16 +1854,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.61573e-13, -0.155235, -1.61573e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.61574e-13, -0.155236, -1.61574e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ar6su"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fr752"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_rx14b")
+next_pass = SubResource("ShaderMaterial_8j8l0")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1871,7 +1871,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.0634921
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1885,16 +1885,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.58007e-13, -0.15181, -1.58007e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.58008e-13, -0.151811, -1.58008e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_56o2m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lubq1"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ar6su")
+next_pass = SubResource("ShaderMaterial_fr752")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1902,7 +1902,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.047619
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1923,9 +1923,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_836tg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atcss"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_56o2m")
+next_pass = SubResource("ShaderMaterial_lubq1")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1933,7 +1933,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.031746
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1947,16 +1947,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.47426e-13, -0.141644, -1.47426e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.47427e-13, -0.141644, -1.47427e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e48ki"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0wdc0"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_836tg")
+next_pass = SubResource("ShaderMaterial_atcss")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1964,7 +1964,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.015873
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -1978,16 +1978,16 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 0.31
-shader_parameter/physics_pos_offset = Vector3(-1.37553e-13, -0.132158, -1.37553e-13)
+shader_parameter/physics_pos_offset = Vector3(-1.37554e-13, -0.132159, -1.37554e-13)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap_texture = ExtResource("2_f2b26")
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_3sfjo")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_7scob")
 shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbr75"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miqxq"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_e48ki")
+next_pass = SubResource("ShaderMaterial_0wdc0")
 shader = ExtResource("1_u88hs")
 shader_parameter/height = 0.3
 shader_parameter/normal_strength = 0.29
@@ -1995,7 +1995,7 @@ shader_parameter/static_direction_local = Vector3(2.08165e-12, 1, 2.08165e-12)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 0.0
 shader_parameter/density = 0.01
-shader_parameter/sparseness = 0.028
+shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = true
 shader_parameter/turbulence_strength = 0.037
 shader_parameter/turbulence_bendiness = 0.5
@@ -2020,6 +2020,11 @@ shader_parameter/thickness_curve = SubResource("CurveTexture_s43qi")
 radius = 0.15
 height = 0.3
 
+[sub_resource type="SphereMesh" id="SphereMesh_h557f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phiyw"]
+albedo_color = Color(0.109804, 0.109804, 0.109804, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -2031,9 +2036,9 @@ transform = Transform3D(0.951065, 0.0762138, 0.299444, -0.293164, 0.52875, 0.796
 light_energy = 2.353
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.619158, -0.405653, 0.672375, -0.538422, 0.842583, 0.0125337, -0.571616, -0.354261, -0.740104, 2.08165e-12, -0.0165846, 1.09188)
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 1.13139e-16, 0.850445, 0.526065, -4.80108e-16, -0.526066, 0.850444, 2.08165e-12, -0.0165846, 1.09188)
 material_override = SubResource("StandardMaterial3D_jvf43")
-material_overlay = SubResource("ShaderMaterial_jbr75")
+material_overlay = SubResource("ShaderMaterial_miqxq")
 mesh = SubResource("SphereMesh_54cma")
 script = ExtResource("3_e21yv")
 bounce_msec = 1500.0
@@ -2044,7 +2049,6 @@ rot_msec = 4000.0
 script = ExtResource("4_g63sl")
 length = 0.3
 density = 0.01
-sparseness = 0.028
 heightmap_texture = ExtResource("2_f2b26")
 thickness_curve = SubResource("CurveTexture_s43qi")
 thickness_scale = 0.31
@@ -2058,6 +2062,31 @@ albedo_color = Color(0.309804, 0.266667, 0.223529, 1)
 rotational_physics_scale = 0.1
 gravity = Vector3(2.08165e-12, 2, 2.08165e-12)
 stiffness = 0.1
+
+[node name="Node3D" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, -1.52408e-16, -1.03696e-16, 1.03695e-16, 0.930169, -0.367135, 1.52408e-16, 0.367135, 0.930169, 0.000922322, 0.0324578, 0.00599086)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/Node3D"]
+transform = Transform3D(0.1, -1.35433e-09, 3.98229e-09, 5.21691e-10, 0.0979371, 0.0202069, -4.17381e-09, -0.0202069, 0.0979371, -0.05, 0, 0.113)
+mesh = SubResource("SphereMesh_h557f")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D/Node3D/MeshInstance3D"]
+transform = Transform3D(0.4, -7.7515e-16, 3.44795e-15, 1.80581e-16, 0.4, -1.19606e-16, -5.85445e-15, 1.82819e-16, 0.4, 5.96046e-08, 0, 0.36973)
+material_override = SubResource("StandardMaterial3D_phiyw")
+mesh = SubResource("SphereMesh_h557f")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D/Node3D"]
+transform = Transform3D(0.1, -1.35433e-09, 3.98229e-09, 5.21691e-10, 0.0979371, 0.0202069, -4.17381e-09, -0.0202069, 0.0979371, 0.05, -1.49012e-08, 0.113)
+mesh = SubResource("SphereMesh_h557f")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D/Node3D/MeshInstance3D2"]
+transform = Transform3D(0.4, -7.7515e-16, 3.44795e-15, 1.80581e-16, 0.4, -1.19606e-16, -5.85445e-15, 1.82819e-16, 0.4, 5.96046e-08, 0, 0.36973)
+material_override = SubResource("StandardMaterial3D_phiyw")
+mesh = SubResource("SphereMesh_h557f")
+skeleton = NodePath("../../..")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

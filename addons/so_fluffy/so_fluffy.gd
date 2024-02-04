@@ -15,8 +15,7 @@ var preview_in_editor: bool = true:
 				init_physics()
 
 
-## Parameters that affect the growth of the fur - density, length, turbulence, etc.
-@export_group("Shape")
+@export_group("Shells and LOD")
 
 ## Number of shells to generate. Higher numbers look better, but incur larger performance penalties.
 @export
@@ -26,6 +25,44 @@ var number_of_shells: int = 64:
 		clear_materials()
 		create_materials()
 		setup_materials()
+
+## Enable or disable dynamic LOD. If disabled, fur will always be rendered with the maximum number of shells.
+@export var lod_enabled: bool = false:
+	set(v):
+		lod_enabled = v
+		if !lod_enabled:
+			lod = 0
+			apply_lod()
+			setup_materials()
+		else:
+			apply_lod()
+			setup_materials()
+		notify_property_list_changed()
+
+var lod: int = 0:
+	set(v):
+		var old_lod = lod
+		lod = v
+		if lod != old_lod:
+			apply_lod()
+			setup_materials()
+
+
+## Minimum distance from the camera at which lower-detail LODs are used.
+@export_range(0, 10, 0.01, "or_greater")
+var lod_min_distance = 3.0
+
+## Distance from the camera at which the lowest level LOD is used.
+@export_range(0, 50, 0.01, "or_greater")
+var lod_max_distance = 25.0
+
+## Number of shells to use for the lowest-quality LOD. Default and lower bound is 8, which should be a good value in most cases.
+@export_range(8, 256, 1, "or greater")
+var lod_minimum_shells: int = 8
+
+
+## Parameters that affect the growth of the fur - density, length, turbulence, etc.
+@export_group("Shape and Growth")
 
 ## Strand length
 @export_range(0, 2, 0.01, "or_greater")
@@ -41,11 +78,18 @@ var density: float = 0.5:
 		density = v
 		setup_materials()
 
-## Sparseness of the height distribution of strands - numbers below 1 for thicker fur, above 1 for sprser fur.
-@export_range(0.0, 4, 0.001, "or_greater")
-var sparseness: float = 0.5:
+## seed for fur noise random generator
+@export
+var seed: int = RandomNumberGenerator.new().randi_range(0, 65535):
 	set(v):
-		sparseness = v
+		seed = v
+		setup_materials()
+
+## Variation of the height distribution of strands. Higher values for a more scruffy look.
+@export_range(0.0, 4, 0.001, "or_greater")
+var scruffiness: float = 0.5:
+	set(v):
+		scruffiness = v
 		setup_materials()
 
 ## Fur heightmap texture. Values scale hair length by [1..0[. Black pixels are not rendered.
@@ -55,6 +99,9 @@ var heightmap_texture: Texture2D: # = preload("res://addons/so_fluffy/density_de
 		heightmap_texture = v
 		setup_materials()
 
+
+@export_subgroup("Strand Thickness")
+
 ## Thickness profile of a single strand. The values are inverted (1 it thin, 0 is thick) so that the curve presets can be used.
 @export
 var thickness_curve: CurveTexture:
@@ -62,12 +109,14 @@ var thickness_curve: CurveTexture:
 		thickness_curve = v
 		setup_materials()
 
-## uniformly scales up th thickness of all strands.
+## Uniformly scales the thickness of all strands.
 @export_range(0.01, 4.0, 0.01, "or_greater")
 var thickness_scale: float = 1.5:
 	set(v):
 		thickness_scale = v
 		setup_materials()
+
+@export_subgroup("Turbulence and Jitter")
 
 ## Noise texture to overlay higher-frequency turbulence on the fur. Best provided as a normal map.
 @export
@@ -82,6 +131,8 @@ var turbulence_strength: float = 0.3:
 	set(v):
 		turbulence_strength = v
 		setup_materials()
+
+@export_subgroup("Growth Direction")
 
 ## Blends the fur growth direction between the surface normal and the static directions below. A value of 1 means fur grows only in the direction of normals, a value of 0 means it grows only in a static direction.
 @export_range(0, 1, 0.005)
@@ -177,6 +228,7 @@ var emission_texture: Texture2D:
 @export_group("Physics")
 
 # physics parameters are set in _process, no need to call setup_materials()
+## Disable physics processing altogether. Physics simulation is very cheap, but should be disabled if the fur will not be subject to any movement.
 @export var physics_enabled: bool = true:
 	set(v):
 		physics_enabled = v		
@@ -207,28 +259,7 @@ var emission_texture: Texture2D:
 @export_range(0, 4, 0.01, "or_greater")
 var stiffness: float = 1.0
 
-@export var lod_enabled: bool = false:
-	set(v):
-		lod_enabled = v
-		if !lod_enabled:
-			lod = 0
-		notify_property_list_changed()
 
-@export var lod_count: int = 4:
-	set(v):
-		lod_count = v		
-		apply_lod()
-		setup_materials()
-
-# TODO: TESTING ONLY
-@export var lod: int = 0:
-	set(v):
-		var old_lod = lod
-		lod = v
-		if lod != old_lod:
-			print("lod: ", lod)
-			apply_lod()
-			setup_materials()
 
 var lod_shell_count: int = 0
 
@@ -236,10 +267,10 @@ var lod_shell_count: int = 0
 var mesh: GeometryInstance3D
 
 # the generated shell materials
-var shells: Array = []
+var shells: Array[Material] = []
 
 # shells for current LOD
-var lod_shells: Array = []
+var lod_shells: Array[Material] = []
 
 # linear spring physics state
 var previous_position: Vector3
@@ -258,14 +289,20 @@ func _validate_property(property: Dictionary):
 	# hide/show physics section details
 	if property.name in ["physics_preview", "gravity", "spring_constant", "mass", "damping", "stretch"] and !physics_enabled:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
+	# hide/show LOD section details
+	if property.name in ["lod_min_distance", "lod_max_distance"] and !lod_enabled:
+		property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready():
-	init_physics()
+	init_physics()	
 
 
 func _enter_tree():
 	clear_materials()
 	create_materials()
+	lod = 0
+	lod_shell_count = number_of_shells
+	apply_lod()
 	setup_materials()
 	notify_property_list_changed()
 
@@ -303,9 +340,7 @@ func apply_lod():
 
 	lod_shells = []
 	
-	var min_shell_count = 8
-
-	lod_shell_count = min_shell_count + (1 - float(lod) / (lod_count-1)) * (number_of_shells - min_shell_count)
+	lod_shell_count = lod_minimum_shells + (1 - float(lod) / (number_of_shells-1)) * (number_of_shells - lod_minimum_shells)
 
 	var step = float(number_of_shells-1) / (lod_shell_count-1)
 
@@ -331,7 +366,7 @@ func configure_material_for_level(mat: Material, level: int):
 	
 	# lower number of shells means visually less dense fur. We adjust the thickness based on an empirical formula
 	# to compensate for the loss of strand pixels
-	var lod_thickness = 4.5987 * pow(lod_shell_count, -0.2807)
+	var lod_thickness = 4.5987 * pow(lod_shell_count, -0.2807) if lod_enabled else 1.0
 
 	# growth
 	mat.set_shader_parameter("height", length)
@@ -344,7 +379,8 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("turbulence_texture", turbulence_texture)
 	mat.set_shader_parameter("turbulence_strength", turbulence_strength)
 	mat.set_shader_parameter("density", density)
-	mat.set_shader_parameter("sparseness", sparseness)
+	mat.set_shader_parameter("seed", seed)
+	mat.set_shader_parameter("scruffiness", scruffiness)
 	mat.set_shader_parameter("thickness_curve", thickness_curve)
 	mat.set_shader_parameter("use_thickness_curve", thickness_curve != null)
 	mat.set_shader_parameter("thickness_scale", thickness_scale * lod_thickness)
@@ -378,31 +414,26 @@ func init_physics():
 		mat.set_shader_parameter("physics_pos_offset", Vector3.ZERO)
 		mat.set_shader_parameter("physics_rot_offset", Basis.IDENTITY)
 
-func _process(delta):	
+func _process(delta):
 	# LOD
 	if lod_enabled:
-		# TODO: make LOD min/max distance configurable
-		var lod_min_dist = 3.0
-		var lod_max_dist = 36.0
-
 		if mesh == null: return
 		# calculate distance from transform origin to camera		
 		var camera: Camera3D = get_viewport().get_camera_3d()
 		if camera == null: return
 		
-		# TODO: possibly use AABB for distance calculation.
+		# use closest point on AABB for distance calculation.
 		var aabb: AABB = mesh.get_aabb()
-		
 		var closest = closest_point_on_aabb(aabb, camera.transform.origin)
 
 		# lod distance in the range [0, 1]	
-		var rel_dist: float = clamp((camera.transform.origin.distance_to(closest) - lod_min_dist) / (lod_max_dist - lod_min_dist), 0, 1)
+		var rel_dist: float = clamp((camera.transform.origin.distance_to(closest) - lod_min_distance) / (lod_max_distance - lod_min_distance), 0, 1)
 
-		# print(rel_dist)
+		print(rel_dist)
 
-		lod = floor(rel_dist * lod_count)
+		# linearly scale number of shells
+		lod = clamp(floor(rel_dist * number_of_shells), 0, number_of_shells-1)
 
-		
 
 func closest_point_on_aabb(aabb: AABB, p: Vector3):
 	var closest = Vector3.ZERO
@@ -417,6 +448,7 @@ func closest_point_on_aabb(aabb: AABB, p: Vector3):
 func _physics_process(delta):	
 	linear_spring_physics(delta)
 	rotational_spring_physics(delta)
+
 
 # calculate spring physics for linear movement
 func linear_spring_physics(delta: float):
