@@ -15,7 +15,7 @@ A good reference on how shell rendering works is this video: https://www.youtube
     - fur density (strand per area)
     - sparseness (length distribution of strands)
     - heightmap texture for precise control over where strands can grow
-    - turbulence - overlay noise for displacing strands for a more organic look, or to model things like cowlicks or other turbulence
+    - turbulence and jitter - overlay noise for displacing strands for a more organic look, or to model things like cowlicks
     - thickness profile - control the thickness of strands over their length to produce finer or thicker hair, or other organic shapes like moss or fungus
     - Fur can grow along surface normals, in a fixed direction relative to the object, or in a fixed direction in world space, or any combination of those
 - Control over appearance:
@@ -163,11 +163,19 @@ Uniformly scales up th thickness of all strands. Thicker strands give the visual
 
 #### Turbulence Texture
 
-Noise texture to overlay higher-frequency turbulence on the fur. Uses r and g channels to calculate a displacement vector, so is best provided as a normal map.
+Noise texture to overlay turbulence on the fur. Uses r and g channels to calculate a displacement vector, so is best provided as a normal map. Turbulence scales with density.
 
 #### Turbulence Strength
 
 Strength of the turbulence effect. Higher numbers apply more turbulence.
+
+#### Jitter Texture
+
+Noise texture to overlay UV-space turbulence on the fur. Uses r and g channels to calculate a displacement vector, so is best provided as a normal map. Jitter does not scale with density.
+
+#### Jitter Strength
+
+Strength of the Jitter noise effect.
 
 ### Growth Direction
 

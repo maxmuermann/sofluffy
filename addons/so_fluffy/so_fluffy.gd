@@ -118,7 +118,7 @@ var thickness_scale: float = 1.5:
 
 @export_subgroup("Turbulence and Jitter")
 
-## Noise texture to overlay higher-frequency turbulence on the fur. Best provided as a normal map.
+## Noise texture to overlay displacement turbulence on the fur. Best provided as a normal map.
 @export
 var turbulence_texture: Texture2D = preload("res://addons/so_fluffy/turbulence_default.tres").duplicate():
 	set(v):
@@ -130,6 +130,20 @@ var turbulence_texture: Texture2D = preload("res://addons/so_fluffy/turbulence_d
 var turbulence_strength: float = 0.3:
 	set(v):
 		turbulence_strength = v
+		setup_materials()
+
+## Noise texture to add high-frequency jitter on the fur.
+@export
+var jitter_texture: Texture2D = preload("res://addons/so_fluffy/turbulence_default.tres").duplicate():
+	set(v):
+		jitter_texture = v
+		setup_materials()	
+		
+## Strength of the jitter effect.
+@export_range(0, 1, 0.001, "or_greater")
+var jitter_strength: float = 0.0:
+	set(v):
+		jitter_strength = v
 		setup_materials()
 
 @export_subgroup("Growth Direction")
@@ -378,6 +392,8 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("use_heightmap_texture", heightmap_texture != null)
 	mat.set_shader_parameter("turbulence_texture", turbulence_texture)
 	mat.set_shader_parameter("turbulence_strength", turbulence_strength)
+	mat.set_shader_parameter("jitter_texture", jitter_texture)
+	mat.set_shader_parameter("jitter_strength", jitter_strength)
 	mat.set_shader_parameter("density", density)
 	mat.set_shader_parameter("seed", seed)
 	mat.set_shader_parameter("scruffiness", scruffiness)

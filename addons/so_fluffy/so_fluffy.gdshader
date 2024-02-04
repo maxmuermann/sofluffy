@@ -14,7 +14,9 @@ uniform sampler2D heightmap_texture : source_color, filter_nearest;
 uniform bool use_heightmap_texture = false;
 uniform sampler2D turbulence_texture : filter_linear;
 uniform float turbulence_strength = 0.5;
-uniform float turbulence_bendiness = 0.5;
+uniform sampler2D jitter_texture : filter_linear;
+uniform float jitter_strength = 0;
+
 
 uniform vec3 color: source_color;
 uniform sampler2D height_gradient: source_color, filter_nearest;
@@ -70,6 +72,8 @@ void fragment() {
 		vec2 displacement = turbulence * turbulence_strength * 0.1;
 		xy = xy + displacement * pow((1.0 - h * 0.5), 1.0 * turbulence_strength) * 1.0;
 	}
+	
+	xy = xy + (texture(jitter_texture, UV).xy - vec2(0.5, 0.5)) * jitter_strength / 200.0;
 	
 	// density noise
 	float len = scruffiness <= 0.0 ? 1.0 : pow(gold_noise(floor(xy * 1024.0)), scruffiness);
