@@ -70,6 +70,9 @@ SO FLUFFY can be applied to any geometry in Godot that inherits from GeometryNod
 
 ## Targeting
 
+By default, SO FLUFFY uses the Geometry Node's Material Overlay to render fur.
+
+If attached to a MeshInstance3D, you can optionally configure the fur system to render on one or more surfaces instead. To do so, configure the surface indices in the "Targeting" section.
 
 # Demos
 
@@ -83,6 +86,7 @@ SO FLUFFY comes with a number of demo scenes that illustrate some of the system'
     - height gradient for stripy spikes
     - thickness curve for the spike shape
 - enoki: uses the thickness curve to render a large field of mushroom-shaped strands
+- bee: a fuzzy animated bee, demonstrating use of a skinned mesh, surface targeting, and Albedo texture. Bee model courtesy of https://github.com/gdquest-demos/godot-4-3D-Characters
 
 
 # Fur Parameters
@@ -95,11 +99,11 @@ For configuring fur parameters, it is very handy to be able to preview the fur i
 
 This setting does not affect runtime behaviour - fur rendering is always enabled at runtime.
 
-## Target - TODO
+## Targeting
 
-By default, it uses the Geometry Node's Material Overlay to render fur.
+### Target Surfaces
 
-If attached to a MeshInstance3D, you can optionally configure the fur system to render on one or more surfaces instead. To do so, enable the "Surface" toggle under the
+Indices of surfaces to apply fur to. If empty, fur is applied to the entire mesh as a single overlay Material. Otherwise, fur is applied only to the specified surfaces.
 
 ## Performance and LODs
 

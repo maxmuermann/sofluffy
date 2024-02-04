@@ -16,6 +16,7 @@ var preview_in_editor: bool = true:
 
 @export_group("Targeting")
 
+## Indices of surfaces to apply fur to. If empty, fur is applied to the entire mesh as a single overlay Material. Otherwise, fur is applied only to the specified surfaces.
 @export var target_surfaces : Array[int] = []:
 	set(v):
 		clear_materials()
@@ -355,7 +356,6 @@ func clear_materials():
 
 # remove fur materials when Fur node is deleted
 func _exit_tree() -> void:
-	print("exit tree - removing materials")
 	clear_materials()
 
 
