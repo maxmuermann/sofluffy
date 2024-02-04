@@ -338,7 +338,8 @@ func _enter_tree():
 
 # remove fur material
 func clear_materials():
-	if(mesh == null): return
+	if(mesh == null):
+		return
 	if target_surfaces.size() == 0:
 		if !remove_fur_material(mesh.material_overlay):
 			mesh.material_overlay = null
@@ -360,8 +361,10 @@ func _exit_tree() -> void:
 
 # remove fur material from the material chain. Returns false if the passed material is itself a fur material.
 func remove_fur_material(mat: Material) -> bool:
-	if mat == null: return false
-	if mat.has_meta("is_fur"): return false
+	if mat == null:
+		return false
+	if mat.has_meta("is_fur"):
+		return false
 
 	while mat.next_pass != null:		
 		if mat.next_pass.has_meta("is_fur"):
@@ -373,7 +376,8 @@ func remove_fur_material(mat: Material) -> bool:
 
 # assigns a fur material to the last material in the next_pass chain. If the start of the chain is null, return false.
 func assign_fur_material(mat: Material, fur: Material) -> bool:
-	if mat == null: return false
+	if mat == null:
+		return false
 
 	while mat.next_pass != null:		
 		mat = mat.next_pass
@@ -386,7 +390,8 @@ func assign_fur_material(mat: Material, fur: Material) -> bool:
 # create cascade of shell materials and assign to subsequent next_pass slots
 func create_materials():
 	mesh = get_parent()
-	if(mesh == null): return	
+	if(mesh == null):
+		return	
 
 	var mat = shell_material.duplicate()
 	mat.set_meta("is_fur", true)
@@ -413,7 +418,8 @@ func create_materials():
 
 
 func apply_lod():	
-	if mesh == null: return
+	if mesh == null:
+		return
 
 	lod_shells = []
 	
@@ -431,7 +437,8 @@ func apply_lod():
 
 # setup parameters for all shell materials
 func setup_materials():
-	if mesh == null: return
+	if mesh == null:
+		return
 
 	for i in number_of_shells:
 		configure_material_for_level(shells[i], i)
@@ -484,7 +491,8 @@ func init_physics():
 	spring_rotation = Vector3.ZERO
 	spring_angular_velocity = Vector3.ZERO	
 
-	if mesh == null: return
+	if mesh == null:
+		return
 
 	previous_position = mesh.transform.origin
 	previous_rotation = mesh.transform.basis.get_euler()
@@ -497,10 +505,12 @@ func init_physics():
 func _process(delta):
 	# LOD
 	if lod_enabled:
-		if mesh == null: return
+		if mesh == null:
+			return
 		# calculate distance from transform origin to camera		
 		var camera: Camera3D = get_viewport().get_camera_3d()
-		if camera == null: return
+		if camera == null:
+			return
 		
 		# use closest point on AABB for distance calculation.
 		var aabb: AABB = mesh.get_aabb()
@@ -572,8 +582,10 @@ func short_angle(a):
 
 # calculate spring physics for rotational movement
 func rotational_spring_physics(delta: float):
-	if !physics_enabled: return
-	if Engine.is_editor_hint() and (!physics_preview || !preview_in_editor): return
+	if !physics_enabled:
+		return
+	if Engine.is_editor_hint() and (!physics_preview || !preview_in_editor):
+		return
 	# calculate compound rotational forces acting on the shells, as a Vector3 of Euler angles
 	var f = Vector3.ZERO
 	
