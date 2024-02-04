@@ -1,9 +1,9 @@
 [gd_scene load_steps=75 format=3 uid="uid://b2mst0ob25hla"]
 
 [ext_resource type="Shader" path="res://addons/so_fluffy/so_fluffy.gdshader" id="1_qlbfp"]
-[ext_resource type="Script" path="res://demos/bounce.gd" id="2_x36gs"]
+[ext_resource type="Script" path="res://demos/support_files/bounce.gd" id="2_x36gs"]
 [ext_resource type="Script" path="res://addons/so_fluffy/so_fluffy.gd" id="3_eb6dg"]
-[ext_resource type="Script" path="res://demos/FPSLabel.gd" id="4_abgtl"]
+[ext_resource type="Script" path="res://demos/support_files/FPSLabel.gd" id="4_abgtl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvf43"]
 diffuse_mode = 1

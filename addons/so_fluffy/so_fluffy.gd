@@ -445,8 +445,6 @@ func _process(delta):
 		# lod distance in the range [0, 1]	
 		var rel_dist: float = clamp((camera.transform.origin.distance_to(closest) - lod_min_distance) / (lod_max_distance - lod_min_distance), 0, 1)
 
-		print(rel_dist)
-
 		# linearly scale number of shells
 		lod = clamp(floor(rel_dist * number_of_shells), 0, number_of_shells-1)
 

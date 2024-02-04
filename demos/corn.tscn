@@ -1,6 +1,6 @@
 [gd_scene load_steps=77 format=3 uid="uid://b8yaq553w63q0"]
 
-[ext_resource type="Script" path="res://demos/FPSLabel.gd" id="1_vgsnd"]
+[ext_resource type="Script" path="res://demos/support_files/FPSLabel.gd" id="1_vgsnd"]
 [ext_resource type="Shader" path="res://addons/so_fluffy/so_fluffy.gdshader" id="2_a5cs6"]
 [ext_resource type="Script" path="res://addons/so_fluffy/so_fluffy.gd" id="3_occw8"]
 

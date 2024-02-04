@@ -1,10 +1,10 @@
 [gd_scene load_steps=76 format=3 uid="uid://lve0ct44cn55"]
 
-[ext_resource type="Script" path="res://demos/bounce.gd" id="1_4r5vn"]
+[ext_resource type="Script" path="res://demos/support_files/bounce.gd" id="1_4r5vn"]
 [ext_resource type="Shader" path="res://addons/so_fluffy/so_fluffy.gdshader" id="2_2k4oc"]
 [ext_resource type="Script" path="res://addons/so_fluffy/so_fluffy.gd" id="3_fvwms"]
-[ext_resource type="Script" path="res://demos/FPSLabel.gd" id="4_glwi2"]
-[ext_resource type="Script" path="res://demos/lod_stats.gd" id="5_6st11"]
+[ext_resource type="Script" path="res://demos/support_files/FPSLabel.gd" id="4_glwi2"]
+[ext_resource type="Script" path="res://demos/support_files/lod_stats.gd" id="5_6st11"]
 
 [sub_resource type="Gradient" id="Gradient_vjxq2"]
 offsets = PackedFloat32Array(0.107256, 0.675079)
