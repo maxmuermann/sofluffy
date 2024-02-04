@@ -14,6 +14,14 @@ var preview_in_editor: bool = true:
 				setup_materials()
 				init_physics()
 
+@export_group("Targeting")
+
+@export var target_surfaces : Array[int] = []:
+	set(v):
+		clear_materials()
+		target_surfaces = v		
+		create_materials()
+		setup_materials()
 
 @export_group("Shells and LOD")
 
@@ -190,6 +198,13 @@ var scale_height_gradient: bool = false:
 		scale_height_gradient = v
 		setup_materials()
 
+## If enabled, all pixels on shell 0 are rendered. Otherwise, non-strand pixels are transparent. This is useful if you do not want to incur the overhead of a dedicated skin material.
+@export
+var render_skin: bool = false:
+	set(v):
+		render_skin = v
+		setup_materials()
+
 ## Albedo 
 @export_subgroup("Albedo")
 ## Plain hair color
@@ -324,10 +339,48 @@ func _enter_tree():
 # remove fur material
 func clear_materials():
 	if(mesh == null): return
-	mesh.material_overlay = null
+	if target_surfaces.size() == 0:
+		if !remove_fur_material(mesh.material_overlay):
+			mesh.material_overlay = null
+	else:
+		for i in target_surfaces:
+			if !remove_fur_material(mesh.get_surface_override_material(i)):
+				mesh.set_surface_override_material(i, null)
+
 	for shell in shells:
 		shell.next_pass = null
 	shells = []
+
+
+# remove fur materials when Fur node is deleted
+func _exit_tree() -> void:
+	print("exit tree - removing materials")
+	clear_materials()
+
+
+# remove fur material from the material chain. Returns false if the passed material is itself a fur material.
+func remove_fur_material(mat: Material) -> bool:
+	if mat == null: return false
+	if mat.has_meta("is_fur"): return false
+
+	while mat.next_pass != null:		
+		if mat.next_pass.has_meta("is_fur"):
+			mat.next_pass = null
+			return true
+		mat = mat.next_pass
+
+	return true
+
+# assigns a fur material to the last material in the next_pass chain. If the start of the chain is null, return false.
+func assign_fur_material(mat: Material, fur: Material) -> bool:
+	if mat == null: return false
+
+	while mat.next_pass != null:		
+		mat = mat.next_pass
+
+	mat.next_pass = fur
+
+	return true
 
 
 # create cascade of shell materials and assign to subsequent next_pass slots
@@ -336,11 +389,21 @@ func create_materials():
 	if(mesh == null): return	
 
 	var mat = shell_material.duplicate()
-	mesh.material_overlay = mat
+	mat.set_meta("is_fur", true)
+
+	if target_surfaces.size() == 0:
+		if !assign_fur_material(mesh.material_overlay, mat):
+			mesh.material_overlay = mat
+	else:
+		for i in target_surfaces:
+			if !assign_fur_material(mesh.get_surface_override_material(i), mat):
+				mesh.set_surface_override_material(i, mat)
+	
 	shells.append(mat)
 
 	for i in range(1, number_of_shells):
 		var new_mat = shell_material.duplicate()
+		new_mat.set_meta("is_fur", true)
 		mat.next_pass = new_mat
 		mat = new_mat
 		shells.append(mat)
@@ -400,6 +463,7 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("thickness_curve", thickness_curve)
 	mat.set_shader_parameter("use_thickness_curve", thickness_curve != null)
 	mat.set_shader_parameter("thickness_scale", thickness_scale * lod_thickness)
+	mat.set_shader_parameter("render_skin", render_skin)
 	# Albedo
 	mat.set_shader_parameter("color", albedo_color)
 	mat.set_shader_parameter("height_gradient", height_gradient)

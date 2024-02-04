@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://addons/so_fluffy/so_fluffy.gdshader" id="1_s2fin"]
 [ext_resource type="Script" path="res://addons/so_fluffy/so_fluffy.gd" id="2_11adj"]
-[ext_resource type="Script" path="res://demos/FPSLabel.gd" id="4_41uq8"]
+[ext_resource type="Script" path="res://demos/support_files/FPSLabel.gd" id="4_41uq8"]
 
 [sub_resource type="Gradient" id="Gradient_gv7jr"]
 offsets = PackedFloat32Array(0.167472, 0.866345, 1)
@@ -25,7 +25,7 @@ frequency = 0.0095
 as_normal_map = true
 noise = SubResource("FastNoiseLite_30hqb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8cff"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ynnp"]
 render_priority = 0
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
@@ -55,9 +55,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhmhb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b7tmu"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_v8cff")
+next_pass = SubResource("ShaderMaterial_7ynnp")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -86,9 +86,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrn27"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x6t3u"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_jhmhb")
+next_pass = SubResource("ShaderMaterial_b7tmu")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -117,9 +117,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7c2de"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ccs3l"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_hrn27")
+next_pass = SubResource("ShaderMaterial_x6t3u")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -148,9 +148,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecfa7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sneut"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7c2de")
+next_pass = SubResource("ShaderMaterial_ccs3l")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -179,9 +179,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8oem"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpqx2"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ecfa7")
+next_pass = SubResource("ShaderMaterial_sneut")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -210,9 +210,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqmhb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48n3b"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_h8oem")
+next_pass = SubResource("ShaderMaterial_gpqx2")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -241,9 +241,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4c3i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0f506"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xqmhb")
+next_pass = SubResource("ShaderMaterial_48n3b")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -272,9 +272,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m51jd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncrbs"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_q4c3i")
+next_pass = SubResource("ShaderMaterial_0f506")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -303,9 +303,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6vyn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcd40"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_m51jd")
+next_pass = SubResource("ShaderMaterial_ncrbs")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -334,9 +334,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_keo6f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ngks"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_a6vyn")
+next_pass = SubResource("ShaderMaterial_mcd40")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -365,9 +365,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyfr3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6eus"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_keo6f")
+next_pass = SubResource("ShaderMaterial_6ngks")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -396,9 +396,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7oqpk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ny2o"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_uyfr3")
+next_pass = SubResource("ShaderMaterial_b6eus")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -427,9 +427,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxssi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mjlm"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7oqpk")
+next_pass = SubResource("ShaderMaterial_2ny2o")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -458,9 +458,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gshrf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_et50q"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_qxssi")
+next_pass = SubResource("ShaderMaterial_1mjlm")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -489,9 +489,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7grg5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jq176"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_gshrf")
+next_pass = SubResource("ShaderMaterial_et50q")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -520,9 +520,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gksla"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ci1fk"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7grg5")
+next_pass = SubResource("ShaderMaterial_jq176")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -551,9 +551,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dr3p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oh6nx"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_gksla")
+next_pass = SubResource("ShaderMaterial_ci1fk")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -582,9 +582,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lyp5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svca3"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7dr3p")
+next_pass = SubResource("ShaderMaterial_oh6nx")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -613,9 +613,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4yn4e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ssxu"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_0lyp5")
+next_pass = SubResource("ShaderMaterial_svca3")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -644,9 +644,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yr57m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayc6q"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_4yn4e")
+next_pass = SubResource("ShaderMaterial_8ssxu")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -675,9 +675,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qe2a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bq7am"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_yr57m")
+next_pass = SubResource("ShaderMaterial_ayc6q")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -706,9 +706,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k3h1n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_733gc"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3qe2a")
+next_pass = SubResource("ShaderMaterial_bq7am")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -737,9 +737,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4gw1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jo7sf"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_k3h1n")
+next_pass = SubResource("ShaderMaterial_733gc")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -768,9 +768,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5x7k4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hov56"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_d4gw1")
+next_pass = SubResource("ShaderMaterial_jo7sf")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -799,9 +799,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnlr4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mx4lu"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_5x7k4")
+next_pass = SubResource("ShaderMaterial_hov56")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -830,9 +830,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygkb2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1gtl"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_tnlr4")
+next_pass = SubResource("ShaderMaterial_mx4lu")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -861,9 +861,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ncbr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfpjb"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ygkb2")
+next_pass = SubResource("ShaderMaterial_n1gtl")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -892,9 +892,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_52m8o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ys0q"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_5ncbr")
+next_pass = SubResource("ShaderMaterial_lfpjb")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -923,9 +923,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2mff"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0wux"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_52m8o")
+next_pass = SubResource("ShaderMaterial_2ys0q")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -954,9 +954,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n15bs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ab8se"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_a2mff")
+next_pass = SubResource("ShaderMaterial_r0wux")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -985,9 +985,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncyhd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8u07"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_n15bs")
+next_pass = SubResource("ShaderMaterial_ab8se")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1016,9 +1016,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymjoj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rseqt"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ncyhd")
+next_pass = SubResource("ShaderMaterial_b8u07")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1047,9 +1047,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7oyq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgtqx"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ymjoj")
+next_pass = SubResource("ShaderMaterial_rseqt")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1078,9 +1078,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_03eyn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjmsk"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_v7oyq")
+next_pass = SubResource("ShaderMaterial_rgtqx")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1109,9 +1109,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_14ect"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xi647"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_03eyn")
+next_pass = SubResource("ShaderMaterial_rjmsk")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1140,9 +1140,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pm71"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pw3a8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_14ect")
+next_pass = SubResource("ShaderMaterial_xi647")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1171,9 +1171,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvw7t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mm2v"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_8pm71")
+next_pass = SubResource("ShaderMaterial_pw3a8")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1202,9 +1202,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gybuu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2y7d"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_pvw7t")
+next_pass = SubResource("ShaderMaterial_3mm2v")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1233,9 +1233,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrho"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eo77y"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_gybuu")
+next_pass = SubResource("ShaderMaterial_m2y7d")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1264,9 +1264,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6st3m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qneby"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_vyrho")
+next_pass = SubResource("ShaderMaterial_eo77y")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1295,9 +1295,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8k2ur"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n03h0"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_6st3m")
+next_pass = SubResource("ShaderMaterial_qneby")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1326,9 +1326,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sco2w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihn6j"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_8k2ur")
+next_pass = SubResource("ShaderMaterial_n03h0")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1357,9 +1357,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo4v0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_00krh"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_sco2w")
+next_pass = SubResource("ShaderMaterial_ihn6j")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1388,9 +1388,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4en8j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pw4y"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_yo4v0")
+next_pass = SubResource("ShaderMaterial_00krh")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1419,9 +1419,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjvqa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wyik3"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_4en8j")
+next_pass = SubResource("ShaderMaterial_8pw4y")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1450,9 +1450,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yiyl3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ftcv"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_fjvqa")
+next_pass = SubResource("ShaderMaterial_wyik3")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1481,9 +1481,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vo7tc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1jhp"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_yiyl3")
+next_pass = SubResource("ShaderMaterial_3ftcv")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1512,9 +1512,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1wkg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oq5w8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_vo7tc")
+next_pass = SubResource("ShaderMaterial_c1jhp")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1543,9 +1543,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cylyt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmv26"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_g1wkg")
+next_pass = SubResource("ShaderMaterial_oq5w8")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1574,9 +1574,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uobkr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0oo6e"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_cylyt")
+next_pass = SubResource("ShaderMaterial_hmv26")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1605,9 +1605,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xq3sn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0wdq"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_uobkr")
+next_pass = SubResource("ShaderMaterial_0oo6e")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1636,9 +1636,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rqr4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x0cup"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xq3sn")
+next_pass = SubResource("ShaderMaterial_u0wdq")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1667,9 +1667,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c83wl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2tv8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_5rqr4")
+next_pass = SubResource("ShaderMaterial_x0cup")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1698,9 +1698,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyo0c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q71dn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_c83wl")
+next_pass = SubResource("ShaderMaterial_g2tv8")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1729,9 +1729,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7tp04"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tx2v"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_dyo0c")
+next_pass = SubResource("ShaderMaterial_q71dn")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1760,9 +1760,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_813r5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqqy8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7tp04")
+next_pass = SubResource("ShaderMaterial_5tx2v")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1791,9 +1791,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2axpb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7e0q"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_813r5")
+next_pass = SubResource("ShaderMaterial_sqqy8")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1822,9 +1822,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0e6n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxp1b"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_2axpb")
+next_pass = SubResource("ShaderMaterial_f7e0q")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1853,9 +1853,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdc5t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_226kn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_w0e6n")
+next_pass = SubResource("ShaderMaterial_hxp1b")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1884,9 +1884,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hq1tp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhvke"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_cdc5t")
+next_pass = SubResource("ShaderMaterial_226kn")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1915,9 +1915,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6og82"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dnbo"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_hq1tp")
+next_pass = SubResource("ShaderMaterial_dhvke")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1946,9 +1946,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ennbu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dwyc8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_6og82")
+next_pass = SubResource("ShaderMaterial_7dnbo")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -1977,9 +1977,9 @@ shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_nh0cb")
 shader_parameter/height_gradient = SubResource("GradientTexture2D_eglvd")
 shader_parameter/thickness_curve = SubResource("CurveTexture_c1noh")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ely5o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhe21"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ennbu")
+next_pass = SubResource("ShaderMaterial_dwyc8")
 shader = ExtResource("1_s2fin")
 shader_parameter/height = 0.1
 shader_parameter/normal_strength = 1.0
@@ -2026,7 +2026,7 @@ offset_bottom = 23.0
 script = ExtResource("4_41uq8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_overlay = SubResource("ShaderMaterial_ely5o")
+material_overlay = SubResource("ShaderMaterial_xhe21")
 mesh = SubResource("CapsuleMesh_p3q1p")
 
 [node name="Fur" type="Node" parent="MeshInstance3D"]

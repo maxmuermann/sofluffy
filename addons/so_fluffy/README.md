@@ -204,6 +204,10 @@ If no gradient is provided, a simple (cheaper) power function is used to achieve
 
 Should the height gradient be scaled with the length of individual strands? If true, each strand will use the full gradient, otherwise shorter strands only use a partial gradient.
 
+### Render Skin
+
+If enabled, all pixels on shell 0 are rendered. Otherwise, non-strand pixels are transparent. This is useful if you do not want to incur the overhead of a dedicated skin material. Defaults to false.
+
 ### Albedo
 
 #### Albedo Color
@@ -213,7 +217,6 @@ Plain hair color. This color is multiplied by the height gradient, and the albed
 #### Albedo Texture
 
 Texture defining hair color. Albedo color is [i]multiplied[\i] by the texture color.
-
 
 ### Emission
 

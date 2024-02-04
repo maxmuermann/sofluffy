@@ -8,6 +8,7 @@ uniform vec3 static_direction_local = vec3(0.0,0.0,0.0);
 uniform vec3 static_direction_world = vec3(0.0,0.0,0.0);
 uniform float h = 0;
 uniform float density = 1.0;
+uniform bool render_skin = true;
 uniform int seed = 0;
 uniform float scruffiness = 0.5;
 uniform sampler2D heightmap_texture : source_color, filter_nearest;
@@ -94,7 +95,7 @@ void fragment() {
 		thickness = h;
 	} 
 	
-	if((len - thickness >= relDist && h < len)) {
+	if((len - thickness >= relDist && h < len || (render_skin && h == 0.0))) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;
 		vec3 col = color;
 		
