@@ -15,11 +15,11 @@ A shader is then used to render cross-sections of fur strands on each shell.
 # Features
 
 - Performance
-    - Material-based shell generation, no geometry is duplicated. SO FLUFFY use a cascade of next_pass materials for subsequent shells and performs all geomerty operations in its vertex shader
+    - Material-based shell generation, no geometry is duplicated. SO FLUFFY uses a cascade of next_pass materials for subsequent shells and performs all geometry operations in its vertex shader
     - dynamic LODs through disabling shells based on camera distance
 - Control over strand growth:
     - fur density (strands per area)
-    - sparseness (length distribution of strands)
+    - scruffiness (length distribution of strands)
     - heightmap texture for precise control over where strands can grow
     - turbulence and jitter - overlay noise for displacing strands for a more organic look, or to model things like cowlicks
     - thickness profile - control the thickness of strands over their length to produce finer or thicker hair, or other organic shapes like moss or fungus
@@ -35,8 +35,10 @@ A shader is then used to render cross-sections of fur strands on each shell.
 
 # Quick start
 
-1. Add some geometry to your scene - any subclass of GeometryInstance3D can be used to grow fur.
-2. Add a Fur node as a child of your geometry and tweak parameters to your liking.
+1. install the plugin by placing the so_fluffy folder inside the "addons" folder in your project
+2. open Godot "Project Settings->Plugins" and enable the SoFluffy plugin
+3. Add some geometry to your scene - any subclass of GeometryInstance3D can be used to grow fur.
+4. Add a Fur node as a child of your geometry and tweak parameters to your liking.
 
 # Caveats
 
