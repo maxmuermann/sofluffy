@@ -77,7 +77,8 @@ void fragment() {
 	xy = xy + (texture(jitter_texture, UV).xy - vec2(0.5, 0.5)) * jitter_strength / 200.0;
 	
 	// density noise
-	float len = scruffiness <= 0.0 ? 1.0 : pow(gold_noise(floor(xy * 1024.0)), scruffiness);
+	//float len = scruffiness <= 0.0 ? 1.0 : pow(gold_noise(floor(xy * 1024.0)), scruffiness);
+	float len = scruffiness <= 0.0 ? 1.0 : pow(gold_noise(floor((VERTEX.xy) * 1024.0 * density)), scruffiness);
 	
 	if(use_heightmap_texture) {
 		vec3 val = texture(heightmap_texture, UV).rgb; // sample heightmap length texture at original UV - we don't care how far the strand has been displaced

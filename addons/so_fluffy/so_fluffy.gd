@@ -81,7 +81,7 @@ var length: float = 0.1:
 		setup_materials()
 
 ## Scaling of the fur density - strands per area. Higher numbers make the fur more dense.
-@export_range(0.010, 3, 0.001, "or_greater")
+@export_range(0.0000001, 3, 0.00001, "or_greater")
 var density: float = 0.5:
 	set(v):
 		density = v
