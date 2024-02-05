@@ -1,3 +1,5 @@
+![SO FLUFFY]("screnshots/title.png")
+
 # SO FLUFFY!
 
 High-quality, endlessly configurable fur for Godot 4 with bouncy physics.

@@ -324,18 +324,19 @@ func _validate_property(property: Dictionary):
 		property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready():
-	init_physics()	
-
-
-func _enter_tree():
+	mesh = get_parent()
 	clear_materials()
 	create_materials()
 	lod = 0
 	lod_shell_count = number_of_shells
 	apply_lod()
-	setup_materials()
+	setup_materials()	
+	init_physics()	
 	notify_property_list_changed()
 
+
+func _enter_tree():
+	pass
 
 # remove fur material
 func clear_materials():
@@ -362,8 +363,10 @@ func _exit_tree() -> void:
 # remove fur material from the material chain. Returns false if the passed material is itself a fur material.
 func remove_fur_material(mat: Material) -> bool:
 	if mat == null:
+		print("no material")
 		return false
 	if mat.has_meta("is_fur"):
+		print("material is fur - returning false")
 		return false
 
 	while mat.next_pass != null:		
@@ -388,8 +391,7 @@ func assign_fur_material(mat: Material, fur: Material) -> bool:
 
 
 # create cascade of shell materials and assign to subsequent next_pass slots
-func create_materials():
-	mesh = get_parent()
+func create_materials():	
 	if(mesh == null):
 		return	
 
