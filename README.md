@@ -1,4 +1,4 @@
-![SO FLUFFY]("screnshots/title.png")
+![SO FLUFFY](screenshots/title.png)
 
 # SO FLUFFY!
 
@@ -9,6 +9,8 @@ High-quality, endlessly configurable fur for Godot 4 with bouncy physics.
 SO FLUFFY is a shell fur rendering system for Godot 4. Shell rendering involves rendering multiple copies of an object's geometry, scaling each one up a little more, thus creating a series or "shells" of increasing size surrounding the object.
 
 A shader is then used to render cross-sections of fur strands on each shell.
+
+![LOD demo](screenshots/bee.png)
 
 # Features
 
@@ -35,9 +37,6 @@ A shader is then used to render cross-sections of fur strands on each shell.
 
 1. Add some geometry to your scene - any subclass of GeometryInstance3D can be used to grow fur.
 2. Add a Fur node as a child of your geometry and tweak parameters to your liking.
-
-## How does it work?
-
 
 # Caveats
 
@@ -66,6 +65,8 @@ SO FLUFFY comes with a simple dynamic LOD system. Since performance is mainly de
 
 LODs are generated dynamically by dropping shells based on distance. This is done per-object, so if you're rendering terrain, it is advisable to break up the terrain into a number of separate, sufficiently small tiles to take advantage of this feature.
 
+![LOD demo](screenshots/LOD.png)
+
 # Usage
 
 ## Setup
@@ -92,6 +93,7 @@ SO FLUFFY comes with a number of demo scenes that illustrate some of the system'
 - enoki: uses the thickness curve to render a large field of mushroom-shaped strands
 - bee: a fuzzy animated bee, demonstrating use of a skinned mesh, surface targeting, and Albedo texture. Bee model courtesy of https://github.com/gdquest-demos/godot-4-3D-Characters
 
+![LOD demo](screenshots/enoki.png)
 
 # Fur Parameters
 
