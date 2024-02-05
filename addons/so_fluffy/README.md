@@ -1,10 +1,12 @@
 # SO FLUFFY!
 
-SO FLUFFY is a shell fur rendering system for Godot 4. Shell rendering involves creating multiple copies of an object's geometry, scaling each one up a little more, thus creating a series or "shells" of increasing size surrounding the object.
+High-quality, endlessly configurable fur for Godot 4 with bouncy physics.
+
+# What is it?
+
+SO FLUFFY is a shell fur rendering system for Godot 4. Shell rendering involves rendering multiple copies of an object's geometry, scaling each one up a little more, thus creating a series or "shells" of increasing size surrounding the object.
 
 A shader is then used to render cross-sections of fur strands on each shell.
-
-A good reference on how shell rendering works is this video: https://www.youtube.com/watch?v=9dr-tRQzij4
 
 # Features
 
@@ -12,7 +14,7 @@ A good reference on how shell rendering works is this video: https://www.youtube
     - Material-based shell generation, no geometry is duplicated. SO FLUFFY use a cascade of next_pass materials for subsequent shells and performs all geomerty operations in its vertex shader
     - dynamic LODs through disabling shells based on camera distance
 - Control over strand growth:
-    - fur density (strand per area)
+    - fur density (strands per area)
     - sparseness (length distribution of strands)
     - heightmap texture for precise control over where strands can grow
     - turbulence and jitter - overlay noise for displacing strands for a more organic look, or to model things like cowlicks
