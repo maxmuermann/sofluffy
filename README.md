@@ -149,7 +149,7 @@ Strand length. This determines how much the shells are scaled up. Longer strands
 
 ### Density
 
-Scaling of the fur density - strands per area. Higher numbers make the fur more dense.
+Scaling of the fur density - strands per area. Higher numbers make the fur more dense. So FLUFFY uses UV0 coordinates for seeding noise, so you need to make sure your model has reasonable evenly-spaced UVs.
 
 ### Scruffiness
 
