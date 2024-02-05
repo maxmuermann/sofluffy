@@ -560,7 +560,7 @@ func linear_spring_physics(delta: float):
 	
 	spring_offset += s
 
-	spring_velocity = spring_velocity.limit_length( 20.0 * length )
+	spring_velocity = spring_velocity.limit_length( 200.0 * length )
 
 	# iterate through materials from 0 length to 1 and set physics params
 	var dh = 1.0 / (number_of_shells-1)
