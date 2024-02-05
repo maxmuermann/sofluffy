@@ -37,11 +37,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if(smooth_bounce):
 		transform.origin = pos + dpos / 2 + dpos / 2 *  -cos(Time.get_ticks_msec() / bounce_msec * PI * 2)
 	else:
 		transform.origin = pos + dpos *  abs(sin(Time.get_ticks_msec() / bounce_msec * PI * 2))
-	transform.basis = transform.basis.from_euler(
+	transform.basis = Basis.from_euler(
 		rot + drot * Time.get_ticks_msec() / rot_msec
 	)

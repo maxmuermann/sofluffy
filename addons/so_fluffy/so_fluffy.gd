@@ -504,7 +504,7 @@ func init_physics():
 		mat.set_shader_parameter("physics_pos_offset", Vector3.ZERO)
 		mat.set_shader_parameter("physics_rot_offset", Basis.IDENTITY)
 
-func _process(delta):
+func _process(_delta):
 	# LOD
 	if lod_enabled:
 		if mesh == null:
