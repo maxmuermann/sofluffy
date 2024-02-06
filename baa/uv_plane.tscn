@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcv221em7jekf"]
+
+[ext_resource type="PackedScene" uid="uid://lrswol4gcore" path="res://baa/uv_plane.glb" id="1_cc6d2"]
+[ext_resource type="Texture2D" uid="uid://c3m5sdykdqqyu" path="res://baa/heightmap_splat_texture.tres" id="3_0ef5s"]
+[ext_resource type="Script" path="res://addons/so_fluffy/so_fluffy.gd" id="3_ibk5t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkhey"]
+cull_mode = 2
+emission_enabled = true
+emission = Color(0.117647, 0.415686, 0.0745098, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sw8nv"]
+frequency = 0.0095
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8gs2w"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_sw8nv")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v5a2p"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_sw8nv")
+
+[node name="uv_plane" instance=ExtResource("1_cc6d2")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kkhey")
+
+[node name="Fur" type="Node" parent="Plane" index="0"]
+script = ExtResource("3_ibk5t")
+seed = 27729
+heightmap_texture = ExtResource("3_0ef5s")
+turbulence_texture = SubResource("NoiseTexture2D_8gs2w")
+jitter_texture = SubResource("NoiseTexture2D_v5a2p")

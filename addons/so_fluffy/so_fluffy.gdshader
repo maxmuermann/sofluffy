@@ -57,7 +57,7 @@ float gold_noise(vec2 p) {
 void vertex() {	
 	vec3 physics_pos_offset_world = (vec4(physics_pos_offset, 0.0) * MODEL_MATRIX).xyz * h * 0.2;
 	vec3 direction = static_direction_local + (vec4(static_direction_world, 0.0) * MODEL_MATRIX).xyz;
-	VERTEX += (NORMAL * normal_strength + direction * (1.0 - normal_strength)) * height * h + physics_pos_offset_world;
+	VERTEX += (NORMAL * normal_strength + direction * (1.0 - normal_strength)) * height * pow(COLOR.g, 0.7) * h + physics_pos_offset_world;
 	VERTEX = VERTEX * physics_rot_offset;
 }
 
@@ -78,7 +78,7 @@ void fragment() {
 	
 	// density noise
 	float len = scruffiness <= 0.0 ? 1.0 : pow(gold_noise(floor(xy * 1024.0)), scruffiness);
-	
+		
 	if(use_heightmap_texture) {
 		vec3 val = texture(heightmap_texture, UV).rgb; // sample heightmap length texture at original UV - we don't care how far the strand has been displaced
 		len *= val.r;
@@ -93,7 +93,8 @@ void fragment() {
 		thickness = texture(thickness_curve, vec2(clamp(h / len, 0.0, 0.99), 0.0)).r * len;
 	} else {
 		thickness = h;
-	} 
+	}
+	
 	
 	if((len - thickness >= relDist && h < len || (render_skin && h == 0.0))) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;

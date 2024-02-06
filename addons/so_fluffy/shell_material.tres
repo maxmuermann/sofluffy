@@ -11,6 +11,7 @@ shader_parameter/static_direction_local = Vector3(0, 0, 0)
 shader_parameter/static_direction_world = Vector3(0, 0, 0)
 shader_parameter/h = 2.08165e-12
 shader_parameter/density = 0.14
+shader_parameter/render_skin = true
 shader_parameter/seed = 0
 shader_parameter/scruffiness = 0.5
 shader_parameter/use_heightmap_texture = false

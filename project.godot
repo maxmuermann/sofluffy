@@ -15,6 +15,15 @@ run/main_scene="res://demos/lod_test.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
+gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_call_argument=1
+
 [display]
 
 window/vsync/vsync_mode=0
@@ -22,6 +31,10 @@ window/vsync/vsync_mode=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/so_fluffy/plugin.cfg")
+
+[filesystem]
+
+import/fbx/enabled=false
 
 [rendering]
 
