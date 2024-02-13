@@ -128,7 +128,7 @@ var thickness_scale: float = 1.5:
 
 @export_subgroup("Curls")
 
-## Enable or disable dynamic LOD. If disabled, fur will always be rendered with the maximum number of shells.
+## Turn curls rendering on or off. Curls are quite expensive to render.
 @export var curls_enabled: bool = false:
 	set(v):
 		curls_enabled = v
@@ -340,6 +340,9 @@ func _validate_property(property: Dictionary):
 	# hide/show emission section details
 	if property.name in ["emission_color", "emission_energy_multiplier", "emission_texture"] and !use_emission:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
+	# hide/show curls section details
+	if property.name in ["curls_twist", "curls_fill"] and !curls_enabled:
+		property.usage = PROPERTY_USAGE_NO_EDITOR
 	# hide/show physics section details
 	if property.name in ["physics_preview", "gravity", "spring_constant", "mass", "damping", "stretch"] and !physics_enabled:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
