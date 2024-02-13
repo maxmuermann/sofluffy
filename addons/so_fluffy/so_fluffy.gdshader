@@ -54,6 +54,11 @@ float gold_noise(vec2 p) {
     return fract((p3.x + p3.y) * p3.z);
 }
 
+float atan2(in float y, in float x) {
+    bool s = (abs(x) > abs(y));
+    return mix(PI/2.0 - atan(x,y), atan(y,x), float(s));
+}
+
 void vertex() {	
 	vec3 physics_pos_offset_world = (vec4(physics_pos_offset, 0.0) * MODEL_MATRIX).xyz * h * 0.2;
 	vec3 direction = static_direction_local + (vec4(static_direction_world, 0.0) * MODEL_MATRIX).xyz;
@@ -77,7 +82,8 @@ void fragment() {
 	xy = xy + (texture(jitter_texture, UV).xy - vec2(0.5, 0.5)) * jitter_strength / 200.0;
 	
 	// density noise
-	float len = scruffiness <= 0.0 ? 1.0 : pow(gold_noise(floor(xy * 1024.0)), scruffiness);
+	float noise = gold_noise(floor(xy * 1024.0));
+	float len = scruffiness <= 0.0 ? 1.0 : pow(noise, scruffiness);
 	
 	if(use_heightmap_texture) {
 		vec3 val = texture(heightmap_texture, UV).rgb; // sample heightmap length texture at original UV - we don't care how far the strand has been displaced
@@ -86,16 +92,21 @@ void fragment() {
 	
 	// calculate distance of current pixel from center of texture pixel
 	vec2 center = vec2(0.5, 0.5);
-	float relDist = length(fract(xy * ts) - center) / thickness_scale * 2.0;
+	vec2 center_offset = fract(xy * ts) - center;
+	float relDist = length(center_offset) / thickness_scale * 2.0;
 	
 	float thickness;
 	if(use_thickness_curve) {
 		thickness = texture(thickness_curve, vec2(clamp(h / len, 0.0, 0.99), 0.0)).r * len;
 	} else {
 		thickness = h;
-	} 
+	}
 	
-	if((len - thickness >= relDist && h < len || (render_skin && h == 0.0))) {
+	// calculate angle
+	float a = mod(atan2(center_offset.y, center_offset.x) + h * 48.0 + noise * 1024.0, 2.0 * PI);
+	bool curl = a > 0.0 && a < PI / 4.0;
+	
+	if(curl && (len - thickness >= relDist && h < len || (render_skin && h == 0.0))) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;
 		vec3 col = color;
 		

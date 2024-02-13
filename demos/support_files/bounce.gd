@@ -43,5 +43,5 @@ func _process(_delta):
 	else:
 		transform.origin = pos + dpos *  abs(sin(Time.get_ticks_msec() / bounce_msec * PI * 2))
 	transform.basis = Basis.from_euler(
-		rot + drot * Time.get_ticks_msec() / rot_msec
+		rot + drot * ((Time.get_ticks_msec() / rot_msec))
 	)
