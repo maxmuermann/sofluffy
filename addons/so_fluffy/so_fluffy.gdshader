@@ -17,6 +17,10 @@ uniform sampler2D turbulence_texture : filter_linear;
 uniform float turbulence_strength = 0.5;
 uniform sampler2D jitter_texture : filter_linear;
 uniform float jitter_strength = 0;
+uniform bool curls_enabled = true;
+uniform float curls_twist = 24.0;
+uniform float curls_fill = 0.7853981634;
+
 
 
 uniform vec3 color: source_color;
@@ -54,6 +58,7 @@ float gold_noise(vec2 p) {
     return fract((p3.x + p3.y) * p3.z);
 }
 
+// robust atan, which returns an angle in the range 0..2PI
 float atan2(in float y, in float x) {
     bool s = (abs(x) > abs(y));
     return mix(PI/2.0 - atan(x,y), atan(y,x), float(s));
@@ -82,7 +87,11 @@ void fragment() {
 	xy = xy + (texture(jitter_texture, UV).xy - vec2(0.5, 0.5)) * jitter_strength / 200.0;
 	
 	// density noise
-	float noise = gold_noise(floor(xy * 1024.0));
+	float noise = 0.0;
+	
+	if (scruffiness > 0.0 || curls_enabled) {
+		noise = gold_noise(floor(xy * 1024.0));
+	}
 	float len = scruffiness <= 0.0 ? 1.0 : pow(noise, scruffiness);
 	
 	if(use_heightmap_texture) {
@@ -102,9 +111,12 @@ void fragment() {
 		thickness = h;
 	}
 	
-	// calculate angle
-	float a = mod(atan2(center_offset.y, center_offset.x) + h * 48.0 + noise * 1024.0, 2.0 * PI);
-	bool curl = a > 0.0 && a < PI / 4.0;
+	// calculate 
+	bool curl = true;
+	if (curls_enabled) {
+		float a = mod(atan2(center_offset.y, center_offset.x) + h * curls_twist + noise * 1024.0, 2.0 * PI);
+		curl = a > 0.0 && a < curls_fill;
+	}
 	
 	if(curl && (len - thickness >= relDist && h < len || (render_skin && h == 0.0))) {
 		if(!FRONT_FACING) NORMAL = -NORMAL;

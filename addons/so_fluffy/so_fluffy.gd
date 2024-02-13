@@ -125,6 +125,30 @@ var thickness_scale: float = 1.5:
 		thickness_scale = v
 		setup_materials()
 
+
+@export_subgroup("Curls")
+
+## Enable or disable dynamic LOD. If disabled, fur will always be rendered with the maximum number of shells.
+@export var curls_enabled: bool = false:
+	set(v):
+		curls_enabled = v
+		setup_materials()
+		notify_property_list_changed()
+
+@export_range(0, 128, 0.01, "or_greater")
+var curls_twist: float = 48.0:
+	set(v):
+		curls_twist = v
+		setup_materials()
+
+@export_range(0, 2 * PI, 0.01, "or_greater")
+var curls_fill: float = PI / 4.0:
+	set(v):
+		curls_fill = v
+		setup_materials()
+		
+
+
 @export_subgroup("Turbulence and Jitter")
 
 ## Noise texture to overlay displacement turbulence on the fur. Best provided as a normal map.
@@ -363,10 +387,8 @@ func _exit_tree() -> void:
 # remove fur material from the material chain. Returns false if the passed material is itself a fur material.
 func remove_fur_material(mat: Material) -> bool:
 	if mat == null:
-		print("no material")
 		return false
 	if mat.has_meta("is_fur"):
-		print("material is fur - returning false")
 		return false
 
 	while mat.next_pass != null:		
@@ -441,6 +463,8 @@ func apply_lod():
 func setup_materials():
 	if mesh == null:
 		return
+	if shells.size() == 0:
+		create_materials()
 
 	for i in number_of_shells:
 		configure_material_for_level(shells[i], i)
@@ -462,6 +486,11 @@ func configure_material_for_level(mat: Material, level: int):
 	mat.set_shader_parameter("h", h)
 	mat.set_shader_parameter("heightmap_texture", heightmap_texture)
 	mat.set_shader_parameter("use_heightmap_texture", heightmap_texture != null)
+	#curls
+	mat.set_shader_parameter("curls_enabled", curls_enabled)
+	mat.set_shader_parameter("curls_twist", curls_twist)
+	mat.set_shader_parameter("curls_fill", curls_fill)
+	# turbulence & jitter
 	mat.set_shader_parameter("turbulence_texture", turbulence_texture)
 	mat.set_shader_parameter("turbulence_strength", turbulence_strength)
 	mat.set_shader_parameter("jitter_texture", jitter_texture)
@@ -542,7 +571,10 @@ func _physics_process(delta):
 
 # calculate spring physics for linear movement
 func linear_spring_physics(delta: float):
-	if !physics_enabled: return
+	if !physics_enabled:
+		return
+	if shells.size() == 0:
+		return
 	if Engine.is_editor_hint() and (!physics_preview || !preview_in_editor): return
 	# calculate compound linear forces acting on the shells
 	var f = gravity
@@ -585,6 +617,8 @@ func short_angle(a):
 # calculate spring physics for rotational movement
 func rotational_spring_physics(delta: float):
 	if !physics_enabled:
+		return
+	if shells.size() == 0:
 		return
 	if Engine.is_editor_hint() and (!physics_preview || !preview_in_editor):
 		return
