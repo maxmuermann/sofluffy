@@ -24,6 +24,7 @@ A shader is then used to render cross-sections of fur strands on each shell.
     - turbulence and jitter - overlay noise for displacing strands for a more organic look, or to model things like cowlicks
     - thickness profile - control the thickness of strands over their length to produce finer or thicker hair, or other organic shapes like moss or fungus
     - Fur can grow along surface normals, in a fixed direction relative to the object, or in a fixed direction in world space, or any combination of those
+    - Twist strands into curls
 - Control over appearance:
     - color gradient applied along the length of each strand, usefule for simulating self-shadowing or other effects (see demos)
     - albedo color - solid color or texture
@@ -94,6 +95,7 @@ SO FLUFFY comes with a number of demo scenes that illustrate some of the system'
     - thickness curve for the spike shape
 - enoki: uses the thickness curve to render a large field of mushroom-shaped strands
 - bee: a fuzzy animated bee, demonstrating use of a skinned mesh, surface targeting, and Albedo texture. Bee model courtesy of https://github.com/gdquest-demos/godot-4-3D-Characters
+- curls: curly hair
 
 ![LOD demo](screenshots/enoki.png)
 
@@ -170,6 +172,20 @@ This curve can be used to achieve some interesting effects - see the included En
 #### Thickness Scale
 
 Uniformly scales up th thickness of all strands. Thicker strands give the visual impression of denser fur.
+
+### Curls
+
+#### Curls Enabled
+
+Turn curls rendering on or off. Curls are quite expensive to render.
+
+#### Curls Twist
+
+How twisty the curls should be.
+
+### Curls Fill
+
+Controls the "thickness" of curls - higher twists and lower numbers of shells generally need more fill.
 
 ### Turbulence and Jitter
 
