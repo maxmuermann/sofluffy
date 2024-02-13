@@ -58,10 +58,33 @@ float gold_noise(vec2 p) {
     return fract((p3.x + p3.y) * p3.z);
 }
 
-// robust atan, which returns an angle in the range 0..2PI
 float atan2(in float y, in float x) {
     bool s = (abs(x) > abs(y));
     return mix(PI/2.0 - atan(x,y), atan(y,x), float(s));
+}
+
+// fast atan2 approximation, returns an angle in the range -PI..PI
+// @see https://www.shadertoy.com/view/WtyyWD
+float atan2_approximation2( float x, float y ) {
+	if ( x == 0.0f ) {
+		if ( y > 0.0f ) return PI/2.0;
+		if ( y == 0.0f ) return 0.0f;
+		return -PI/2.0;
+	}
+	float atan;
+	float z = y/x;
+	if ( abs( z ) < 1.0f ) {
+		atan = z/(1.0f + 0.28f*z*z);
+		if ( x < 0.0f ) {
+			if ( y < 0.0f ) return atan - PI;
+			return atan + PI;
+		}
+	}
+	else {
+		atan = PI/2.0 - z/(z*z + 0.28f);
+		if ( y < 0.0f ) return atan - PI;
+	}
+	return atan;
 }
 
 void vertex() {	
@@ -111,10 +134,10 @@ void fragment() {
 		thickness = h;
 	}
 	
-	// calculate 
+	// calculate curls - circle segments and angle offsets
 	bool curl = true;
 	if (curls_enabled) {
-		float a = mod(atan2(center_offset.y, center_offset.x) + h * curls_twist + noise * 1024.0, 2.0 * PI);
+		float a = mod(atan2_approximation2(center_offset.y, center_offset.x) + h * curls_twist + noise * 1024.0, 2.0 * PI);
 		curl = a > 0.0 && a < curls_fill;
 	}
 	

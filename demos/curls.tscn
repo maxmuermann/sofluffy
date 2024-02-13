@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://demos/support_files/bounce.gd" id="2_vb7sj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dxr1"]
+shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_xkiaa"]
@@ -31,7 +32,7 @@ curve = SubResource("Curve_wyqf2")
 as_normal_map = true
 noise = SubResource("FastNoiseLite_30hqb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2n76"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jiab"]
 render_priority = 0
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
@@ -67,9 +68,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fo0b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwoei"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_v2n76")
+next_pass = SubResource("ShaderMaterial_1jiab")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -104,9 +105,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bk7aj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dx41m"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_8fo0b")
+next_pass = SubResource("ShaderMaterial_pwoei")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -141,9 +142,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnpcw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_la4g1"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_bk7aj")
+next_pass = SubResource("ShaderMaterial_dx41m")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -178,9 +179,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_72gqw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lg2r"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_qnpcw")
+next_pass = SubResource("ShaderMaterial_la4g1")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -215,9 +216,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqxmp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1r68o"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_72gqw")
+next_pass = SubResource("ShaderMaterial_6lg2r")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -252,9 +253,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1q1f0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gfto"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_mqxmp")
+next_pass = SubResource("ShaderMaterial_1r68o")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -289,9 +290,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5g5lj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktccc"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_1q1f0")
+next_pass = SubResource("ShaderMaterial_4gfto")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -326,9 +327,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8vb8i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1mqa"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_5g5lj")
+next_pass = SubResource("ShaderMaterial_ktccc")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -363,9 +364,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xum3e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqrl3"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_8vb8i")
+next_pass = SubResource("ShaderMaterial_e1mqa")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -400,9 +401,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_08bvl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iw1q0"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xum3e")
+next_pass = SubResource("ShaderMaterial_mqrl3")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -437,9 +438,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ffsq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i44ge"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_08bvl")
+next_pass = SubResource("ShaderMaterial_iw1q0")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -474,9 +475,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6w5ca"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6p0hh"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_6ffsq")
+next_pass = SubResource("ShaderMaterial_i44ge")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -511,9 +512,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_85qwp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6umfs"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_6w5ca")
+next_pass = SubResource("ShaderMaterial_6p0hh")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -548,9 +549,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3606w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ax7u6"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_85qwp")
+next_pass = SubResource("ShaderMaterial_6umfs")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -585,9 +586,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5k2b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2uwr"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3606w")
+next_pass = SubResource("ShaderMaterial_ax7u6")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -622,9 +623,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxmo0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gekk"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_a5k2b")
+next_pass = SubResource("ShaderMaterial_a2uwr")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -659,9 +660,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tvuc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bhi4"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_uxmo0")
+next_pass = SubResource("ShaderMaterial_3gekk")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -696,9 +697,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hh3e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4jwe"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_1tvuc")
+next_pass = SubResource("ShaderMaterial_2bhi4")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -733,9 +734,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ma5al"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqj70"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3hh3e")
+next_pass = SubResource("ShaderMaterial_y4jwe")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -770,9 +771,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcmx7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_euh2h"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ma5al")
+next_pass = SubResource("ShaderMaterial_gqj70")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -807,9 +808,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yowik"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fau8t"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_vcmx7")
+next_pass = SubResource("ShaderMaterial_euh2h")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -844,9 +845,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_63xhl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_564hj"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_yowik")
+next_pass = SubResource("ShaderMaterial_fau8t")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -881,9 +882,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3uo6t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekan7"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_63xhl")
+next_pass = SubResource("ShaderMaterial_564hj")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -918,9 +919,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_trfvg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8ugv"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3uo6t")
+next_pass = SubResource("ShaderMaterial_ekan7")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -955,9 +956,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_265j5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qvcr"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_trfvg")
+next_pass = SubResource("ShaderMaterial_v8ugv")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -992,9 +993,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vqgm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vys3"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_265j5")
+next_pass = SubResource("ShaderMaterial_6qvcr")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1029,9 +1030,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cqjn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqm6r"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3vqgm")
+next_pass = SubResource("ShaderMaterial_6vys3")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1058,7 +1059,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-6.40152e-14, -0.123008, -6.40152e-14)
+shader_parameter/physics_pos_offset = Vector3(-6.40152e-14, -0.123009, -6.40152e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1066,9 +1067,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_40y80"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxfs4"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_6cqjn")
+next_pass = SubResource("ShaderMaterial_aqm6r")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1103,9 +1104,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0uv7x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fvk5"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_40y80")
+next_pass = SubResource("ShaderMaterial_rxfs4")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1132,7 +1133,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-5.90455e-14, -0.113459, -5.90455e-14)
+shader_parameter/physics_pos_offset = Vector3(-5.90456e-14, -0.113459, -5.90456e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1140,9 +1141,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjlwl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rffs1"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_0uv7x")
+next_pass = SubResource("ShaderMaterial_0fvk5")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1177,9 +1178,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ps61"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6il88"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_qjlwl")
+next_pass = SubResource("ShaderMaterial_rffs1")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1214,9 +1215,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ak2ah"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gsmvn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3ps61")
+next_pass = SubResource("ShaderMaterial_6il88")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1243,7 +1244,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-5.21407e-14, -0.100191, -5.21407e-14)
+shader_parameter/physics_pos_offset = Vector3(-5.21408e-14, -0.100191, -5.21408e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1251,9 +1252,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lx7ry"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhkhf"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ak2ah")
+next_pass = SubResource("ShaderMaterial_gsmvn")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1288,9 +1289,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_061yh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xirch"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_lx7ry")
+next_pass = SubResource("ShaderMaterial_bhkhf")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1317,7 +1318,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-4.78867e-14, -0.0920167, -4.78867e-14)
+shader_parameter/physics_pos_offset = Vector3(-4.78867e-14, -0.0920168, -4.78867e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1325,9 +1326,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_isupj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjw6j"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_061yh")
+next_pass = SubResource("ShaderMaterial_xirch")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1362,9 +1363,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a3w3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16ddd"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_isupj")
+next_pass = SubResource("ShaderMaterial_rjw6j")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1399,9 +1400,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qodiq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85qnt"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_5a3w3")
+next_pass = SubResource("ShaderMaterial_16ddd")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1428,7 +1429,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-4.20003e-14, -0.0807059, -4.20003e-14)
+shader_parameter/physics_pos_offset = Vector3(-4.20004e-14, -0.0807059, -4.20004e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1436,9 +1437,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dj46u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkt0r"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_qodiq")
+next_pass = SubResource("ShaderMaterial_85qnt")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1465,7 +1466,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-4.01645e-14, -0.0771783, -4.01645e-14)
+shader_parameter/physics_pos_offset = Vector3(-4.01646e-14, -0.0771783, -4.01646e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1473,9 +1474,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hawkh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nuhy"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_dj46u")
+next_pass = SubResource("ShaderMaterial_mkt0r")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1510,9 +1511,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oru6j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3ln7"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_hawkh")
+next_pass = SubResource("ShaderMaterial_8nuhy")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1547,9 +1548,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8q3iw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ux6sr"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_oru6j")
+next_pass = SubResource("ShaderMaterial_i3ln7")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1576,7 +1577,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-3.50168e-14, -0.0672866, -3.50168e-14)
+shader_parameter/physics_pos_offset = Vector3(-3.50168e-14, -0.0672867, -3.50168e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1584,9 +1585,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1f6vh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye06p"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_8q3iw")
+next_pass = SubResource("ShaderMaterial_ux6sr")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1621,9 +1622,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ghv43"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a47ji"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_1f6vh")
+next_pass = SubResource("ShaderMaterial_ye06p")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1658,9 +1659,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bngh0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pipoy"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ghv43")
+next_pass = SubResource("ShaderMaterial_a47ji")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1695,9 +1696,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1v4kp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5n3if"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_bngh0")
+next_pass = SubResource("ShaderMaterial_pipoy")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1724,7 +1725,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-2.89426e-14, -0.0556148, -2.89426e-14)
+shader_parameter/physics_pos_offset = Vector3(-2.89427e-14, -0.0556148, -2.89427e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1732,9 +1733,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3w85s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmt1f"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_1v4kp")
+next_pass = SubResource("ShaderMaterial_5n3if")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1769,9 +1770,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8oj4h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g5nyx"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3w85s")
+next_pass = SubResource("ShaderMaterial_dmt1f")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1806,9 +1807,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mi3y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8ii7"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_8oj4h")
+next_pass = SubResource("ShaderMaterial_g5nyx")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1843,9 +1844,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqy15"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_utlcc"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_0mi3y")
+next_pass = SubResource("ShaderMaterial_q8ii7")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1872,7 +1873,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-2.36952e-14, -0.0455317, -2.36952e-14)
+shader_parameter/physics_pos_offset = Vector3(-2.36953e-14, -0.0455317, -2.36953e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1880,9 +1881,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5mcd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rw3d6"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_lqy15")
+next_pass = SubResource("ShaderMaterial_utlcc")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1917,9 +1918,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b73h0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdikn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_h5mcd")
+next_pass = SubResource("ShaderMaterial_rw3d6")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1946,7 +1947,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-2.13568e-14, -0.0410383, -2.13568e-14)
+shader_parameter/physics_pos_offset = Vector3(-2.13569e-14, -0.0410383, -2.13569e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -1954,9 +1955,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5tls"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dorqt"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_b73h0")
+next_pass = SubResource("ShaderMaterial_hdikn")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -1991,9 +1992,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7tal"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykyan"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_o5tls")
+next_pass = SubResource("ShaderMaterial_dorqt")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2028,9 +2029,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ld6c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcrdy"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_w7tal")
+next_pass = SubResource("ShaderMaterial_ykyan")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2057,7 +2058,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-1.81792e-14, -0.0349322, -1.81792e-14)
+shader_parameter/physics_pos_offset = Vector3(-1.81792e-14, -0.0349323, -1.81792e-14)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -2065,9 +2066,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7bv0v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ta24t"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_1ld6c")
+next_pass = SubResource("ShaderMaterial_mcrdy")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2102,9 +2103,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhmyn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnhtd"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7bv0v")
+next_pass = SubResource("ShaderMaterial_ta24t")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2139,9 +2140,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmy0c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fptyh"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_bhmyn")
+next_pass = SubResource("ShaderMaterial_dnhtd")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2176,9 +2177,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_opdqt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yucdw"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_kmy0c")
+next_pass = SubResource("ShaderMaterial_fptyh")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2213,9 +2214,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eg1ue"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4jks7"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_opdqt")
+next_pass = SubResource("ShaderMaterial_yucdw")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2250,9 +2251,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxauo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yn65g"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_eg1ue")
+next_pass = SubResource("ShaderMaterial_4jks7")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2287,9 +2288,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvme3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kcga8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_dxauo")
+next_pass = SubResource("ShaderMaterial_yn65g")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2324,9 +2325,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xctod"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6e6y"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_yvme3")
+next_pass = SubResource("ShaderMaterial_kcga8")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2361,9 +2362,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hggj2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_br6mf"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xctod")
+next_pass = SubResource("ShaderMaterial_n6e6y")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2398,9 +2399,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmv8q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfsup"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_hggj2")
+next_pass = SubResource("ShaderMaterial_br6mf")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2435,9 +2436,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7k8fa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spr8y"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_bmv8q")
+next_pass = SubResource("ShaderMaterial_nfsup")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2464,7 +2465,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-9.45909e-15, -0.0181761, -9.45909e-15)
+shader_parameter/physics_pos_offset = Vector3(-9.4591e-15, -0.0181762, -9.4591e-15)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -2472,9 +2473,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2n3op"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l31cf"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7k8fa")
+next_pass = SubResource("ShaderMaterial_spr8y")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2509,9 +2510,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kva8x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2x3m"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_2n3op")
+next_pass = SubResource("ShaderMaterial_l31cf")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2538,7 +2539,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-8.29636e-15, -0.0159419, -8.29636e-15)
+shader_parameter/physics_pos_offset = Vector3(-8.29637e-15, -0.0159419, -8.29637e-15)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -2546,9 +2547,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_txd7h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1f3f5"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_kva8x")
+next_pass = SubResource("ShaderMaterial_q2x3m")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2583,9 +2584,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qs2h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jg38y"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_txd7h")
+next_pass = SubResource("ShaderMaterial_1f3f5")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2620,9 +2621,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vco10"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ral46"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_2qs2h")
+next_pass = SubResource("ShaderMaterial_jg38y")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2657,9 +2658,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tkbvq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3d3tq"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_vco10")
+next_pass = SubResource("ShaderMaterial_ral46")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2694,9 +2695,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ayjx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oxjlt"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_tkbvq")
+next_pass = SubResource("ShaderMaterial_3d3tq")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2731,9 +2732,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajtwv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ulpx"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_0ayjx")
+next_pass = SubResource("ShaderMaterial_oxjlt")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2760,7 +2761,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-5.44324e-15, -0.0104595, -5.44324e-15)
+shader_parameter/physics_pos_offset = Vector3(-5.44325e-15, -0.0104595, -5.44325e-15)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -2768,9 +2769,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvpoy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27xfr"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ajtwv")
+next_pass = SubResource("ShaderMaterial_3ulpx")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2805,9 +2806,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2ebq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhpdp"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_qvpoy")
+next_pass = SubResource("ShaderMaterial_27xfr")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2842,9 +2843,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gm3a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twinj"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_b2ebq")
+next_pass = SubResource("ShaderMaterial_dhpdp")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2879,9 +2880,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fl2ep"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qr0e8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3gm3a")
+next_pass = SubResource("ShaderMaterial_twinj")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2916,9 +2917,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwgxa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bq8vo"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_fl2ep")
+next_pass = SubResource("ShaderMaterial_qr0e8")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2945,7 +2946,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-3.69035e-15, -0.00709119, -3.69035e-15)
+shader_parameter/physics_pos_offset = Vector3(-3.69035e-15, -0.0070912, -3.69035e-15)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -2953,9 +2954,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7g00p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xgd3"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_qwgxa")
+next_pass = SubResource("ShaderMaterial_bq8vo")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -2990,9 +2991,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjcjj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pf2g"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7g00p")
+next_pass = SubResource("ShaderMaterial_6xgd3")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3027,9 +3028,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bqcx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nutht"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_fjcjj")
+next_pass = SubResource("ShaderMaterial_4pf2g")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3064,9 +3065,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fk64i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yaegq"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_6bqcx")
+next_pass = SubResource("ShaderMaterial_nutht")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3101,9 +3102,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ftpa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4g85u"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_fk64i")
+next_pass = SubResource("ShaderMaterial_yaegq")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3138,9 +3139,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5y83f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3rwif"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_0ftpa")
+next_pass = SubResource("ShaderMaterial_4g85u")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3175,9 +3176,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnmt7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e80fw"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_5y83f")
+next_pass = SubResource("ShaderMaterial_3rwif")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3212,9 +3213,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_277j7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jw62c"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_dnmt7")
+next_pass = SubResource("ShaderMaterial_e80fw")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3249,9 +3250,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_06aio"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm6qf"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_277j7")
+next_pass = SubResource("ShaderMaterial_jw62c")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3286,9 +3287,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r07n3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fuxeh"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_06aio")
+next_pass = SubResource("ShaderMaterial_pm6qf")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3323,9 +3324,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfmgk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_co0bv"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_r07n3")
+next_pass = SubResource("ShaderMaterial_fuxeh")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3360,9 +3361,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ep74"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h76jn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_vfmgk")
+next_pass = SubResource("ShaderMaterial_co0bv")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3397,9 +3398,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j37ow"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5xmx"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3ep74")
+next_pass = SubResource("ShaderMaterial_h76jn")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3434,9 +3435,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4g50"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujew4"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_j37ow")
+next_pass = SubResource("ShaderMaterial_y5xmx")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3463,7 +3464,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-9.60627e-16, -0.0018459, -9.60627e-16)
+shader_parameter/physics_pos_offset = Vector3(-9.60628e-16, -0.0018459, -9.60628e-16)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -3471,9 +3472,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_35om8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fur0"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_q4g50")
+next_pass = SubResource("ShaderMaterial_ujew4")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3500,7 +3501,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-8.55457e-16, -0.00164381, -8.55457e-16)
+shader_parameter/physics_pos_offset = Vector3(-8.55458e-16, -0.00164381, -8.55458e-16)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -3508,9 +3509,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0lqg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e58xe"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_35om8")
+next_pass = SubResource("ShaderMaterial_7fur0")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3545,9 +3546,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_425mg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1emh5"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_r0lqg")
+next_pass = SubResource("ShaderMaterial_e58xe")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3582,9 +3583,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gj71x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyaes"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_425mg")
+next_pass = SubResource("ShaderMaterial_1emh5")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3611,7 +3612,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-5.91193e-16, -0.00113601, -5.91193e-16)
+shader_parameter/physics_pos_offset = Vector3(-5.91194e-16, -0.00113601, -5.91194e-16)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -3619,9 +3620,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sw8kc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f521o"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_gj71x")
+next_pass = SubResource("ShaderMaterial_iyaes")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3656,9 +3657,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_damu8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5i0dt"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_sw8kc")
+next_pass = SubResource("ShaderMaterial_f521o")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3693,9 +3694,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5usy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kju24"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_damu8")
+next_pass = SubResource("ShaderMaterial_5i0dt")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3730,9 +3731,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0d6go"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sowqf"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_b5usy")
+next_pass = SubResource("ShaderMaterial_kju24")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3767,9 +3768,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4ihp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1wdo"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_0d6go")
+next_pass = SubResource("ShaderMaterial_sowqf")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3804,9 +3805,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnsjp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8w3o"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_t4ihp")
+next_pass = SubResource("ShaderMaterial_b1wdo")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3841,9 +3842,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2erva"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afwel"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_jnsjp")
+next_pass = SubResource("ShaderMaterial_s8w3o")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3878,9 +3879,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5y1c2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syao8"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_2erva")
+next_pass = SubResource("ShaderMaterial_afwel")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3915,9 +3916,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqq3t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uirc4"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_5y1c2")
+next_pass = SubResource("ShaderMaterial_syao8")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3952,9 +3953,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uahow"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0m0x"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_dqq3t")
+next_pass = SubResource("ShaderMaterial_uirc4")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -3989,9 +3990,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv0a0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_edf6j"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_uahow")
+next_pass = SubResource("ShaderMaterial_n0m0x")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4026,9 +4027,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpcyc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3bpg"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xv0a0")
+next_pass = SubResource("ShaderMaterial_edf6j")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4063,9 +4064,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ys567"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5kprk"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_bpcyc")
+next_pass = SubResource("ShaderMaterial_b3bpg")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4092,7 +4093,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-6.72005e-17, -0.000129129, -6.72005e-17)
+shader_parameter/physics_pos_offset = Vector3(-6.72006e-17, -0.000129129, -6.72006e-17)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -4100,9 +4101,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y874f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_af4pt"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ys567")
+next_pass = SubResource("ShaderMaterial_5kprk")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4137,9 +4138,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cpyj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aw07r"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_y874f")
+next_pass = SubResource("ShaderMaterial_af4pt")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4166,7 +4167,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-4.1953e-17, -8.06148e-05, -4.1953e-17)
+shader_parameter/physics_pos_offset = Vector3(-4.1953e-17, -8.06149e-05, -4.1953e-17)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -4174,9 +4175,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mnfc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w46v0"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_7cpyj")
+next_pass = SubResource("ShaderMaterial_aw07r")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4203,7 +4204,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-3.24077e-17, -6.2273e-05, -3.24077e-17)
+shader_parameter/physics_pos_offset = Vector3(-3.24077e-17, -6.22731e-05, -3.24077e-17)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -4211,9 +4212,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wba2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0kpx1"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3mnfc")
+next_pass = SubResource("ShaderMaterial_w46v0")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4240,7 +4241,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-2.45921e-17, -4.72549e-05, -2.45921e-17)
+shader_parameter/physics_pos_offset = Vector3(-2.45921e-17, -4.7255e-05, -2.45921e-17)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -4248,9 +4249,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wisvt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrnkk"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_4wba2")
+next_pass = SubResource("ShaderMaterial_0kpx1")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4285,9 +4286,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uks32"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_roibh"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_wisvt")
+next_pass = SubResource("ShaderMaterial_xrnkk")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4322,9 +4323,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_buw18"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4qyx"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_uks32")
+next_pass = SubResource("ShaderMaterial_roibh")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4359,9 +4360,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_07bhy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1gqg"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_buw18")
+next_pass = SubResource("ShaderMaterial_f4qyx")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4388,7 +4389,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-6.40152e-18, -1.23008e-05, -6.40152e-18)
+shader_parameter/physics_pos_offset = Vector3(-6.40152e-18, -1.23009e-05, -6.40152e-18)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -4396,9 +4397,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xw53w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cworj"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_07bhy")
+next_pass = SubResource("ShaderMaterial_r1gqg")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4425,7 +4426,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-4.20003e-18, -8.07059e-06, -4.20003e-18)
+shader_parameter/physics_pos_offset = Vector3(-4.20004e-18, -8.07059e-06, -4.20004e-18)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -4433,9 +4434,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0i35p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kphp"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_xw53w")
+next_pass = SubResource("ShaderMaterial_cworj")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4470,9 +4471,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vntjs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60c2q"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_0i35p")
+next_pass = SubResource("ShaderMaterial_6kphp")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4507,9 +4508,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6seoq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxevb"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_vntjs")
+next_pass = SubResource("ShaderMaterial_60c2q")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4536,7 +4537,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-8.29636e-19, -1.59419e-06, -8.29636e-19)
+shader_parameter/physics_pos_offset = Vector3(-8.29637e-19, -1.59419e-06, -8.29637e-19)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -4544,9 +4545,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uih8j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nwdb"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_6seoq")
+next_pass = SubResource("ShaderMaterial_qxevb")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4581,9 +4582,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3iqyr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ya1db"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_uih8j")
+next_pass = SubResource("ShaderMaterial_1nwdb")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4618,9 +4619,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4by16"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5j1od"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_3iqyr")
+next_pass = SubResource("ShaderMaterial_ya1db")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4655,9 +4656,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8ojb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rw0o"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_4by16")
+next_pass = SubResource("ShaderMaterial_5j1od")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4692,9 +4693,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbdma"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37y01"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_r8ojb")
+next_pass = SubResource("ShaderMaterial_4rw0o")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4721,7 +4722,7 @@ shader_parameter/emission_energy_multiplier = 1.0
 shader_parameter/use_emission_texture = false
 shader_parameter/use_thickness_curve = true
 shader_parameter/thickness_scale = 2.61
-shader_parameter/physics_pos_offset = Vector3(-6.40152e-22, -1.23008e-09, -6.40152e-22)
+shader_parameter/physics_pos_offset = Vector3(-6.40152e-22, -1.23009e-09, -6.40152e-22)
 shader_parameter/physics_rot_offset = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/turbulence_texture = SubResource("NoiseTexture2D_c6acj")
 shader_parameter/jitter_texture = SubResource("NoiseTexture2D_8pxfh")
@@ -4729,9 +4730,9 @@ shader_parameter/height_gradient = SubResource("GradientTexture2D_mvxpb")
 shader_parameter/thickness_curve = SubResource("CurveTexture_844g6")
 metadata/is_fur = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngyui"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fx1un"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_bbdma")
+next_pass = SubResource("ShaderMaterial_37y01")
 shader = ExtResource("1_qpuj8")
 shader_parameter/height = 0.39
 shader_parameter/normal_strength = 1.0
@@ -4780,7 +4781,7 @@ ambient_light_energy = 0.67
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.46172, 0.262515, 0.84729, -0.163265, 0.964035, -0.209716, -0.871871, -0.0415032, 0.487974, -0.026624, -0.489471, 0.674)
 material_override = SubResource("StandardMaterial3D_5dxr1")
-material_overlay = SubResource("ShaderMaterial_ngyui")
+material_overlay = SubResource("ShaderMaterial_fx1un")
 mesh = SubResource("SphereMesh_8rssu")
 script = ExtResource("2_vb7sj")
 dpos = Vector3(2.08165e-12, 0.3, 2.08165e-12)
