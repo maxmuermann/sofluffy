@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot-fur"
-run/main_scene="res://demos/lod_test.tscn"
+run/main_scene="res://demos/bee.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
